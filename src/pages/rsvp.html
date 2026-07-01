@@ -10,17 +10,13 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <nav class="language-selector">
-    {{#each locales}}
-      <a href="/{{code}}/rsvp.html" {{#if active}}class="active"{{/if}}>{{label}}</a>
-    {{/each}}
-  </nav>
-  <header>
+  {{> header page="rsvp.html"}}
+  <section class="hero">
     <p class="eyebrow">{{site_title}}</p>
     <h1>{{rsvp_heading}}</h1>
     <div class="ornament" aria-hidden="true">❦</div>
     <p class="hero-meta">{{date}} · {{location}}</p>
-  </header>
+  </section>
   <main>
     <section class="card">
       <p class="lead">{{rsvp_intro}}</p>

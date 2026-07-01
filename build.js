@@ -14,6 +14,20 @@ const locales = [
 // 2. Ensure the output directory exists
 if (!fs.existsSync(distDir)) fs.mkdirSync(distDir, { recursive: true });
 
+// Helpers and shared partials (src/partials/<name>.html → {{> name}})
+Handlebars.registerHelper("eq", (a, b) => a === b);
+
+const partialsDir = `${srcDir}/partials`;
+if (fs.existsSync(partialsDir)) {
+  fs.readdirSync(partialsDir).forEach((file) => {
+    if (!file.endsWith(".html")) return;
+    Handlebars.registerPartial(
+      path.basename(file, ".html"),
+      fs.readFileSync(`${partialsDir}/${file}`, "utf-8"),
+    );
+  });
+}
+
 // 3. The Engine: Loop through locales and generate pages
 locales.forEach(({ code }) => {
   // Read the translation JSON file

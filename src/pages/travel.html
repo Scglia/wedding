@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{travel_heading}} · {{site_title}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  {{> header page="travel.html"}}
+  <section class="hero">
+    <p class="eyebrow">{{site_title}}</p>
+    <h1>{{travel_heading}}</h1>
+    <div class="ornament" aria-hidden="true">❦</div>
+    <p class="hero-meta">{{location}}</p>
+  </section>
+  <main>
+    <section class="card">
+      <h2>{{getting_there_heading}}</h2>
+      <p class="address">{{travel_address}}</p>
+      <ul class="info-list">
+        {{#each travel_modes}}
+        <li>
+          <h3>{{title}}</h3>
+          <p>{{desc}}</p>
+        </li>
+        {{/each}}
+      </ul>
+    </section>
+    <section class="card">
+      <h2>{{stay_heading}}</h2>
+      <p class="note">{{stay_note}}</p>
+      <ul class="info-list">
+        {{#each stay_options}}
+        <li>
+          <h3>{{name}}</h3>
+          <span class="meta">{{distance}}</span>
+          <p>{{desc}}</p>
+        </li>
+        {{/each}}
+      </ul>
+    </section>
+    <p class="back-link"><a class="button" href="/{{lang}}/rsvp.html">{{rsvp_link}}</a></p>
+  </main>
+  <footer>
+    <p>{{footer}}</p>
+  </footer>
+</body>
+</html>

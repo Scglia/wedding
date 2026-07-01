@@ -4,7 +4,8 @@ A static, multilingual wedding website (English, French, Czech) built with plain
 
 ## How it works
 
-- `src/pages/*.html` — page templates (`index.html`, `rsvp.html`), written with Handlebars syntax.
+- `src/pages/*.html` — page templates (`index.html`, `program.html`, `travel.html`, `rsvp.html`), written with Handlebars syntax.
+- `src/partials/*.html` — shared Handlebars partials, registered by `build.js` under their filename (e.g. `header.html` → `{{> header}}`). The site header takes a `page` parameter (the page's output filename, `""` for the home page) to mark the active nav link and build language-switch URLs.
 - `src/locales/*.json` — one file per language (`en.json`, `fr.json`, `cs.json`) supplying the text each template renders.
 - `src/styles.css` — shared stylesheet, copied as-is into the output.
 - `build.js` — the build script. For every locale, it compiles every page template against that locale's JSON and writes the result to `dist/<locale>/<page>.html`. It also copies `styles.css`, copies `src/pages/_redirects` (used by Netlify), and writes a `dist/index.html` that redirects `/` to `/en/`.
