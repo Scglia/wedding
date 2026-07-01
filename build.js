@@ -1,23 +1,38 @@
 import fs from "fs";
+import path from "path";
 import Handlebars from "handlebars";
 
 // 1. Configuration
 const srcDir = "./src";
 const distDir = "./dist";
-const locales = ["en", "cz", "fr"];
+const locales = [
+  { code: "en", label: "English" },
+  { code: "fr", label: "Français" },
+  { code: "cs", label: "Čeština" },
+];
 
 // 2. Ensure the output directory exists
 if (!fs.existsSync(distDir)) fs.mkdirSync(distDir, { recursive: true });
 
 // 3. The Engine: Loop through locales and generate pages
-locales.forEach((locale) => {
+locales.forEach(({ code }) => {
   // Read the translation JSON file
-  const translationsPath = `${srcDir}/locales/${locale}.json`;
+  const translationsPath = `${srcDir}/locales/${code}.json`;
   if (!fs.existsSync(translationsPath)) return;
   const translations = JSON.parse(fs.readFileSync(translationsPath, "utf-8"));
 
+  // Give every page access to the full list of locales, so templates can
+  // render a language switcher without hardcoding links.
+  const context = {
+    ...translations,
+    locales: locales.map((locale) => ({
+      ...locale,
+      active: locale.code === code,
+    })),
+  };
+
   // Create the specific locale folder (e.g., dist/en/)
-  const localeDist = `${distDir}/${locale}`;
+  const localeDist = `${distDir}/${code}`;
   if (!fs.existsSync(localeDist)) fs.mkdirSync(localeDist, { recursive: true });
 
   // Read all base pages
@@ -30,18 +45,31 @@ locales.forEach((locale) => {
 
     // Compile and inject the translations
     const template = Handlebars.compile(sourceCode);
-    const finalHtml = template(translations);
+    const finalHtml = template(context);
 
     // Write to the output folder
     fs.writeFileSync(`${localeDist}/${file}`, finalHtml);
   });
 });
 
-// 4. Handle Netlify Root Redirect
-// Copies your _redirects file to the dist folder so Netlify knows to route traffic to /en/
+// 4. Copy static assets (stylesheet) into the output root
+const stylesPath = `${srcDir}/styles.css`;
+if (fs.existsSync(stylesPath)) {
+  fs.copyFileSync(stylesPath, `${distDir}/styles.css`);
+}
+
+// 5. Root redirect
+// Netlify reads _redirects; everyone else gets a plain HTML fallback page
+// that redirects to the default locale.
 const redirectsFile = `${srcDir}/pages/_redirects`;
 if (fs.existsSync(redirectsFile)) {
   fs.copyFileSync(redirectsFile, `${distDir}/_redirects`);
 }
+
+const defaultLocale = locales[0].code;
+fs.writeFileSync(
+  path.join(distDir, "index.html"),
+  `<!DOCTYPE html>\n<html>\n<head><meta http-equiv="refresh" content="0; url=/${defaultLocale}/"></head>\n<body><a href="/${defaultLocale}/">Continue</a></body>\n</html>\n`,
+);
 
 console.log("✅ Static site generated successfully in /dist!");

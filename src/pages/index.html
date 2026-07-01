@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{site_title}}</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <nav class="language-selector">
+    {{#each locales}}
+      <a href="/{{code}}/" {{#if active}}class="active"{{/if}}>{{label}}</a>
+    {{/each}}
+  </nav>
+  <header>
+    <h1>{{hero}}</h1>
+  </header>
+  <main>
+    <h2>{{title}}</h2>
+    <p>{{welcome}}</p>
+    <p><strong>{{date_label}}:</strong> {{date}}</p>
+    <p><strong>{{location_label}}:</strong> {{location}}</p>
+    <p><a href="/{{lang}}/rsvp.html">{{rsvp_link}}</a></p>
+  </main>
+  <footer>
+    <p>{{footer}}</p>
+  </footer>
+</body>
+</html>

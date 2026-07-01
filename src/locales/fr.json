@@ -1,6 +1,21 @@
 {
-  "title": "Our Wedding",
-  "welcome": "Welcome to our big day!",
-  "rsvp_heading": "Kindly Reply",
-  "submit_button": "Submit RSVP"
+  "lang": "fr",
+  "site_title": "Notre Mariage",
+  "hero": "Nous Nous Marions !",
+  "title": "Notre Mariage",
+  "welcome": "Bienvenue en ce grand jour !",
+  "date_label": "Date",
+  "date": "15 Juin 2026",
+  "location_label": "Lieu",
+  "location": "Un Endroit Magnifique",
+  "rsvp_heading": "Merci de Répondre",
+  "rsvp_intro": "Nous avons hâte de célébrer avec vous. Merci de nous confirmer votre présence.",
+  "name_label": "Votre Nom",
+  "attending_label": "Serez-vous présent(e) ?",
+  "attending_yes": "Accepte avec joie",
+  "attending_no": "Décline avec regret",
+  "submit_button": "Envoyer",
+  "rsvp_link": "RSVP",
+  "home_link": "Accueil",
+  "footer": "© 2026 Mariage. Tous droits réservés."
 }

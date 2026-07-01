@@ -1,6 +1,21 @@
 {
+  "lang": "en",
+  "site_title": "Our Wedding",
+  "hero": "We're Getting Married!",
   "title": "Our Wedding",
   "welcome": "Welcome to our big day!",
+  "date_label": "Date",
+  "date": "June 15, 2026",
+  "location_label": "Location",
+  "location": "Somewhere Beautiful",
   "rsvp_heading": "Kindly Reply",
-  "submit_button": "Submit RSVP"
+  "rsvp_intro": "We can't wait to celebrate with you. Please let us know if you can make it.",
+  "name_label": "Your Name",
+  "attending_label": "Will you be attending?",
+  "attending_yes": "Joyfully Accepts",
+  "attending_no": "Regretfully Declines",
+  "submit_button": "Submit RSVP",
+  "rsvp_link": "RSVP",
+  "home_link": "Home",
+  "footer": "© 2026 Wedding. All rights reserved."
 }

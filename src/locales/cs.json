@@ -1,0 +1,21 @@
+{
+  "lang": "cs",
+  "site_title": "Naše Svatba",
+  "hero": "Bereme Se!",
+  "title": "Naše Svatba",
+  "welcome": "Vítejte v den naší svatby!",
+  "date_label": "Datum",
+  "date": "15. června 2026",
+  "location_label": "Místo",
+  "location": "Nádherné Místo",
+  "rsvp_heading": "Prosíme o Odpověď",
+  "rsvp_intro": "Těšíme se, až s vámi tento den oslavíme. Dejte nám prosím vědět, zda dorazíte.",
+  "name_label": "Vaše Jméno",
+  "attending_label": "Zúčastníte se?",
+  "attending_yes": "S radostí přijímám",
+  "attending_no": "S lítostí odmítám",
+  "submit_button": "Odeslat",
+  "rsvp_link": "Potvrzení účasti",
+  "home_link": "Domů",
+  "footer": "© 2026 Svatba. Všechna práva vyhrazena."
+}

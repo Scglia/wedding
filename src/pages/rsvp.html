@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{rsvp_heading}} · {{site_title}}</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <nav class="language-selector">
+    {{#each locales}}
+      <a href="/{{code}}/rsvp.html" {{#if active}}class="active"{{/if}}>{{label}}</a>
+    {{/each}}
+  </nav>
+  <header>
+    <h1>{{rsvp_heading}}</h1>
+  </header>
+  <main>
+    <p>{{rsvp_intro}}</p>
+    <form>
+      <label for="name">{{name_label}}</label>
+      <input type="text" id="name" name="name" required>
+
+      <fieldset>
+        <legend>{{attending_label}}</legend>
+        <label><input type="radio" name="attending" value="yes" required> {{attending_yes}}</label>
+        <label><input type="radio" name="attending" value="no"> {{attending_no}}</label>
+      </fieldset>
+
+      <button type="submit">{{submit_button}}</button>
+    </form>
+    <p><a href="/{{lang}}/">{{home_link}}</a></p>
+  </main>
+  <footer>
+    <p>{{footer}}</p>
+  </footer>
+</body>
+</html>

@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "build": "node build.js",
+    "watch": "nodemon --watch src --ext html,json,css --exec \"node build.js\"",
+    "serve": "vite",
+    "dev": "npm-run-all --parallel watch serve",
     "preview": "vite preview"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "handlebars": "^4.7.9",
     "nodemon": "^3.1.14",

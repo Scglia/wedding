@@ -1,0 +1,62 @@
+:root {
+  color-scheme: light;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+body {
+  margin: 0;
+  padding: 0 1.5rem 3rem;
+  background: #faf6f1;
+  color: #33302c;
+  text-align: center;
+}
+
+.language-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.language-selector a {
+  color: #7a6a58;
+  text-decoration: none;
+}
+
+.language-selector a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0;
+}
+
+main {
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: left;
+  margin-top: 1.5rem;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.3rem;
+  background: #7a6a58;
+  color: #fff;
+  cursor: pointer;
+}
+
+footer {
+  margin-top: 3rem;
+  font-size: 0.85rem;
+  color: #7a6a58;
+}
