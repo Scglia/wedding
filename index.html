@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{#with (lookup this.locales "en")}}
+    {{> head}}
+  {{/with}}
+</head>
+<body>
+  <div class="language-selector">
+    <a href="/en/">English</a>
+    <a href="/es/">Español</a>
+    <a href="/fr/">Français</a>
+  </div>
+  <header>
+    {{#with (lookup this.locales "en")}}
+      <h1>{{hero}}</h1>
+    {{/with}}
+  </header>
+  <main>
+    <p>Welcome! Please select your language above.</p>
+  </main>
+  <footer>
+    <p>&copy; 2026 Wedding. All rights reserved.</p>
+  </footer>
+</body>
+</html>

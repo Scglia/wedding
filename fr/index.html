@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  {{#with (lookup this.locales "fr")}}
+    {{> head}}
+  {{/with}}
+</head>
+<body>
+  <div class="language-selector">
+    <a href="/en/">English</a>
+    <a href="/es/">Español</a>
+    <a href="/fr/">Français</a>
+  </div>
+  <header>
+    {{#with (lookup this.locales "fr")}}
+      <h1>{{hero}}</h1>
+    {{/with}}
+  </header>
+  <main>
+    {{#with (lookup this.locales "fr")}}
+      <h2>{{title}}</h2>
+      <p><strong>{{date}}:</strong> 15 Juin 2026</p>
+      <p><strong>{{location}}:</strong> Un Endroit Magnifique</p>
+      {{> rsvp-form}}
+    {{/with}}
+  </main>
+  <footer>
+    <p>&copy; 2026 Mariage. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
