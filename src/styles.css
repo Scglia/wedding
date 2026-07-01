@@ -1,62 +1,354 @@
+/* ---------------------------------------------------------------
+   Château wedding — shared stylesheet
+   Palette: Provençal limestone, cream, antique gold, olive, lavender
+   --------------------------------------------------------------- */
+
 :root {
   color-scheme: light;
-  font-family: "Georgia", "Times New Roman", serif;
+
+  --ink: #3a332b;
+  --ink-soft: #6f6455;
+  --cream: #fdfaf4;
+  --parchment: #f6efe3;
+  --stone: #ece3d2;
+  --gold: #a98b52;
+  --gold-deep: #8c7140;
+  --olive: #77795c;
+  --lavender: #8d82a6;
+  --line: #d9cbb2;
+
+  --font-display: "Cormorant Garamond", "Garamond", "Georgia", serif;
+  --font-body: "Jost", "Avenir Next", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  padding: 0 1.5rem 3rem;
-  background: #faf6f1;
-  color: #33302c;
+  padding: 0 1.25rem 4rem;
+  background:
+    radial-gradient(ellipse 120% 60% at 50% -10%, #f3e8d3 0%, transparent 60%),
+    linear-gradient(180deg, var(--parchment) 0%, var(--cream) 28rem);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.7;
   text-align: center;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* ----- Language selector ---------------------------------------- */
 
 .language-selector {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  padding: 1rem 0;
+  gap: 1.75rem;
+  padding: 1.5rem 0 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
 .language-selector a {
-  color: #7a6a58;
+  color: var(--ink-soft);
   text-decoration: none;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.language-selector a:hover {
+  color: var(--gold-deep);
 }
 
 .language-selector a.active {
-  font-weight: bold;
-  text-decoration: underline;
+  color: var(--gold-deep);
+  border-bottom-color: var(--gold);
+}
+
+/* ----- Header / hero --------------------------------------------- */
+
+header {
+  max-width: 46rem;
+  margin: 2.5rem auto 0;
+  padding: 3rem 1.5rem 2.75rem;
+  border: 1px solid var(--line);
+  outline: 1px solid var(--line);
+  outline-offset: 5px;
+  background: var(--cream);
+}
+
+.eyebrow {
+  margin: 0 0 1.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
 }
 
 header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.5rem, 7vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--ink);
 }
 
+.hero-meta {
+  margin: 1.5rem 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--ink-soft);
+}
+
+/* ----- Ornamental divider ---------------------------------------- */
+
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.75rem auto;
+  color: var(--gold);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.ornament::before,
+.ornament::after {
+  content: "";
+  width: 4.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.ornament::after {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+/* ----- Main content ----------------------------------------------- */
+
 main {
-  max-width: 32rem;
+  max-width: 40rem;
   margin: 0 auto;
 }
+
+.card {
+  margin-top: 2.5rem;
+  padding: 2.5rem 2rem;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 40px -30px rgba(78, 62, 40, 0.45);
+}
+
+main h2 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.lead {
+  margin: 0 auto;
+  max-width: 30rem;
+  color: var(--ink-soft);
+}
+
+/* ----- Detail list (date / location) ------------------------------ */
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem 3rem;
+  margin: 2rem 0;
+  padding: 1.75rem 1rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.details div {
+  min-width: 10rem;
+}
+
+.details dt {
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+.details dd {
+  margin: 0.4rem 0 0;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+/* ----- Buttons & links -------------------------------------------- */
+
+.button,
+button {
+  display: inline-block;
+  padding: 0.85rem 2.5rem;
+  border: 1px solid var(--gold-deep);
+  border-radius: 0;
+  background: var(--gold);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.button:hover,
+button:hover {
+  background: var(--gold-deep);
+}
+
+.text-link {
+  color: var(--gold-deep);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 0.1rem;
+}
+
+.text-link:hover {
+  color: var(--ink);
+}
+
+/* ----- Forms -------------------------------------------------------- */
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1.5rem;
+  margin-top: 2rem;
   text-align: left;
-  margin-top: 1.5rem;
 }
 
-button {
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 0.3rem;
-  background: #7a6a58;
-  color: #fff;
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+form label,
+form legend {
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.hint {
+  text-transform: none;
+  letter-spacing: 0.05em;
+  color: var(--gold-deep);
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 5.5rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(169, 139, 82, 0.18);
+}
+
+fieldset {
+  margin: 0;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--line);
+}
+
+fieldset legend {
+  padding: 0 0.6rem;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 2rem;
+  margin-top: 0.35rem;
+}
+
+.choices label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--ink);
   cursor: pointer;
 }
 
+input[type="radio"] {
+  accent-color: var(--gold-deep);
+  width: 1rem;
+  height: 1rem;
+}
+
+form button {
+  align-self: center;
+  margin-top: 0.5rem;
+}
+
+.back-link {
+  margin-top: 2rem;
+}
+
+/* ----- Footer -------------------------------------------------------- */
+
 footer {
-  margin-top: 3rem;
-  font-size: 0.85rem;
-  color: #7a6a58;
+  margin-top: 4rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+}
+
+/* ----- Small screens -------------------------------------------------- */
+
+@media (max-width: 480px) {
+  header {
+    padding: 2.25rem 1rem 2rem;
+  }
+
+  .card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .details {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
 }

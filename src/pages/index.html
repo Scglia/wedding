@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{site_title}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -13,14 +16,27 @@
     {{/each}}
   </nav>
   <header>
+    <p class="eyebrow">{{site_title}}</p>
     <h1>{{hero}}</h1>
+    <div class="ornament" aria-hidden="true">❦</div>
+    <p class="hero-meta">{{date}} · {{location}}</p>
   </header>
   <main>
-    <h2>{{title}}</h2>
-    <p>{{welcome}}</p>
-    <p><strong>{{date_label}}:</strong> {{date}}</p>
-    <p><strong>{{location_label}}:</strong> {{location}}</p>
-    <p><a href="/{{lang}}/rsvp.html">{{rsvp_link}}</a></p>
+    <section class="card">
+      <h2>{{title}}</h2>
+      <p class="lead">{{welcome}}</p>
+      <dl class="details">
+        <div>
+          <dt>{{date_label}}</dt>
+          <dd>{{date}}</dd>
+        </div>
+        <div>
+          <dt>{{location_label}}</dt>
+          <dd>{{location}}</dd>
+        </div>
+      </dl>
+      <a class="button" href="/{{lang}}/rsvp.html">{{rsvp_link}}</a>
+    </section>
   </main>
   <footer>
     <p>{{footer}}</p>
