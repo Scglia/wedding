@@ -39,21 +39,26 @@
           </div>
         </fieldset>
 
-        <div class="field">
-          <label for="guests">{{guests_label}}</label>
-          <select id="guests" name="guests">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
+        <div class="guest-counts">
+          <div class="field">
+            <label for="adults">{{adults_label}}</label>
+            <input type="number" id="adults" name="adults" min="1" max="10" step="1" value="1" required>
+          </div>
+
+          <div class="field">
+            <label for="children">{{children_label}}</label>
+            <input type="number" id="children" name="children" min="0" max="10" step="1" value="0">
+          </div>
         </div>
 
+        <div class="field child-ages" id="child-ages" hidden></div>
+
         <fieldset>
-          <legend>{{accommodation_label}}</legend>
+          <legend>{{transportation_label}}</legend>
           <div class="choices">
-            <label><input type="radio" name="accommodation" value="yes"> {{accommodation_yes}}</label>
-            <label><input type="radio" name="accommodation" value="no"> {{accommodation_no}}</label>
+            <label><input type="radio" name="transportation" value="car"> {{transportation_car}}</label>
+            <label><input type="radio" name="transportation" value="train"> {{transportation_train}}</label>
+            <label><input type="radio" name="transportation" value="plane"> {{transportation_plane}}</label>
           </div>
         </fieldset>
 
@@ -80,5 +85,42 @@
   <footer>
     <p>{{footer}}</p>
   </footer>
+  <script>
+    (function () {
+      var childrenInput = document.getElementById("children");
+      var childAges = document.getElementById("child-ages");
+
+      function renderChildAges() {
+        var count = Math.max(0, Math.min(10, parseInt(childrenInput.value, 10) || 0));
+        childAges.innerHTML = "";
+        childAges.hidden = count === 0;
+
+        for (var i = 1; i <= count; i++) {
+          var field = document.createElement("div");
+          field.className = "field";
+
+          var label = document.createElement("label");
+          label.setAttribute("for", "child-age-" + i);
+          label.textContent = "{{child_age_label}} " + i;
+
+          var input = document.createElement("input");
+          input.type = "number";
+          input.id = "child-age-" + i;
+          input.name = "child_age_" + i;
+          input.min = "0";
+          input.max = "17";
+          input.step = "1";
+          input.required = true;
+
+          field.appendChild(label);
+          field.appendChild(input);
+          childAges.appendChild(field);
+        }
+      }
+
+      childrenInput.addEventListener("input", renderChildAges);
+      renderChildAges();
+    })();
+  </script>
 </body>
 </html>
