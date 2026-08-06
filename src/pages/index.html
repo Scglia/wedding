@@ -16,19 +16,23 @@
     /* hamburger — the welcome page's only chrome */
     .menu-toggle {
       position: fixed; top: 18px; right: 18px; z-index: 60;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
       width: 46px; height: 46px; padding: 0;
-      background: var(--color-bg); border: 1px solid var(--color-divider);
-      box-shadow: none; cursor: pointer; transition: border-color .2s ease;
+      background: color-mix(in srgb, var(--color-neutral-900) 5%, transparent);
+      border: none; border-radius: 4px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      box-shadow: none; cursor: pointer; transition: background-color .25s ease, opacity .35s ease;
     }
+    .menu-toggle.is-hidden { opacity: 0; pointer-events: none; }
     .menu-toggle::after { content: none; animation: none; }
-    .menu-toggle:hover { background: var(--color-bg); border-color: var(--color-accent); transform: none; box-shadow: none; }
-    .menu-toggle span { display: block; width: 18px; height: 1px; background: var(--color-text); }
+    .menu-toggle:hover { background: color-mix(in srgb, var(--color-neutral-900) 10%, transparent); transform: none; box-shadow: none; border: none; }
+    .menu-toggle span { display: block; width: 18px; height: 1px; background: var(--color-text); transition: width .25s ease; }
+    .menu-toggle span:nth-child(2) { width: 13px; }
+    .menu-toggle:hover span { width: 18px; }
     .menu-panel {
       position: fixed; inset: auto 18px auto auto; top: 72px; z-index: 60;
-      margin: 0; min-width: 13rem; padding: 0.4rem 0;
-      border: 1px solid var(--color-divider); background: var(--color-neutral-100);
-      box-shadow: var(--shadow-md);
+      margin: 0; min-width: 14.5rem; padding: 0.75rem 0.5rem;
+      border: none; border-radius: 4px; background: var(--color-neutral-100);
+      box-shadow: var(--shadow-lg);
     }
     @supports (anchor-name: --a) {
       .menu-toggle { anchor-name: --menu-toggle; }
@@ -36,27 +40,55 @@
         inset: auto; position-anchor: --menu-toggle;
         position-area: block-end span-inline-start;
         position-try-fallbacks: flip-block, flip-inline;
-        margin: 0.45rem 0 0;
+        margin: 0.5rem 0 0;
       }
     }
     .menu-panel::backdrop { background: transparent; }
     .menu-panel a {
-      display: block; padding: 0.6rem 1.2rem;
+      display: flex; align-items: center; gap: 0.85rem;
+      padding: 0.75rem 1rem; border-radius: 4px;
       font-family: var(--font-heading); font-weight: 500;
       font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--color-neutral-700); text-decoration: none;
+      transition: background-color .2s ease, color .2s ease;
     }
-    .menu-panel a:hover { background: var(--color-surface); color: var(--color-text); }
+    .menu-panel a svg { flex: none; stroke: var(--color-accent-600); transition: stroke .2s ease; }
+    .menu-panel a:hover { background: color-mix(in srgb, var(--color-accent) 8%, transparent); color: var(--color-text); }
+    .menu-panel a:hover svg { stroke: var(--color-accent-700); }
     .menu-panel .menu-langs {
-      display: flex; gap: 0; margin-top: 0.35rem; padding-top: 0.35rem;
+      display: flex; gap: 0; justify-content: space-around; margin-top: 0.6rem; padding-top: 0.6rem;
       border-top: 1px solid var(--color-divider);
     }
-    .menu-panel .menu-langs a { padding: 0.5rem 1.2rem; }
+    .menu-panel .menu-langs a { padding: 0.55rem 1rem; color: var(--color-neutral-600); }
     .menu-panel .menu-langs a.active { color: var(--color-accent-700); }
 
+    #venueCtaBtn {
+      position: relative; overflow: hidden;
+      color: #fff; font-family: var(--font-body); font-size: 12px;
+      letter-spacing: .24em; text-transform: uppercase; font-weight: 700;
+      padding: 13px 32px; cursor: pointer; white-space: nowrap;
+      background-color: var(--color-accent-700); border: 1px solid var(--color-accent-700);
+      border-radius: 4px; box-shadow: var(--shadow-sm);
+      transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+    }
     #venueCtaBtn:hover { background-color: var(--color-accent-800); border-color: var(--color-accent-600); box-shadow: var(--shadow-md); transform: translateY(-1px); }
     #venueCtaBtn:active { transform: translateY(0); box-shadow: var(--shadow-sm); }
-    .vbtn { position: relative; display: inline-block; padding: 14px 34px; border: 1px solid; background: transparent; text-decoration: none; font-family: var(--font-heading); font-weight: 500; letter-spacing: .2em; text-transform: uppercase; font-size: 12px; transition: background .25s ease; }
+    /* light sweep */
+    #venueCtaBtn::after {
+      content: ""; position: absolute; top: 0; bottom: 0;
+      width: 46%; left: -60%;
+      background: linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.42) 50%, rgba(255,255,255,0) 100%);
+      animation: ctaShimmer 3.6s cubic-bezier(.45,0,.55,1) infinite;
+      pointer-events: none;
+    }
+    @keyframes ctaShimmer {
+      0%        { left: -60%; }
+      55%, 100% { left: 115%; }  /* sweep ends early = pause between passes */
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #venueCtaBtn::after { animation: none; display: none; }
+    }
+    .vbtn { position: relative; display: inline-block; padding: 14px 34px; border: 1px solid; border-radius: 4px; background: transparent; text-decoration: none; font-family: var(--font-heading); font-weight: 500; letter-spacing: .2em; text-transform: uppercase; font-size: 12px; transition: background .25s ease; }
     .vbtn-rsvp { color: var(--color-accent-300); border-color: var(--color-accent-300); }
     .vbtn-rsvp:hover { background: rgba(230,190,130,.16); }
     .vbtn-travel { color: var(--color-neutral-100); border-color: rgba(248,244,244,.5); }
@@ -105,9 +137,15 @@
     <span></span><span></span><span></span>
   </button>
   <dialog id="menu-panel" class="menu-panel" popover>
-    <a href="/{{lang}}/program.html">{{nav_program}}</a>
-    <a href="/{{lang}}/travel.html">{{nav_travel}}</a>
-    <a href="/{{lang}}/rsvp.html">{{nav_rsvp}}</a>
+    <a href="/{{lang}}/program.html">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.1" aria-hidden="true"><rect x="2" y="3" width="12" height="11"></rect><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3"></path></svg>
+      {{nav_program}}</a>
+    <a href="/{{lang}}/travel.html">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.1" aria-hidden="true"><path d="M8 14.5s-4.5-4.1-4.5-7.6a4.5 4.5 0 0 1 9 0c0 3.5-4.5 7.6-4.5 7.6Z"></path><circle cx="8" cy="6.7" r="1.6"></circle></svg>
+      {{nav_travel}}</a>
+    <a href="/{{lang}}/rsvp.html">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.1" aria-hidden="true"><rect x="1.5" y="3.5" width="13" height="9.5"></rect><path d="m1.5 4 6.5 5 6.5-5"></path></svg>
+      {{nav_rsvp}}</a>
     <div class="menu-langs">
       {{#each locales}}
       <a href="/{{code}}/" {{#if active}}class="active"{{/if}} lang="{{code}}" hreflang="{{code}}">{{code}}</a>
@@ -304,7 +342,7 @@
         <div id="venue" style="position:relative;width:38vw;height:56vh;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center">
           <span id="venueHint" style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 26</span>
           <div id="venueCta" style="position:absolute;left:50%;bottom:-72px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:auto">
-            <button id="venueCtaBtn" type="button" style="position:relative;overflow:hidden;color:#fff;font-family:var(--font-body);font-size:12px;letter-spacing:.24em;text-transform:uppercase;padding:13px 32px;cursor:pointer;white-space:nowrap;background-color:var(--color-accent-700);font-weight:700;border:1px solid var(--color-accent-700);box-shadow:var(--shadow-sm);transition:background-color .3s ease,border-color .3s ease,box-shadow .3s ease,transform .3s ease">{{open_invitation}}</button>
+            <button id="venueCtaBtn" type="button">{{open_invitation}}</button>
           </div>
         </div>
         <div id="venueText" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-6);text-align:center;padding:0 8vw;opacity:0;color:var(--color-neutral-100);background:linear-gradient(rgba(24,20,16,.28), rgba(24,20,16,.62))">
@@ -342,6 +380,7 @@
       var mbars = document.getElementById('mbars');
       var mdigitsBox = document.getElementById('mdigits');
       var page = document.getElementById('page');
+      var menuBtn = document.querySelector('.menu-toggle');
 
       // build the 120 timeline notches
       for (var i = 0; i < NOTCHES; i++) {
@@ -435,6 +474,7 @@
         var pos = page.scrollTop / h;
         var show = pos > 0.55 && pos < finaleIdx - 0.45;
         hud.style.opacity = show ? '1' : '0';
+        menuBtn.classList.toggle('is-hidden', pos > 0.55);
         var y2 = groups[0].year;
         for (var i = 0; i < groups.length; i++) {
           var f = clamp((pos - groups[i].start) / groups[i].len, 0, 1);
@@ -456,6 +496,7 @@
           mobileHud();
           return;
         }
+        menuBtn.classList.remove('is-hidden');
         var y = window.scrollY, vh = window.innerHeight, vw = window.innerWidth;
         var fTop = finale.offsetTop, fH = finale.offsetHeight;
         var inFinale = y + vh * 0.5 > fTop;

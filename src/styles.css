@@ -16,7 +16,7 @@
   --color-surface: #eae9e9;
   --color-text: #201f1d;
   --color-accent: #b68235;
-  --color-divider: color-mix(in srgb, #201f1d 16%, transparent);
+  --color-divider: color-mix(in srgb, #201f1d 5%, transparent);
   --color-neutral-100: #f8f4f4;
   --color-neutral-200: #eae7e7;
   --color-neutral-300: #d7d3d3;
@@ -166,7 +166,7 @@ textarea:focus-visible {
   gap: 0.45rem;
   padding: 0.45rem 0.9rem;
   border: 1px solid var(--line);
-  border-radius: 0;
+  border-radius: 4px;
   background: transparent;
   color: var(--ink-soft);
   font-family: var(--font-display);
@@ -192,7 +192,7 @@ textarea:focus-visible {
   min-width: 11rem;
   padding: 0.4rem 0;
   border: 1px solid var(--line);
-  border-radius: 0;
+  border-radius: 4px;
   background: var(--parchment);
   box-shadow: var(--shadow-md);
 }
@@ -307,7 +307,7 @@ main {
   padding: 3.5rem 0;
   background: transparent;
   border: 0;
-  border-radius: 0;
+  border-radius: 4px;
   box-shadow: none;
 }
 
@@ -480,7 +480,7 @@ button {
   display: inline-block;
   padding: 0.85rem 2.5rem;
   border: 1px solid var(--gold-deep);
-  border-radius: 0;
+  border-radius: 4px;
   background: var(--gold-deep);
   color: #fff;
   font-family: var(--font-body);
@@ -597,7 +597,7 @@ select,
 textarea {
   padding: 0.7rem 0.85rem;
   border: 1px solid var(--line);
-  border-radius: 0;
+  border-radius: 4px;
   background: transparent;
   color: var(--ink);
   caret-color: var(--gold);
@@ -634,7 +634,7 @@ fieldset {
   margin: 0;
   padding: 1rem 1.1rem 1.1rem;
   border: 1px solid var(--line);
-  border-radius: 0;
+  border-radius: 4px;
 }
 
 .guest-counts {
