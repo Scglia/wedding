@@ -8,34 +8,515 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
+  <style>
+    /* Welcome page owns its layout — undo the shared body chrome */
+    body { padding: 0; text-align: left; }
+    @keyframes cueDrift { 0%,100% { transform: translateY(0); opacity: .45 } 50% { transform: translateY(8px); opacity: 1 } }
+
+    /* hamburger — the welcome page's only chrome */
+    .menu-toggle {
+      position: fixed; top: 18px; right: 18px; z-index: 60;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px;
+      width: 46px; height: 46px; padding: 0;
+      background: var(--color-bg); border: 1px solid var(--color-divider);
+      box-shadow: none; cursor: pointer; transition: border-color .2s ease;
+    }
+    .menu-toggle::after { content: none; animation: none; }
+    .menu-toggle:hover { background: var(--color-bg); border-color: var(--color-accent); transform: none; box-shadow: none; }
+    .menu-toggle span { display: block; width: 18px; height: 1px; background: var(--color-text); }
+    .menu-panel {
+      position: fixed; inset: auto 18px auto auto; top: 72px; z-index: 60;
+      margin: 0; min-width: 13rem; padding: 0.4rem 0;
+      border: 1px solid var(--color-divider); background: var(--color-neutral-100);
+      box-shadow: var(--shadow-md);
+    }
+    @supports (anchor-name: --a) {
+      .menu-toggle { anchor-name: --menu-toggle; }
+      .menu-panel {
+        inset: auto; position-anchor: --menu-toggle;
+        position-area: block-end span-inline-start;
+        position-try-fallbacks: flip-block, flip-inline;
+        margin: 0.45rem 0 0;
+      }
+    }
+    .menu-panel::backdrop { background: transparent; }
+    .menu-panel a {
+      display: block; padding: 0.6rem 1.2rem;
+      font-family: var(--font-heading); font-weight: 500;
+      font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--color-neutral-700); text-decoration: none;
+    }
+    .menu-panel a:hover { background: var(--color-surface); color: var(--color-text); }
+    .menu-panel .menu-langs {
+      display: flex; gap: 0; margin-top: 0.35rem; padding-top: 0.35rem;
+      border-top: 1px solid var(--color-divider);
+    }
+    .menu-panel .menu-langs a { padding: 0.5rem 1.2rem; }
+    .menu-panel .menu-langs a.active { color: var(--color-accent-700); }
+
+    #venueCtaBtn:hover { background-color: var(--color-accent-800); border-color: var(--color-accent-600); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+    #venueCtaBtn:active { transform: translateY(0); box-shadow: var(--shadow-sm); }
+    .vbtn { position: relative; display: inline-block; padding: 14px 34px; border: 1px solid; background: transparent; text-decoration: none; font-family: var(--font-heading); font-weight: 500; letter-spacing: .2em; text-transform: uppercase; font-size: 12px; transition: background .25s ease; }
+    .vbtn-rsvp { color: var(--color-accent-300); border-color: var(--color-accent-300); }
+    .vbtn-rsvp:hover { background: rgba(230,190,130,.16); }
+    .vbtn-travel { color: var(--color-neutral-100); border-color: rgba(248,244,244,.5); }
+    .vbtn-travel:hover { background: rgba(248,244,244,.14); }
+
+    /* MOBILE — a vertical snap feed: every photo and every text block is its own screen */
+    @media (max-width: 760px) {
+      html, body { overflow: hidden; height: 100%; }
+      #page {
+        display: flex; flex-direction: column; flex-wrap: nowrap;
+        width: 100vw; height: 100dvh;
+        overflow-y: auto; overflow-x: hidden;
+        scroll-snap-type: y mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      #page::-webkit-scrollbar { display: none; }
+      #story, #story > section, #story > section > .stack { display: contents; }
+      #rail { display: none !important; }
+      #hero, #story .ph, #story .cap, #finale {
+        flex: 0 0 100dvh; width: 100vw !important; height: 100dvh !important;
+        scroll-snap-align: start; scroll-snap-stop: always;
+        box-sizing: border-box;
+      }
+      #hero { padding: 12vw 8vw; }
+      #story .ph {
+        position: static !important; left: auto !important; top: auto !important;
+        background: var(--color-bg) !important; padding: 4vh 4vw; overflow: hidden;
+        display: flex; align-items: center; justify-content: center;
+      }
+      #story .ph > img, #story .ph img { width: 100%; height: 100%; object-fit: contain; }
+      #story .cap { padding: 10vh 9vw !important; justify-content: center; }
+      #story .cap p { font-size: 21px !important; }
+      #finale { height: 100dvh !important; }
+      #finale > div { position: static !important; height: 100dvh !important; }
+      #venue { width: 100vw !important; height: 100dvh !important; }
+      #venueText { opacity: 1 !important; transform: none !important; pointer-events: auto; overflow-y: auto; padding: 12vh 8vw !important; justify-content: flex-start; }
+      #venueHint { opacity: 1 !important; }
+      #mhud { display: flex !important; }
+      #venueCta { display: none !important; }
+    }
+  </style>
 </head>
 <body>
-  {{> header page=""}}
-  <section class="hero">
-    <p class="eyebrow">{{site_title}}</p>
-    <h1>{{hero}}</h1>
-    <div class="ornament" aria-hidden="true">❦</div>
-    <p class="hero-meta">{{date}} · {{location}}</p>
-  </section>
-  <main>
-    <section class="card">
-      <h2>{{title}}</h2>
-      <p class="lead">{{welcome}}</p>
-      <dl class="details">
-        <div>
-          <dt>{{date_label}}</dt>
-          <dd>{{date}}</dd>
+  <button class="menu-toggle" popovertarget="menu-panel" aria-label="{{menu_label}}">
+    <span></span><span></span><span></span>
+  </button>
+  <dialog id="menu-panel" class="menu-panel" popover>
+    <a href="/{{lang}}/program.html">{{nav_program}}</a>
+    <a href="/{{lang}}/travel.html">{{nav_travel}}</a>
+    <a href="/{{lang}}/rsvp.html">{{nav_rsvp}}</a>
+    <div class="menu-langs">
+      {{#each locales}}
+      <a href="/{{code}}/" {{#if active}}class="active"{{/if}} lang="{{code}}" hreflang="{{code}}">{{code}}</a>
+      {{/each}}
+    </div>
+  </dialog>
+
+  <div id="page" style="position:relative;font-family:var(--font-body);background-color:#F9F7F2;color:#0A0A0A">
+
+    <!-- MOBILE HUD — story progress bars + the rolling year label -->
+    <div id="mhud" style="display:none;position:fixed;left:0;top:0;width:100vw;z-index:40;flex-direction:column;align-items:center;gap:10px;padding:calc(env(safe-area-inset-top,0px) + 12px) 14px 22px;pointer-events:none;opacity:0;transition:opacity .35s ease;background:linear-gradient(rgba(24,20,16,.55), rgba(24,20,16,0))">
+      <div id="mbars" style="display:flex;width:100%;gap:4px"></div>
+      <div id="mdigits" style="display:flex;align-items:center;gap:1px;font-family:'Courier Prime',ui-monospace,monospace;font-variant-numeric:tabular-nums;font-size:14px;line-height:18px;letter-spacing:.12em;color:#f8f4f4"></div>
+    </div>
+
+    <!-- DESKTOP timeline rail -->
+    <div id="rail" style="position:fixed;left:0;top:0;height:100vh;width:230px;display:flex;align-items:center;z-index:20;pointer-events:none;opacity:0;transition:opacity .5s ease">
+      <div id="notchCol" style="display:flex;flex-direction:column;gap:3.6px;align-items:flex-start;padding-left:34px">
+        <div id="railEnd" style="display:flex;align-items:center;gap:9px;margin-top:10px;margin-left:-2px">
+          <svg width="19" height="13" viewBox="0 0 19 13" fill="none" stroke="var(--color-accent)" stroke-width="1.1"><circle cx="6.5" cy="6.5" r="5.4"></circle><circle cx="12.5" cy="6.5" r="5.4"></circle></svg>
+          <span style="font-family:var(--font-heading);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--color-accent-700);white-space:nowrap">{{invitation_label}}</span>
         </div>
-        <div>
-          <dt>{{location_label}}</dt>
-          <dd>{{location}}</dd>
+      </div>
+      <div id="yearTip" style="position:absolute;left:96px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:1px;padding:5px 9px;background:var(--color-text);border-radius:8px;corner-shape:scoop;font-family:'Courier Prime',ui-monospace,monospace;font-variant-numeric:tabular-nums;font-size:15px;line-height:20px;color:var(--color-bg);transition:opacity .3s ease"></div>
+    </div>
+
+    <section id="hero" data-screen-label="Hero" style="height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-8);padding:0 6vw;text-align:center">
+      <div style="font-family:var(--font-heading);font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:var(--color-accent-700)">{{welcome_kicker}}</div>
+      <h1 style="margin:0;font-family:var(--font-heading);font-weight:500;font-size:clamp(54px,11vw,182px);line-height:.94;letter-spacing:-0.01em">ZUZANA&nbsp;&amp; TRISTAN</h1>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-4)">
+        <div style="width:120px;height:1px;background:var(--color-accent)"></div>
+        <div style="font-family:var(--font-heading);font-size:14px;letter-spacing:0.2em;text-transform:uppercase;font-feature-settings:'tnum';color:var(--color-neutral-700)">{{welcome_date}}</div>
+        <div style="display:flex;flex-direction:column;gap:0px">
+          <div style="font-family:var(--font-heading);font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-neutral-700)">{{welcome_place_town}}</div>
+          <div style="font-family:var(--font-heading);font-size:14px;letter-spacing:0.08em;color:var(--color-neutral-700)">{{welcome_place_venue}}</div>
         </div>
-      </dl>
-      <a class="button" href="/{{lang}}/rsvp.html">{{rsvp_link}}</a>
+      </div>
+      <div style="position:absolute;bottom:44px;display:flex;flex-direction:column;align-items:center;gap:var(--space-2);animation:cueDrift 2.8s ease-in-out infinite">
+        <div style="font-family:var(--font-heading);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--color-neutral-600)">{{welcome_scroll}}</div>
+        <div style="width:1px;height:48px;background:linear-gradient(var(--color-neutral-500), transparent)"></div>
+      </div>
     </section>
-  </main>
-  <footer>
-    <p>{{footer}}</p>
-  </footer>
+
+    <!-- STORY — photo stacks alternating with text blocks. Photos are absolutely
+         positioned inside their stack (percentages of a 72vh box); edit the four
+         numbers in each comment to move/resize. Keep the .ph wrapper — it becomes
+         a full-screen panel in the mobile feed. Drop each real image INSIDE it:
+         <img src="/photos/03.jpg" style="width:100%;height:100%;object-fit:cover" alt=""> -->
+    <div id="story">
+
+      <div class="cap" style="padding:9vh 5vw 9vh 250px;display:flex;flex-direction:column;align-items:center;text-align:center">
+        <p style="margin:0;max-width:560px;font-size:20px;line-height:1.7;text-wrap:pretty">{{welcome_intro}}</p>
+      </div><section data-screen-label="2018" style="padding:6vh 5vw 0 250px">
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
+          <!-- Photo 1 — left:2% top:8% w:26% h:46% -->
+          <div class="ph" style="position:absolute;left:2%;top:8%;width:26%;height:46%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 1</span></div>
+          <!-- Photo 2 — left:26% top:34% w:28% h:52% -->
+          <div class="ph" style="position:absolute;left:26%;top:34%;width:28%;height:52%;z-index:2;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 2</span></div>
+          <!-- Photo 3 — left:58% top:6% w:32% h:56% -->
+          <div class="ph" style="position:absolute;left:58%;top:6%;width:32%;height:56%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 3</span></div>
+        </div>
+      </section>
+
+      <div class="cap" style="padding:9vh 5vw 9vh 250px;display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div style="font-family:'Courier Prime',monospace;font-variant-numeric:tabular-nums;font-size:12px;letter-spacing:.24em;color:var(--color-accent-700)">2018</div>
+        <div style="width:40px;height:1px;background:var(--color-accent);margin:var(--space-4) 0"></div>
+        <p style="margin:0;max-width:560px;font-size:20px;line-height:1.7;text-wrap:pretty">{{caption_2018}}</p>
+      </div>
+
+      <section data-screen-label="2019" style="padding:0 5vw 0 250px">
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
+          <!-- Photo 4 — left:8% top:8% w:38% h:64% -->
+          <div class="ph" style="position:absolute;left:8%;top:8%;width:38%;height:64%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 4</span></div>
+          <!-- Photo 5 — left:44% top:26% w:38% h:58% -->
+          <div class="ph" style="position:absolute;left:44%;top:26%;width:38%;height:58%;z-index:2;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 5</span></div>
+        </div>
+      </section>
+
+      <div class="cap" style="padding:9vh 5vw 9vh 250px;display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div style="font-family:'Courier Prime',monospace;font-variant-numeric:tabular-nums;font-size:12px;letter-spacing:.24em;color:var(--color-accent-700)">2019</div>
+        <div style="width:40px;height:1px;background:var(--color-accent);margin:var(--space-4) 0"></div>
+        <p style="margin:0;max-width:560px;font-size:20px;line-height:1.7;text-wrap:pretty">{{caption_2019}}</p>
+      </div>
+
+      <section data-screen-label="2020" style="padding:0 5vw 0 250px">
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
+          <!-- Photo 6 — left:0% top:10% w:24% h:38% -->
+          <div class="ph" style="position:absolute;left:0%;top:10%;width:24%;height:38%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 6</span></div>
+          <!-- Photo 7 — left:20% top:34% w:26% h:44% -->
+          <div class="ph" style="position:absolute;left:20%;top:34%;width:26%;height:44%;z-index:2;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 7</span></div>
+          <!-- Photo 8 — left:48% top:6% w:26% h:42% -->
+          <div class="ph" style="position:absolute;left:48%;top:6%;width:26%;height:42%;z-index:1;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 8</span></div>
+          <!-- Photo 9 — left:66% top:38% w:28% h:46% -->
+          <div class="ph" style="position:absolute;left:66%;top:38%;width:28%;height:46%;z-index:2;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 9</span></div>
+        </div>
+      </section>
+
+      <div class="cap" style="padding:9vh 5vw 9vh 250px;display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div style="font-family:'Courier Prime',monospace;font-variant-numeric:tabular-nums;font-size:12px;letter-spacing:.24em;color:var(--color-accent-700)">2020</div>
+        <div style="width:40px;height:1px;background:var(--color-accent);margin:var(--space-4) 0"></div>
+        <p style="margin:0;max-width:560px;font-size:20px;line-height:1.7;text-wrap:pretty">{{caption_2020}}</p>
+      </div>
+
+      <section data-screen-label="2021" style="padding:0 5vw 0 250px">
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
+          <!-- Photo 10 — left:4% top:6% w:28% h:44% -->
+          <div class="ph" style="position:absolute;left:4%;top:6%;width:28%;height:44%;z-index:1;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 10</span></div>
+          <!-- Photo 11 — left:26% top:32% w:26% h:50% -->
+          <div class="ph" style="position:absolute;left:26%;top:32%;width:26%;height:50%;z-index:2;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 11</span></div>
+          <!-- Photo 12 — left:56% top:12% w:34% h:56% -->
+          <div class="ph" style="position:absolute;left:56%;top:12%;width:34%;height:56%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 12</span></div>
+        </div>
+      </section>
+
+      <div class="cap" style="padding:9vh 5vw 9vh 250px;display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div style="font-family:'Courier Prime',monospace;font-variant-numeric:tabular-nums;font-size:12px;letter-spacing:.24em;color:var(--color-accent-700)">2021</div>
+        <div style="width:40px;height:1px;background:var(--color-accent);margin:var(--space-4) 0"></div>
+        <p style="margin:0;max-width:560px;font-size:20px;line-height:1.7;text-wrap:pretty">{{caption_2021}}</p>
+      </div>
+
+      <section data-screen-label="2023" style="padding:0 5vw 0 250px">
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
+          <!-- Photo 13 — left:6% top:8% w:36% h:60% -->
+          <div class="ph" style="position:absolute;left:6%;top:8%;width:36%;height:60%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 13</span></div>
+          <!-- Photo 14 — left:40% top:24% w:38% h:58% -->
+          <div class="ph" style="position:absolute;left:40%;top:24%;width:38%;height:58%;z-index:2;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 14</span></div>
+        </div>
+      </section>
+
+      <div class="cap" style="padding:9vh 5vw 9vh 250px;display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div style="font-family:'Courier Prime',monospace;font-variant-numeric:tabular-nums;font-size:12px;letter-spacing:.24em;color:var(--color-accent-700)">2023</div>
+        <div style="width:40px;height:1px;background:var(--color-accent);margin:var(--space-4) 0"></div>
+        <p style="margin:0;max-width:560px;font-size:20px;line-height:1.7;text-wrap:pretty">{{caption_2023}}</p>
+      </div>
+
+      <section data-screen-label="2024" style="padding:0 5vw 0 250px">
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
+          <!-- Photo 15 — left:0% top:8% w:24% h:40% -->
+          <div class="ph" style="position:absolute;left:0%;top:8%;width:24%;height:40%;z-index:1;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 15</span></div>
+          <!-- Photo 16 — left:20% top:36% w:26% h:46% -->
+          <div class="ph" style="position:absolute;left:20%;top:36%;width:26%;height:46%;z-index:2;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 16</span></div>
+          <!-- Photo 17 — left:50% top:6% w:24% h:40% -->
+          <div class="ph" style="position:absolute;left:50%;top:6%;width:24%;height:40%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 17</span></div>
+          <!-- Photo 18 — left:68% top:34% w:28% h:48% -->
+          <div class="ph" style="position:absolute;left:68%;top:34%;width:28%;height:48%;z-index:2;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 18</span></div>
+        </div>
+      </section>
+
+      <div class="cap" style="padding:9vh 5vw 9vh 250px;display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div style="font-family:'Courier Prime',monospace;font-variant-numeric:tabular-nums;font-size:12px;letter-spacing:.24em;color:var(--color-accent-700)">2024</div>
+        <div style="width:40px;height:1px;background:var(--color-accent);margin:var(--space-4) 0"></div>
+        <p style="margin:0;max-width:560px;font-size:20px;line-height:1.7;text-wrap:pretty">{{caption_2024}}</p>
+      </div>
+
+      <section data-screen-label="2025" style="padding:0 5vw 0 250px">
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
+          <!-- Photo 19 — left:0% top:6% w:20% h:32% -->
+          <div class="ph" style="position:absolute;left:0%;top:6%;width:20%;height:32%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 19</span></div>
+          <!-- Photo 20 — left:16% top:26% w:22% h:36% -->
+          <div class="ph" style="position:absolute;left:16%;top:26%;width:22%;height:36%;z-index:2;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 20</span></div>
+          <!-- Photo 21 — left:2% top:56% w:24% h:34% -->
+          <div class="ph" style="position:absolute;left:2%;top:56%;width:24%;height:34%;z-index:3;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 21</span></div>
+          <!-- Photo 22 — left:42% top:10% w:26% h:44% -->
+          <div class="ph" style="position:absolute;left:42%;top:10%;width:26%;height:44%;z-index:1;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 22</span></div>
+          <!-- Photo 23 — left:62% top:40% w:28% h:44% -->
+          <div class="ph" style="position:absolute;left:62%;top:40%;width:28%;height:44%;z-index:2;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 23</span></div>
+        </div>
+      </section>
+
+      <div class="cap" style="padding:9vh 5vw 9vh 250px;display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div style="font-family:'Courier Prime',monospace;font-variant-numeric:tabular-nums;font-size:12px;letter-spacing:.24em;color:var(--color-accent-700)">2025</div>
+        <div style="width:40px;height:1px;background:var(--color-accent);margin:var(--space-4) 0"></div>
+        <p style="margin:0;max-width:560px;font-size:20px;line-height:1.7;text-wrap:pretty">{{caption_2025}}</p>
+      </div>
+
+      <section data-screen-label="2026" style="padding:0 5vw 0 250px">
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
+          <!-- Photo 24 — left:6% top:10% w:36% h:58% -->
+          <div class="ph" style="position:absolute;left:6%;top:10%;width:36%;height:58%;z-index:1;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 24</span></div>
+          <!-- Photo 25 — left:42% top:28% w:38% h:56% -->
+          <div class="ph" style="position:absolute;left:42%;top:28%;width:38%;height:56%;z-index:2;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 25</span></div>
+        </div>
+      </section>
+
+      <div class="cap" style="padding:9vh 5vw 12vh 250px;display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div style="font-family:'Courier Prime',monospace;font-variant-numeric:tabular-nums;font-size:12px;letter-spacing:.24em;color:var(--color-accent-700)">2026</div>
+        <div style="width:40px;height:1px;background:var(--color-accent);margin:var(--space-4) 0"></div>
+        <p style="margin:0;max-width:560px;font-size:20px;line-height:1.7;text-wrap:pretty">{{caption_2026}}</p>
+      </div>
+
+    </div><section id="finale" data-screen-label="Venue and details" style="height:300vh;position:relative">
+      <div style="position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden">
+        <!-- Photo 26 — the venue; grows from 38vw x 56vh to full screen on scroll -->
+        <div id="venue" style="position:relative;width:38vw;height:56vh;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center">
+          <span id="venueHint" style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 26</span>
+          <div id="venueCta" style="position:absolute;left:50%;bottom:-72px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:auto">
+            <button id="venueCtaBtn" type="button" style="position:relative;overflow:hidden;color:#fff;font-family:var(--font-body);font-size:12px;letter-spacing:.24em;text-transform:uppercase;padding:13px 32px;cursor:pointer;white-space:nowrap;background-color:var(--color-accent-700);font-weight:700;border:1px solid var(--color-accent-700);box-shadow:var(--shadow-sm);transition:background-color .3s ease,border-color .3s ease,box-shadow .3s ease,transform .3s ease">{{open_invitation}}</button>
+          </div>
+        </div>
+        <div id="venueText" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-6);text-align:center;padding:0 8vw;opacity:0;color:var(--color-neutral-100);background:linear-gradient(rgba(24,20,16,.28), rgba(24,20,16,.62))">
+          <div style="font-family:var(--font-heading);font-size:13px;letter-spacing:.44em;text-transform:uppercase;color:var(--color-accent-300)">{{invited_kicker}}</div>
+          <h2 style="margin:0;font-family:var(--font-heading);font-weight:500;font-size:clamp(36px,6.2vw,92px);line-height:1.02;letter-spacing:-0.01em">{{invited_heading_plain}} <span style="font-style:italic;color:var(--color-accent-300)">{{invited_heading_accent}}</span></h2>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-3)">
+            <div style="width:96px;height:1px;background:var(--color-accent-400)"></div>
+            <div style="font-family:'Courier Prime',monospace;font-variant-numeric:tabular-nums;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--color-neutral-200)">{{invited_meta}}</div>
+          </div>
+          <p style="margin:0;max-width:560px;font-size:19px;line-height:1.75;text-wrap:pretty;color:var(--color-neutral-200)">{{invited_body}}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);justify-content:center;margin-top:var(--space-2)">
+            <a class="vbtn vbtn-rsvp" href="/{{lang}}/rsvp.html">{{nav_rsvp}}</a>
+            <a class="vbtn vbtn-travel" href="/{{lang}}/travel.html">{{nav_travel}}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    (function () {
+      var DIGIT_H = 20, MDIGIT_H = 18, INTENSITY = 0.6, NOTCHES = 120;
+      var col = document.getElementById('notchCol');
+      var railEnd = document.getElementById('railEnd');
+      var rail = document.getElementById('rail');
+      var tip = document.getElementById('yearTip');
+      var story = document.getElementById('story');
+      var finale = document.getElementById('finale');
+      var venue = document.getElementById('venue');
+      var venueHint = document.getElementById('venueHint');
+      var venueText = document.getElementById('venueText');
+      var venueCta = document.getElementById('venueCta');
+      var hud = document.getElementById('mhud');
+      var mbars = document.getElementById('mbars');
+      var mdigitsBox = document.getElementById('mdigits');
+      var page = document.getElementById('page');
+
+      // build the 120 timeline notches
+      for (var i = 0; i < NOTCHES; i++) {
+        var n = document.createElement('div');
+        n.className = 'notch';
+        n.style.cssText = 'width:8px;height:1px;background:var(--color-neutral-600);opacity:.35';
+        col.insertBefore(n, railEnd);
+      }
+      var notchEls = Array.prototype.slice.call(document.querySelectorAll('.notch'));
+
+      // a rolling digit column: 0-9 stacked, translated to show one
+      function digitCol(h, initial) {
+        var wrap = document.createElement('div');
+        wrap.style.cssText = 'height:' + h + 'px;overflow:hidden';
+        var roll = document.createElement('div');
+        roll.className = 'digit-roll';
+        roll.style.cssText = 'display:flex;flex-direction:column;transform:translateY(' + (-initial * h) + 'px);transition:transform .55s cubic-bezier(.22,.9,.16,1)';
+        for (var d = 0; d <= 9; d++) {
+          var s = document.createElement('span');
+          s.style.height = h + 'px';
+          s.textContent = d;
+          roll.appendChild(s);
+        }
+        wrap.appendChild(roll);
+        return { el: wrap, roll: roll };
+      }
+      var digits = [2, 0, 1, 8].map(function (d) { var c = digitCol(DIGIT_H, d); tip.appendChild(c.el); return c.roll; });
+      var mdigits = [2, 0, 1, 8].map(function (d) { var c = digitCol(MDIGIT_H, d); mdigitsBox.appendChild(c.el); return c.roll; });
+
+      // one Instagram-style bar per year section
+      var yearSections = Array.prototype.slice.call(story.querySelectorAll('section'));
+      var fills = yearSections.map(function () {
+        var bar = document.createElement('div');
+        bar.className = 'mbar';
+        bar.style.cssText = 'flex:1;height:2px;background:rgba(248,244,244,.3);overflow:hidden';
+        var fill = document.createElement('div');
+        fill.style.cssText = 'width:0%;height:100%;background:#f8f4f4';
+        bar.appendChild(fill);
+        mbars.appendChild(bar);
+        return fill;
+      });
+
+      var ctaBtn = document.getElementById('venueCtaBtn');
+      if (ctaBtn) ctaBtn.addEventListener('click', function () {
+        window.scrollTo({ top: finale.offsetTop + finale.offsetHeight - window.innerHeight, behavior: 'smooth' });
+      });
+
+      var year = 2018, myear = 2018, anchors = null, measuredAt = null, gap = null, groups = null, finaleIdx = 0, queued = false;
+      var mq = window.matchMedia('(max-width: 760px)');
+      mq.addEventListener('change', function () { anchors = null; groups = null; onScroll(); });
+
+      function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
+      function smooth(a, b, v) { var t = clamp((v - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); }
+      function roll(cols, from, to, h) {
+        var next = String(to), prev = String(from);
+        for (var i = 0; i < cols.length; i++)
+          if (next[i] !== prev[i]) cols[i].style.transform = 'translateY(' + (-Number(next[i]) * h) + 'px)';
+      }
+
+      function measure() {
+        anchors = yearSections.map(function (sec) {
+          var cap = sec.nextElementSibling;
+          var end = cap && cap.classList.contains('cap') ? cap.offsetTop + cap.offsetHeight : sec.offsetTop + sec.offsetHeight;
+          return { year: Number(sec.dataset.screenLabel), start: sec.offsetTop, end: end, center: (sec.offsetTop + end) / 2 };
+        });
+        anchors.push({ year: 2027, start: finale.offsetTop, end: finale.offsetTop + finale.offsetHeight, center: finale.offsetTop + window.innerHeight / 2 });
+        measuredAt = story.offsetHeight + window.innerHeight;
+      }
+
+      function fitRail(vh, n) {
+        var target = Math.min(vh * 0.74, 560);
+        var g = Math.max(1, (target - n) / (n - 1));
+        if (g !== gap) { gap = g; col.style.gap = g.toFixed(2) + 'px'; }
+      }
+
+      function measureFeed() {
+        var panels = Array.prototype.slice.call(document.querySelectorAll('#hero, #story .ph, #story .cap, #finale'));
+        groups = yearSections.map(function (sec) {
+          var phs = Array.prototype.slice.call(sec.querySelectorAll('.ph'));
+          var cap = sec.nextElementSibling && sec.nextElementSibling.classList.contains('cap') ? sec.nextElementSibling : null;
+          var start = panels.indexOf(phs[0]);
+          var end = (cap ? panels.indexOf(cap) : panels.indexOf(phs[phs.length - 1])) + 1;
+          return { year: Number(sec.dataset.screenLabel), start: start, len: end - start };
+        });
+        finaleIdx = panels.indexOf(finale);
+      }
+
+      function mobileHud() {
+        if (!groups) measureFeed();
+        var h = page.clientHeight || window.innerHeight;
+        var pos = page.scrollTop / h;
+        var show = pos > 0.55 && pos < finaleIdx - 0.45;
+        hud.style.opacity = show ? '1' : '0';
+        var y2 = groups[0].year;
+        for (var i = 0; i < groups.length; i++) {
+          var f = clamp((pos - groups[i].start) / groups[i].len, 0, 1);
+          fills[i].style.width = (f * 100).toFixed(1) + '%';
+          if (pos >= groups[i].start && pos < groups[i].start + groups[i].len) y2 = groups[i].year;
+        }
+        var lastG = groups[groups.length - 1];
+        if (pos >= lastG.start + lastG.len) y2 = 2027;
+        if (y2 !== myear) { roll(mdigits, myear, y2, MDIGIT_H); myear = y2; }
+      }
+
+      function tick() {
+        queued = false;
+        if (mq.matches) {
+          venue.style.width = ''; venue.style.height = '';
+          venueText.style.opacity = ''; venueText.style.transform = '';
+          venueHint.style.opacity = '';
+          rail.style.opacity = '0';
+          mobileHud();
+          return;
+        }
+        var y = window.scrollY, vh = window.innerHeight, vw = window.innerWidth;
+        var fTop = finale.offsetTop, fH = finale.offsetHeight;
+        var inFinale = y + vh * 0.5 > fTop;
+        var local = clamp((y - fTop) / (fH - vh), 0, 1);
+
+        if (!anchors || measuredAt !== story.offsetHeight + vh) measure();
+        var a = anchors, last = a.length - 1, c = y + vh * 0.5;
+
+        var yearFloat = a[0].year, label = a[0].year;
+        if (c >= a[last].center) { yearFloat = a[last].year; }
+        else if (c > a[0].center) {
+          for (var i = 0; i < last; i++) {
+            if (c >= a[i].center && c < a[i + 1].center) {
+              var f = (c - a[i].center) / (a[i + 1].center - a[i].center);
+              yearFloat = a[i].year + f * (a[i + 1].year - a[i].year);
+              break;
+            }
+          }
+        }
+        for (var j = 0; j <= last; j++) if (c >= a[j].start && c < a[j].end) { label = a[j].year; break; }
+        if (c >= a[last].start) label = a[last].year;
+
+        var n = notchEls.length;
+        fitRail(vh, n);
+        var p = clamp((yearFloat - 2018) / 9, 0, 1);
+        var active = p * (n - 1), sig = 6.5, amp = 46 * INTENSITY;
+        for (var k = 0; k < n; k++) {
+          var d = k - active;
+          var g = Math.exp(-(d * d) / (2 * sig * sig));
+          var el = notchEls[k];
+          el.style.width = ((k % 12 === 0 ? 16 : 8) + amp * g) + 'px';
+          el.style.opacity = (0.3 + 0.6 * g).toFixed(3);
+          el.style.background = g > 0.5 ? 'var(--color-text)' : 'var(--color-neutral-600)';
+        }
+
+        var colTop = col.offsetTop, colH = col.offsetHeight;
+        tip.style.top = clamp(colTop + (active / (n - 1)) * colH, 30, vh - 30) + 'px';
+        tip.style.opacity = (1 - smooth(0.82, 0.96, active / (n - 1))).toFixed(3);
+
+        rail.style.opacity = (smooth(vh * 0.45, vh * 0.95, y) * (1 - smooth(0.1, 0.4, inFinale ? local : 0))).toFixed(3);
+        if (label !== year) { roll(digits, year, label, DIGIT_H); year = label; }
+
+        var t = smooth(0, 0.55, local);
+        venue.style.width = (0.38 * vw + (vw - 0.38 * vw) * t) + 'px';
+        venue.style.height = (0.56 * vh + (vh - 0.56 * vh) * t) + 'px';
+        venueHint.style.opacity = (1 - smooth(0.28, 0.58, local)).toFixed(3);
+        var co = inFinale ? 1 - smooth(0.06, 0.22, local) : 1;
+        venueCta.style.opacity = co.toFixed(3);
+        venueCta.style.pointerEvents = co > 0.4 ? 'auto' : 'none';
+        var to = smooth(0.5, 0.8, local);
+        venueText.style.opacity = to.toFixed(3);
+        venueText.style.pointerEvents = to > 0.6 ? 'auto' : 'none';
+        venueText.style.transform = 'translateY(' + (18 * (1 - to)) + 'px)';
+      }
+
+      function onScroll() { if (!queued) { queued = true; requestAnimationFrame(tick); } }
+      page.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      tick();
+    })();
+  </script>
 </body>
 </html>

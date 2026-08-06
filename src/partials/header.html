@@ -1,0 +1,18 @@
+<header class="site-header">
+  <a class="brand" href="/{{lang}}/">{{site_title}}</a>
+  <nav class="site-nav">
+    <a href="/{{lang}}/" {{#if (eq page "")}}class="active" aria-current="page"{{/if}}>{{nav_home}}</a>
+    <a href="/{{lang}}/program.html" {{#if (eq page "program.html")}}class="active" aria-current="page"{{/if}}>{{nav_program}}</a>
+    <a href="/{{lang}}/travel.html" {{#if (eq page "travel.html")}}class="active" aria-current="page"{{/if}}>{{nav_travel}}</a>
+    <a href="/{{lang}}/rsvp.html" {{#if (eq page "rsvp.html")}}class="active" aria-current="page"{{/if}}>{{nav_rsvp}}</a>
+  </nav>
+  <button class="lang-button" popovertarget="lang-menu">
+    <span>{{#each locales}}{{#if active}}{{label}}{{/if}}{{/each}}</span>
+    <span aria-hidden="true">▾</span>
+  </button>
+  <dialog id="lang-menu" class="lang-menu" popover>
+    {{#each locales}}
+      <a href="/{{code}}/{{../page}}" {{#if active}}class="active"{{/if}} lang="{{code}}" hreflang="{{code}}">{{label}}</a>
+    {{/each}}
+  </dialog>
+</header>

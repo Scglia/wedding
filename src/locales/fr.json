@@ -1,0 +1,108 @@
+{
+  "lang": "fr",
+  "site_title": "Notre Mariage",
+  "hero": "Nous Nous Marions !",
+  "title": "Notre Mariage",
+  "welcome": "Rejoignez-nous pour un week-end de fête sous les platanes d'un château provençal. Nous avons hâte de partager ce grand jour avec vous.",
+  "date_label": "Date",
+  "date": "15 Juin 2026",
+  "location_label": "Lieu",
+  "location": "Château de Beaumont, Provence",
+  "nav_home": "Accueil",
+  "nav_program": "Programme",
+  "nav_travel": "Accès & Hébergement",
+  "nav_rsvp": "RSVP",
+
+  "menu_label": "Menu",
+  "invitation_label": "Invitation",
+  "welcome_kicker": "Réservez la date",
+  "welcome_date": "31.07.27",
+  "welcome_place_town": "Saint-André-les-Alpes",
+  "welcome_place_venue": "Château de Meouilles",
+  "welcome_scroll": "Faites défiler",
+  "welcome_intro": "Avant l'invitation, l'histoire. Faites défiler.",
+  "caption_2018": "Une salle bien trop bruyante pour discuter. Nous avons discuté quand même, jusqu'à la fermeture.",
+  "caption_2019": "Des trains, des frontières, et apprendre les silences de l'autre.",
+  "caption_2020": "Un petit appartement et un très long printemps. Excellents en pain, terribles aux cartes.",
+  "caption_2021": "Une adresse, deux brosses à dents, un nombre déraisonnable de plantes.",
+  "caption_2023": "Assez loin de chez nous pour savoir où était notre chez-nous.",
+  "caption_2024": "Deux familles à la même table pour la première fois. Tout s'est bien passé.",
+  "caption_2025": "Il a posé la question. Elle a dit oui avant qu'il ne finisse.",
+  "caption_2026": "Nous avons trouvé le lieu. Vous comprendrez pourquoi dans un instant.",
+  "invited_kicker": "Vous êtes invités",
+  "invited_heading_plain": "Le lieu,",
+  "invited_heading_accent": "encore secret",
+  "invited_meta": "Lieu · ville, pays · été 2027",
+  "invited_body": "Cérémonie dans le jardin en fin d'après-midi, dîner sous les arbres, et l'on danse jusqu'à ce que quelqu'un rallume la lumière. Restez deux nuits si vous le pouvez — il y a de la place.",
+  "open_invitation": "Ouvrir l'invitation",
+
+  "program_heading": "Le Programme",
+  "program_intro": "Trois jours de fête au château",
+  "program_days": [
+    {
+      "name": "Vendredi",
+      "tagline": "Arrivée & Bienvenue",
+      "events": [
+        { "time": "16h00", "title": "Arrivée", "desc": "Installation et découverte du domaine." },
+        { "time": "19h00", "title": "Apéritif de bienvenue", "desc": "Rosé et petits fours sur la terrasse." },
+        { "time": "20h30", "title": "Dîner décontracté", "desc": "Buffet provençal dans la cour." }
+      ]
+    },
+    {
+      "name": "Samedi",
+      "tagline": "Le Jour du Mariage",
+      "events": [
+        { "time": "15h30", "title": "Cérémonie", "desc": "Dans les jardins, sous les platanes." },
+        { "time": "17h00", "title": "Cocktail", "desc": "Champagne et canapés sur la pelouse." },
+        { "time": "19h30", "title": "Dîner", "desc": "Dîner assis dans l'orangerie." },
+        { "time": "22h30", "title": "Soirée dansante", "desc": "Jusqu'au bout de la nuit." }
+      ]
+    },
+    {
+      "name": "Dimanche",
+      "tagline": "Au Revoir",
+      "events": [
+        { "time": "11h00", "title": "Brunch", "desc": "Brunch d'adieu au bord de la piscine." },
+        { "time": "15h00", "title": "Départs", "desc": "Bon retour — merci d'être venus." }
+      ]
+    }
+  ],
+  "travel_heading": "Accès & Hébergement",
+  "getting_there_heading": "Se Rendre au Château",
+  "travel_address": "Château de Beaumont, 13210 Saint-Rémy-de-Provence, France",
+  "travel_modes": [
+    { "title": "En avion", "desc": "L'aéroport Marseille Provence (MRS) est à environ une heure de route. Les aéroports d'Avignon (AVN) et de Nîmes (FNI) sont de plus petites alternatives avec des vols saisonniers." },
+    { "title": "En train", "desc": "La gare d'Avignon TGV est à 25 minutes du château, avec des TGV directs depuis Paris (2h40). Taxis et voitures de location disponibles à la gare." },
+    { "title": "En voiture", "desc": "Le château se trouve juste au bord de la D99, entre Saint-Rémy-de-Provence et Cavaillon. Un grand parking gratuit est à disposition sur le domaine." }
+  ],
+  "stay_heading": "Où Loger",
+  "stay_note": "Le château lui-même ne peut accueillir que la famille proche, mais il y a de charmantes adresses à proximité. Réservez tôt — juin est la haute saison en Provence.",
+  "stay_options": [
+    { "name": "Hôtel du Soleil", "distance": "5 min en voiture", "desc": "Un hôtel accueillant avec piscine, au centre de Saint-Rémy-de-Provence." },
+    { "name": "Mas des Oliviers", "distance": "10 min en voiture", "desc": "Une charmante chambre d'hôtes dans un mas au milieu des oliviers." },
+    { "name": "Auberge de la Fontaine", "distance": "15 min en voiture", "desc": "Des chambres simples et abordables au-dessus d'un restaurant de village." }
+  ],
+  "rsvp_heading": "Merci de Répondre",
+  "rsvp_intro": "Nous avons hâte de célébrer avec vous. Merci de nous confirmer votre présence avant le 15 avril 2026.",
+  "name_label": "Votre Nom",
+  "email_label": "Adresse e-mail",
+  "attending_label": "Serez-vous présent(e) ?",
+  "attending_yes": "Accepte avec joie",
+  "attending_no": "Décline avec regret",
+  "adults_label": "Nombre d'adultes",
+  "children_label": "Nombre d'enfants",
+  "child_age_label": "Âge de l'enfant",
+  "transportation_label": "Comment nous rejoindrez-vous ?",
+  "transportation_car": "En voiture",
+  "transportation_train": "En train",
+  "transportation_plane": "En avion",
+  "dietary_label": "Régimes et allergies",
+  "dietary_placeholder": "Allergies, végétarien, végétalien…",
+  "song_label": "Une chanson qui vous fera danser",
+  "message_label": "Un petit mot pour les mariés",
+  "optional_hint": "(facultatif)",
+  "submit_button": "Envoyer",
+  "rsvp_link": "RSVP",
+  "home_link": "Retour à l'invitation",
+  "footer": "© 2026 Mariage. Tous droits réservés."
+}

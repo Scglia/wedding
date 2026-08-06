@@ -1,0 +1,108 @@
+{
+  "lang": "cs",
+  "site_title": "Naše Svatba",
+  "hero": "Bereme Se!",
+  "title": "Naše Svatba",
+  "welcome": "Připojte se k nám na víkendovou oslavu pod platany provensálského zámku. Těšíme se, až s vámi tento velký den oslavíme.",
+  "date_label": "Datum",
+  "date": "15. června 2026",
+  "location_label": "Místo",
+  "location": "Château de Beaumont, Provence",
+  "nav_home": "Úvod",
+  "nav_program": "Program",
+  "nav_travel": "Doprava a ubytování",
+  "nav_rsvp": "Potvrzení účasti",
+
+  "menu_label": "Menu",
+  "invitation_label": "Pozvánka",
+  "welcome_kicker": "Zapište si datum",
+  "welcome_date": "31.07.27",
+  "welcome_place_town": "Saint-André-les-Alpes",
+  "welcome_place_venue": "Château de Meouilles",
+  "welcome_scroll": "Posouvejte",
+  "welcome_intro": "Než přijde pozvánka, příběh. Posouvejte dál.",
+  "caption_2018": "Tam to začalo — v hluku, kde se nedalo mluvit, jsme si povídali celou noc.",
+  "caption_2019": "Vlaky, hranice a učení se vzájemnému mlčení.",
+  "caption_2020": "Malý byt a velmi dlouhé jaro. Naučili jsme se péct chleba.",
+  "caption_2021": "Jedna adresa, dva kartáčky a příliš mnoho květin.",
+  "caption_2023": "Dost daleko od domova, abychom věděli, kde domov je.",
+  "caption_2024": "Dvě rodiny poprvé u jednoho stolu. Šlo to dobře.",
+  "caption_2025": "Zeptal se. Řekla ano, než domluvil.",
+  "caption_2026": "Našli jsme to místo. Za chvíli uvidíte proč.",
+  "invited_kicker": "Jste srdečně zváni",
+  "invited_heading_plain": "To místo,",
+  "invited_heading_accent": "zatím tajemství",
+  "invited_meta": "Místo · město, země · léto 2027",
+  "invited_body": "Obřad v zahradě pozdě odpoledne, večeře pod stromy a tanec, dokud někdo nerozsvítí. Zůstaňte na dvě noci, místa je dost.",
+  "open_invitation": "Otevřít pozvánku",
+
+  "program_heading": "Program",
+  "program_intro": "Tři dny oslav na zámku",
+  "program_days": [
+    {
+      "name": "Pátek",
+      "tagline": "Příjezd a přivítání",
+      "events": [
+        { "time": "16:00", "title": "Příjezd", "desc": "Ubytování a seznámení se zámeckým areálem." },
+        { "time": "19:00", "title": "Uvítací aperitiv", "desc": "Rosé a jednohubky na terase." },
+        { "time": "20:30", "title": "Neformální večeře", "desc": "Provensálský raut na nádvoří." }
+      ]
+    },
+    {
+      "name": "Sobota",
+      "tagline": "Svatební den",
+      "events": [
+        { "time": "15:30", "title": "Obřad", "desc": "V zahradách, pod platany." },
+        { "time": "17:00", "title": "Koktejl", "desc": "Šampaňské a kanapky na trávníku." },
+        { "time": "19:30", "title": "Večeře", "desc": "Slavnostní večeře v oranžerii." },
+        { "time": "22:30", "title": "Tanec", "desc": "Až do časných ranních hodin." }
+      ]
+    },
+    {
+      "name": "Neděle",
+      "tagline": "Rozloučení",
+      "events": [
+        { "time": "11:00", "title": "Brunch", "desc": "Poklidný brunch na rozloučenou u bazénu." },
+        { "time": "15:00", "title": "Loučení", "desc": "Šťastnou cestu domů — děkujeme, že jste přijeli." }
+      ]
+    }
+  ],
+  "travel_heading": "Doprava a Ubytování",
+  "getting_there_heading": "Jak se Dostat na Zámek",
+  "travel_address": "Château de Beaumont, 13210 Saint-Rémy-de-Provence, Francie",
+  "travel_modes": [
+    { "title": "Letadlem", "desc": "Letiště Marseille Provence (MRS) je autem asi hodinu cesty. Menší alternativou jsou letiště Avignon (AVN) a Nîmes (FNI) se sezónními lety." },
+    { "title": "Vlakem", "desc": "Nádraží Avignon TGV je 25 minut od zámku, s přímými rychlovlaky z Paříže (2 h 40 min). Na nádraží jsou k dispozici taxíky i půjčovny aut." },
+    { "title": "Autem", "desc": "Zámek leží hned u silnice D99 mezi Saint-Rémy-de-Provence a Cavaillonem. V areálu je dostatek parkovacích míst zdarma." }
+  ],
+  "stay_heading": "Kde se Ubytovat",
+  "stay_note": "Na samotném zámku může bydlet pouze nejbližší rodina, v okolí je ale řada půvabných míst. Rezervujte včas — červen je v Provence hlavní sezóna.",
+  "stay_options": [
+    { "name": "Hôtel du Soleil", "distance": "5 min autem", "desc": "Přívětivý hotel s bazénem v centru Saint-Rémy-de-Provence." },
+    { "name": "Mas des Oliviers", "distance": "10 min autem", "desc": "Půvabný penzion ve statku uprostřed olivových hájů." },
+    { "name": "Auberge de la Fontaine", "distance": "15 min autem", "desc": "Jednoduché pokoje za dobrou cenu nad vesnickou restaurací." }
+  ],
+  "rsvp_heading": "Prosíme o Odpověď",
+  "rsvp_intro": "Těšíme se, až s vámi tento den oslavíme. Dejte nám prosím vědět do 15. dubna 2026, zda dorazíte.",
+  "name_label": "Vaše Jméno",
+  "email_label": "E-mailová adresa",
+  "attending_label": "Zúčastníte se?",
+  "attending_yes": "S radostí přijímám",
+  "attending_no": "S lítostí odmítám",
+  "adults_label": "Počet dospělých",
+  "children_label": "Počet dětí",
+  "child_age_label": "Věk dítěte",
+  "transportation_label": "Jak k nám dorazíte?",
+  "transportation_car": "Autem",
+  "transportation_train": "Vlakem",
+  "transportation_plane": "Letadlem",
+  "dietary_label": "Dietní omezení",
+  "dietary_placeholder": "Alergie, vegetariánství, veganství…",
+  "song_label": "Píseň, na kterou si zatančíte",
+  "message_label": "Vzkaz pro novomanžele",
+  "optional_hint": "(nepovinné)",
+  "submit_button": "Odeslat",
+  "rsvp_link": "Potvrzení účasti",
+  "home_link": "Zpět na pozvánku",
+  "footer": "© 2026 Svatba. Všechna práva vyhrazena."
+}

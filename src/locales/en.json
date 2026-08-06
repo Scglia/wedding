@@ -1,0 +1,108 @@
+{
+  "lang": "en",
+  "site_title": "Our Wedding",
+  "hero": "We're Getting Married!",
+  "title": "Our Wedding",
+  "welcome": "Join us for a weekend of celebration beneath the plane trees of a Provençal château. We can't wait to share our big day with you.",
+  "date_label": "Date",
+  "date": "June 15, 2026",
+  "location_label": "Location",
+  "location": "Château de Beaumont, Provence",
+  "nav_home": "Welcome",
+  "nav_program": "Programme",
+  "nav_travel": "Travel & Stay",
+  "nav_rsvp": "RSVP",
+
+  "menu_label": "Menu",
+  "invitation_label": "Invitation",
+  "welcome_kicker": "Save the date",
+  "welcome_date": "31.07.27",
+  "welcome_place_town": "Saint-André-les-Alpes",
+  "welcome_place_venue": "Château de Meouilles",
+  "welcome_scroll": "Scroll",
+  "welcome_intro": "Before the invitation, the story. Scroll on.",
+  "caption_2018": "A room far too loud for talking. We talked anyway, until the lights came on.",
+  "caption_2019": "Trains, borders, and learning each other's silences.",
+  "caption_2020": "A small flat and a very long spring. We became excellent at bread and terrible at cards.",
+  "caption_2021": "One address, two toothbrushes, an unreasonable number of plants.",
+  "caption_2023": "Far enough from home to be sure where home was.",
+  "caption_2024": "Two families at one table for the first time. It went well.",
+  "caption_2025": "He asked. She said yes before he finished.",
+  "caption_2026": "We found the place. You will see why in a moment.",
+  "invited_kicker": "You are invited",
+  "invited_heading_plain": "The place,",
+  "invited_heading_accent": "still a secret",
+  "invited_meta": "Venue · town, country · summer 2027",
+  "invited_body": "Ceremony in the garden late in the afternoon, dinner under the trees, dancing until somebody turns the lights on. Stay two nights if you can — there is room.",
+  "open_invitation": "Open the invitation",
+
+  "program_heading": "The Programme",
+  "program_intro": "Three days of celebration at the château",
+  "program_days": [
+    {
+      "name": "Friday",
+      "tagline": "Arrival & Welcome",
+      "events": [
+        { "time": "16:00", "title": "Arrival", "desc": "Check in and settle into the grounds." },
+        { "time": "19:00", "title": "Welcome apéritif", "desc": "Rosé and petits fours on the terrace." },
+        { "time": "20:30", "title": "Casual dinner", "desc": "A relaxed Provençal buffet in the courtyard." }
+      ]
+    },
+    {
+      "name": "Saturday",
+      "tagline": "The Wedding Day",
+      "events": [
+        { "time": "15:30", "title": "Ceremony", "desc": "In the gardens, beneath the plane trees." },
+        { "time": "17:00", "title": "Cocktail hour", "desc": "Champagne and canapés on the lawn." },
+        { "time": "19:30", "title": "Dinner", "desc": "A seated dinner in the orangery." },
+        { "time": "22:30", "title": "Dancing", "desc": "Until the small hours." }
+      ]
+    },
+    {
+      "name": "Sunday",
+      "tagline": "Farewell",
+      "events": [
+        { "time": "11:00", "title": "Brunch", "desc": "A lazy farewell brunch by the pool." },
+        { "time": "15:00", "title": "Goodbyes", "desc": "Safe travels home — thank you for coming." }
+      ]
+    }
+  ],
+  "travel_heading": "Travel & Stay",
+  "getting_there_heading": "Getting to the Château",
+  "travel_address": "Château de Beaumont, 13210 Saint-Rémy-de-Provence, France",
+  "travel_modes": [
+    { "title": "By plane", "desc": "Marseille Provence Airport (MRS) is about an hour away by car. Avignon (AVN) and Nîmes (FNI) are smaller alternatives with seasonal flights." },
+    { "title": "By train", "desc": "Avignon TGV station is 25 minutes from the château, with direct high-speed trains from Paris (2h40). Taxis and rental cars are available at the station." },
+    { "title": "By car", "desc": "The château sits just off the D99 between Saint-Rémy-de-Provence and Cavaillon. There is plenty of free parking on the grounds." }
+  ],
+  "stay_heading": "Where to Stay",
+  "stay_note": "The château itself can only accommodate close family, but there are lovely places nearby. Book early — June is high season in Provence.",
+  "stay_options": [
+    { "name": "Hôtel du Soleil", "distance": "5 min by car", "desc": "A friendly hotel with a pool in the centre of Saint-Rémy-de-Provence." },
+    { "name": "Mas des Oliviers", "distance": "10 min by car", "desc": "A charming farmhouse bed & breakfast set among olive groves." },
+    { "name": "Auberge de la Fontaine", "distance": "15 min by car", "desc": "Simple, good-value rooms above a village restaurant." }
+  ],
+  "rsvp_heading": "Kindly Reply",
+  "rsvp_intro": "We can't wait to celebrate with you. Please let us know if you can make it by April 15, 2026.",
+  "name_label": "Your Name",
+  "email_label": "Email Address",
+  "attending_label": "Will you be attending?",
+  "attending_yes": "Joyfully Accepts",
+  "attending_no": "Regretfully Declines",
+  "adults_label": "Number of Adults",
+  "children_label": "Number of Children",
+  "child_age_label": "Child Age",
+  "transportation_label": "How will you be joining us?",
+  "transportation_car": "By car",
+  "transportation_train": "By train",
+  "transportation_plane": "By plane",
+  "dietary_label": "Dietary Requirements",
+  "dietary_placeholder": "Allergies, vegetarian, vegan…",
+  "song_label": "A Song That Will Get You Dancing",
+  "message_label": "A Note for the Couple",
+  "optional_hint": "(optional)",
+  "submit_button": "Submit RSVP",
+  "rsvp_link": "RSVP",
+  "home_link": "Back to the invitation",
+  "footer": "© 2026 Wedding. All rights reserved."
+}
