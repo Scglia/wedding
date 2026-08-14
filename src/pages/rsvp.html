@@ -91,7 +91,7 @@
           </div>
 
           <div class="field">
-            <label for="song">{{song_label}} <span class="hint">{{optional_hint}}</span></label>
+            <label for="song">{{song_label}} <span class="hint">{{optional_hint}}</span> <span class="song-notes" aria-hidden="true"><span class="song-note">♪</span><span class="song-note">♫</span></span></label>
             <input type="text" id="song" name="song">
           </div>
         </div>
@@ -101,8 +101,14 @@
           <textarea id="message" name="message"></textarea>
         </div>
 
-        <button type="submit">{{submit_button}}</button>
+        <button type="submit" id="submit-button">{{submit_button}}</button>
       </form>
+
+      <div class="confirmation" id="rsvp-confirmation" hidden>
+        <div class="ornament flourish" aria-hidden="true">❦</div>
+        <h2>{{confirm_heading}}</h2>
+        <p class="lead" id="confirmation-message"></p>
+      </div>
     </section>
     <p class="back-link"><a class="text-link" href="/{{lang}}/">{{home_link}}</a></p>
   </main>
@@ -116,6 +122,15 @@
         end: {{{json child_ages_end}}}
       };
       var CHILD_AGE_LABEL = {{{json child_age_label}}};
+      var SUBMIT_TEXT = {
+        initial: {{{json submit_button}}},
+        yes: {{{json submit_button_yes}}},
+        no: {{{json submit_button_no}}}
+      };
+      var CONFIRM_TEXT = {
+        yes: {{{json confirm_body_yes}}},
+        no: {{{json confirm_body_no}}}
+      };
 
       /* ----- Child ages as a fill-in-the-blanks sentence ----- */
 
@@ -214,6 +229,7 @@
 
       var details = document.getElementById("attending-details");
       var declinedNote = document.getElementById("declined-note");
+      var submitButton = document.getElementById("submit-button");
 
       [].forEach.call(document.querySelectorAll('input[name="attending"]'), function (radio) {
         radio.addEventListener("change", function () {
@@ -221,8 +237,44 @@
           var declined = radio.value === "no";
           details.hidden = declined;
           declinedNote.hidden = !declined;
+
+          submitButton.textContent = declined ? SUBMIT_TEXT.no : SUBMIT_TEXT.yes;
+          submitButton.classList.remove("button-pop");
+          void submitButton.offsetWidth; /* restart the pop animation */
+          submitButton.classList.add("button-pop");
+
           if (!declined) confettiBurst(radio.closest("label"));
         });
+      });
+
+      /* ----- Post-submit confirmation ----- */
+
+      var form = document.querySelector("form");
+      var confirmation = document.getElementById("rsvp-confirmation");
+      var confirmationMessage = document.getElementById("confirmation-message");
+      var intro = document.querySelector(".card > .lead");
+
+      form.addEventListener("submit", function (event) {
+        /* No backend yet — replace with a real POST when one exists. */
+        event.preventDefault();
+
+        var accepted = form.elements.attending.value === "yes";
+        confirmationMessage.textContent = accepted ? CONFIRM_TEXT.yes : CONFIRM_TEXT.no;
+
+        form.hidden = true;
+        intro.hidden = true;
+        declinedNote.hidden = true;
+        confirmation.hidden = false;
+
+        confirmation.scrollIntoView({
+          behavior: reducedMotion.matches ? "auto" : "smooth",
+          block: "center"
+        });
+        if (accepted) {
+          setTimeout(function () {
+            confettiBurst(confirmation.querySelector(".ornament"));
+          }, 450);
+        }
       });
     })();
   </script>

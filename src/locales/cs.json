@@ -113,6 +113,11 @@
   "message_label": "Vzkaz pro novomanžele",
   "optional_hint": "(nepovinné)",
   "submit_button": "Odeslat",
+  "submit_button_yes": "Odeslat s radostí!",
+  "submit_button_no": "Odeslat",
+  "confirm_heading": "Děkujeme!",
+  "confirm_body_yes": "Vaše odpověď je na cestě — těšíme se, až to spolu oslavíme pod platany.",
+  "confirm_body_no": "Vaše odpověď je na cestě. Budete nám chybět — děkujeme, že jste dali vědět.",
   "rsvp_link": "Potvrzení účasti",
   "home_link": "Zpět na pozvánku"
 }

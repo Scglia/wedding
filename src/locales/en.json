@@ -113,6 +113,11 @@
   "message_label": "A Note for the Couple",
   "optional_hint": "(optional)",
   "submit_button": "Submit RSVP",
+  "submit_button_yes": "Send Our Joy!",
+  "submit_button_no": "Send",
+  "confirm_heading": "Thank You!",
+  "confirm_body_yes": "Your reply is on its way — we can't wait to celebrate with you under the plane trees.",
+  "confirm_body_no": "Your reply is on its way. You'll be missed — thank you for letting us know.",
   "rsvp_link": "RSVP",
   "home_link": "Back to the invitation"
 }

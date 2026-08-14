@@ -113,6 +113,11 @@
   "message_label": "Un petit mot pour les mariés",
   "optional_hint": "(facultatif)",
   "submit_button": "Envoyer",
+  "submit_button_yes": "Envoyer notre joie !",
+  "submit_button_no": "Envoyer",
+  "confirm_heading": "Merci !",
+  "confirm_body_yes": "Votre réponse est en route — nous avons hâte de célébrer avec vous sous les platanes.",
+  "confirm_body_no": "Votre réponse est en route. Vous nous manquerez — merci de nous avoir prévenus.",
   "rsvp_link": "RSVP",
   "home_link": "Retour à l'invitation"
 }
