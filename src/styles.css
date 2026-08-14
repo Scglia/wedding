@@ -717,23 +717,69 @@ fieldset {
   border: 0;
 }
 
-.guest-counts {
+/* attendance-dependent fields — hidden when the guest declines */
+#attending-details {
   display: flex;
+  flex-direction: column;
   gap: 1.5rem;
 }
 
-.guest-counts .field {
-  flex: 1;
+#attending-details[hidden] {
+  display: none;
 }
 
-.child-ages {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.declined-note {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  text-align: center;
+  color: var(--gold-deep);
 }
 
-.child-ages .field {
-  gap: 0.35rem;
+/* ----- Fill-in-the-blanks sentences ----------------------------------- */
+
+.sentence {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 2.1;
+  color: var(--ink);
+}
+
+select.blank {
+  display: inline-block;
+  width: auto;
+  field-sizing: content;
+  margin: 0 0.1rem;
+  padding: 0 1.35rem 0.1rem 0.4rem;
+  border: 0;
+  border-bottom: 1px solid var(--gold);
+  border-radius: 0;
+  background: transparent
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23a06f24' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    no-repeat right 0.3rem center / 0.55rem auto;
+  box-shadow: none;
+  color: var(--gold-deep);
+  font: inherit;
+  font-style: italic;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+select.blank:hover {
+  color: var(--gold-dark);
+  border-color: transparent;
+  border-bottom-color: var(--gold-dark);
+}
+
+select.blank:focus {
+  outline: none;
+  border-color: transparent;
+  border-bottom-color: var(--gold-dark);
+  background-color: color-mix(in srgb, var(--gold) 10%, transparent);
+  box-shadow: none;
 }
 
 fieldset legend {
@@ -769,17 +815,9 @@ fieldset legend {
     color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* custom dot indicator — the native radio is visually hidden below */
-.choices label::before {
-  content: "";
+.choices .chip-icon {
   flex: none;
-  width: 0.6rem;
-  height: 0.6rem;
-  border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--ink) 40%, transparent);
-  background: transparent;
-  transition: border-color 0.2s ease, background-color 0.2s ease,
-    box-shadow 0.2s ease;
+  color: var(--gold-deep);
 }
 
 .choices label:hover {
@@ -802,10 +840,8 @@ fieldset legend {
   box-shadow: none;
 }
 
-.choices label:has(input:checked)::before {
-  border-color: var(--gold-deep);
-  background: var(--gold-deep);
-  box-shadow: inset 0 0 0 2px var(--color-accent-100);
+.choices label:has(input:checked) .chip-icon {
+  color: var(--gold-dark);
 }
 
 .choices label:has(input:focus-visible) {
@@ -820,6 +856,21 @@ form button {
 
 .back-link {
   margin-top: 2rem;
+}
+
+/* ----- Confetti --------------------------------------------------------- */
+
+.confetti {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.confetti i {
+  position: absolute;
+  display: block;
 }
 
 /* ----- View transitions ------------------------------------------------- */

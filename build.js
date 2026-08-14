@@ -16,6 +16,8 @@ if (!fs.existsSync(distDir)) fs.mkdirSync(distDir, { recursive: true });
 
 // Helpers and shared partials (src/partials/<name>.html → {{> name}})
 Handlebars.registerHelper("eq", (a, b) => a === b);
+Handlebars.registerHelper("add", (a, b) => a + b);
+Handlebars.registerHelper("json", (value) => JSON.stringify(value));
 
 const partialsDir = `${srcDir}/partials`;
 if (fs.existsSync(partialsDir)) {
