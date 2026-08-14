@@ -105,14 +105,12 @@ textarea:focus-visible {
   top: 0;
   z-index: 10;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  align-items: baseline;
+  justify-content: space-between;
   gap: 0.9rem 2.5rem;
   margin: 0 -1.25rem;
   padding: 0.9rem 1.5rem;
   background: var(--cream);
-  border-bottom: 1px solid var(--line);
 }
 
 .brand {
@@ -120,13 +118,23 @@ textarea:focus-visible {
   font-size: 1.4rem;
   font-weight: 500;
   letter-spacing: 0.04em;
+  white-space: nowrap;
   color: var(--ink);
   text-decoration: none;
+}
+
+/* groups nav + language picker so the brand/menu gap can grow independently
+   of the gap between nav links */
+.site-header-menu {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem 1.75rem;
 }
 
 .site-nav {
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
   justify-content: center;
   gap: 0.5rem 1.75rem;
   font-family: var(--font-display);
@@ -162,7 +170,7 @@ textarea:focus-visible {
 .lang-button {
   anchor-name: --lang-button;
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: 0.45rem;
   padding: 0.45rem 0.9rem;
   border: 1px solid var(--line);
@@ -231,6 +239,67 @@ textarea:focus-visible {
 
 .lang-menu a.active {
   color: var(--gold-deep);
+}
+
+/* ----- Hamburger menu (shared: welcome page always shows it; other
+   pages swap to it from .site-header once the inline menu can't fit) --- */
+
+.menu-toggle {
+  position: fixed; top: 18px; right: 18px; z-index: 60;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  width: 46px; height: 46px; padding: 0;
+  background: color-mix(in srgb, var(--color-neutral-900) 5%, transparent);
+  border: none; border-radius: 4px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  box-shadow: none; cursor: pointer; transition: background-color .25s ease, opacity .35s ease;
+}
+.menu-toggle::after { content: none; animation: none; }
+.menu-toggle:hover { background: color-mix(in srgb, var(--color-neutral-900) 10%, transparent); transform: none; box-shadow: none; border: none; }
+.menu-toggle span { display: block; width: 18px; height: 1px; background: var(--color-text); transition: width .25s ease; }
+.menu-toggle span:nth-child(2) { width: 13px; }
+.menu-toggle:hover span { width: 18px; }
+.menu-panel {
+  position: fixed; inset: auto 18px auto auto; top: 72px; z-index: 60;
+  margin: 0; min-width: 14.5rem; padding: 0.75rem 0.5rem;
+  border: none; border-radius: 4px; background: var(--color-neutral-100);
+  box-shadow: var(--shadow-lg);
+}
+@supports (anchor-name: --a) {
+  .menu-toggle { anchor-name: --menu-toggle; }
+  .menu-panel {
+    inset: auto; position-anchor: --menu-toggle;
+    position-area: block-end span-inline-start;
+    position-try-fallbacks: flip-block, flip-inline;
+    margin: 0.5rem 0 0;
+  }
+}
+.menu-panel::backdrop { background: transparent; }
+.menu-panel a {
+  display: flex; align-items: center; gap: 0.85rem;
+  padding: 0.75rem 1rem; border-radius: 4px;
+  font-family: var(--font-heading); font-weight: 500;
+  font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--color-neutral-700); text-decoration: none;
+  transition: background-color .2s ease, color .2s ease;
+}
+.menu-panel a svg { flex: none; stroke: var(--color-accent-600); transition: stroke .2s ease; }
+.menu-panel a:hover { background: color-mix(in srgb, var(--color-accent) 8%, transparent); color: var(--color-text); }
+.menu-panel a:hover svg { stroke: var(--color-accent-700); }
+.menu-panel a.active { color: var(--color-accent-700); }
+.menu-panel a.active svg { stroke: var(--color-accent-700); }
+.menu-panel .menu-langs {
+  display: flex; gap: 0; justify-content: space-around; margin-top: 0.6rem; padding-top: 0.6rem;
+  border-top: 1px solid var(--color-divider);
+}
+.menu-panel .menu-langs a { padding: 0.55rem 1rem; color: var(--color-neutral-600); }
+.menu-panel .menu-langs a.active { color: var(--color-accent-700); }
+
+/* .site-header pages: nav + lang picker fit inline until the header runs
+   out of room, then swap to the same burger the welcome page always shows */
+.site-header .menu-toggle { display: none; }
+
+@media (max-width: 760px) {
+  .site-header .site-header-menu { display: none; }
+  .site-header .menu-toggle { display: flex; }
 }
 
 /* ----- Hero (unboxed — the rules carry it) -------------------------- */
@@ -693,18 +762,6 @@ form button {
 
 .back-link {
   margin-top: 2rem;
-}
-
-/* ----- Footer ---------------------------------------------------------- */
-
-footer {
-  margin-top: 4rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--line);
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
-  color: var(--ink-soft);
 }
 
 /* ----- View transitions ------------------------------------------------- */

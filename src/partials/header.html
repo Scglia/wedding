@@ -1,18 +1,42 @@
 <header class="site-header">
-  <a class="brand" href="/{{lang}}/">{{site_title}}</a>
-  <nav class="site-nav">
-    <a href="/{{lang}}/" {{#if (eq page "")}}class="active" aria-current="page"{{/if}}>{{nav_home}}</a>
-    <a href="/{{lang}}/program.html" {{#if (eq page "program.html")}}class="active" aria-current="page"{{/if}}>{{nav_program}}</a>
-    <a href="/{{lang}}/travel.html" {{#if (eq page "travel.html")}}class="active" aria-current="page"{{/if}}>{{nav_travel}}</a>
-    <a href="/{{lang}}/rsvp.html" {{#if (eq page "rsvp.html")}}class="active" aria-current="page"{{/if}}>{{nav_rsvp}}</a>
-  </nav>
-  <button class="lang-button" popovertarget="lang-menu">
-    <span>{{#each locales}}{{#if active}}{{label}}{{/if}}{{/each}}</span>
-    <span aria-hidden="true">▾</span>
+  <a class="brand" href="/{{lang}}/">ZUZANA &amp; TRISTAN</a>
+  <div class="site-header-menu">
+    <nav class="site-nav">
+      <a href="/{{lang}}/" {{#if (eq page "")}}class="active" aria-current="page"{{/if}}>{{nav_home}}</a>
+      <a href="/{{lang}}/program.html" {{#if (eq page "program.html")}}class="active" aria-current="page"{{/if}}>{{nav_program}}</a>
+      <a href="/{{lang}}/travel.html" {{#if (eq page "travel.html")}}class="active" aria-current="page"{{/if}}>{{nav_travel}}</a>
+      <a href="/{{lang}}/rsvp.html" {{#if (eq page "rsvp.html")}}class="active" aria-current="page"{{/if}}>{{nav_rsvp}}</a>
+    </nav>
+    <button class="lang-button" popovertarget="lang-menu">
+      <span>{{#each locales}}{{#if active}}{{code}}{{/if}}{{/each}}</span>
+      <span aria-hidden="true">▾</span>
+    </button>
+    <dialog id="lang-menu" class="lang-menu" popover>
+      {{#each locales}}
+        <a href="/{{code}}/{{../page}}" {{#if active}}class="active"{{/if}} lang="{{code}}" hreflang="{{code}}">{{code}}</a>
+      {{/each}}
+    </dialog>
+  </div>
+  <button class="menu-toggle" popovertarget="menu-panel" aria-label="{{menu_label}}">
+    <span></span><span></span><span></span>
   </button>
-  <dialog id="lang-menu" class="lang-menu" popover>
-    {{#each locales}}
-      <a href="/{{code}}/{{../page}}" {{#if active}}class="active"{{/if}} lang="{{code}}" hreflang="{{code}}">{{label}}</a>
-    {{/each}}
+  <dialog id="menu-panel" class="menu-panel" popover>
+    <a href="/{{lang}}/" {{#if (eq page "")}}class="active"{{/if}}>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.1" aria-hidden="true"><path d="M2 7.5 8 2l6 5.5"></path><path d="M3.5 6.5v7.5h9V6.5"></path></svg>
+      {{nav_home}}</a>
+    <a href="/{{lang}}/program.html" {{#if (eq page "program.html")}}class="active"{{/if}}>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.1" aria-hidden="true"><rect x="2" y="3" width="12" height="11"></rect><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3"></path></svg>
+      {{nav_program}}</a>
+    <a href="/{{lang}}/travel.html" {{#if (eq page "travel.html")}}class="active"{{/if}}>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.1" aria-hidden="true"><path d="M8 14.5s-4.5-4.1-4.5-7.6a4.5 4.5 0 0 1 9 0c0 3.5-4.5 7.6-4.5 7.6Z"></path><circle cx="8" cy="6.7" r="1.6"></circle></svg>
+      {{nav_travel}}</a>
+    <a href="/{{lang}}/rsvp.html" {{#if (eq page "rsvp.html")}}class="active"{{/if}}>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.1" aria-hidden="true"><rect x="1.5" y="3.5" width="13" height="9.5"></rect><path d="m1.5 4 6.5 5 6.5-5"></path></svg>
+      {{nav_rsvp}}</a>
+    <div class="menu-langs">
+      {{#each locales}}
+      <a href="/{{code}}/{{../page}}" {{#if active}}class="active"{{/if}} lang="{{code}}" hreflang="{{code}}">{{code}}</a>
+      {{/each}}
+    </div>
   </dialog>
 </header>

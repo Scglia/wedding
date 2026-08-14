@@ -13,54 +13,9 @@
     body { padding: 0; text-align: left; }
     @keyframes cueDrift { 0%,100% { transform: translateY(0); opacity: .45 } 50% { transform: translateY(8px); opacity: 1 } }
 
-    /* hamburger — the welcome page's only chrome */
-    .menu-toggle {
-      position: fixed; top: 18px; right: 18px; z-index: 60;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
-      width: 46px; height: 46px; padding: 0;
-      background: color-mix(in srgb, var(--color-neutral-900) 5%, transparent);
-      border: none; border-radius: 4px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-      box-shadow: none; cursor: pointer; transition: background-color .25s ease, opacity .35s ease;
-    }
+    /* hamburger menu — styles live in styles.css (shared with .site-header pages);
+       the welcome page just needs it fixed top-right and dismissible on scroll */
     .menu-toggle.is-hidden { opacity: 0; pointer-events: none; }
-    .menu-toggle::after { content: none; animation: none; }
-    .menu-toggle:hover { background: color-mix(in srgb, var(--color-neutral-900) 10%, transparent); transform: none; box-shadow: none; border: none; }
-    .menu-toggle span { display: block; width: 18px; height: 1px; background: var(--color-text); transition: width .25s ease; }
-    .menu-toggle span:nth-child(2) { width: 13px; }
-    .menu-toggle:hover span { width: 18px; }
-    .menu-panel {
-      position: fixed; inset: auto 18px auto auto; top: 72px; z-index: 60;
-      margin: 0; min-width: 14.5rem; padding: 0.75rem 0.5rem;
-      border: none; border-radius: 4px; background: var(--color-neutral-100);
-      box-shadow: var(--shadow-lg);
-    }
-    @supports (anchor-name: --a) {
-      .menu-toggle { anchor-name: --menu-toggle; }
-      .menu-panel {
-        inset: auto; position-anchor: --menu-toggle;
-        position-area: block-end span-inline-start;
-        position-try-fallbacks: flip-block, flip-inline;
-        margin: 0.5rem 0 0;
-      }
-    }
-    .menu-panel::backdrop { background: transparent; }
-    .menu-panel a {
-      display: flex; align-items: center; gap: 0.85rem;
-      padding: 0.75rem 1rem; border-radius: 4px;
-      font-family: var(--font-heading); font-weight: 500;
-      font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--color-neutral-700); text-decoration: none;
-      transition: background-color .2s ease, color .2s ease;
-    }
-    .menu-panel a svg { flex: none; stroke: var(--color-accent-600); transition: stroke .2s ease; }
-    .menu-panel a:hover { background: color-mix(in srgb, var(--color-accent) 8%, transparent); color: var(--color-text); }
-    .menu-panel a:hover svg { stroke: var(--color-accent-700); }
-    .menu-panel .menu-langs {
-      display: flex; gap: 0; justify-content: space-around; margin-top: 0.6rem; padding-top: 0.6rem;
-      border-top: 1px solid var(--color-divider);
-    }
-    .menu-panel .menu-langs a { padding: 0.55rem 1rem; color: var(--color-neutral-600); }
-    .menu-panel .menu-langs a.active { color: var(--color-accent-700); }
 
     #venueCtaBtn {
       position: relative; overflow: hidden;
