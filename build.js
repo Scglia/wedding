@@ -68,10 +68,15 @@ locales.forEach(({ code }) => {
   });
 });
 
-// 4. Copy static assets (stylesheet) into the output root
+// 4. Copy static assets (stylesheet, public files) into the output root
 const stylesPath = `${srcDir}/styles.css`;
 if (fs.existsSync(stylesPath)) {
   fs.copyFileSync(stylesPath, `${distDir}/styles.css`);
+}
+
+const publicDir = `${srcDir}/public`;
+if (fs.existsSync(publicDir)) {
+  fs.cpSync(publicDir, distDir, { recursive: true });
 }
 
 // 5. Root redirect

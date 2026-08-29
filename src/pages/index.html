@@ -17,6 +17,8 @@
        the welcome page just needs it fixed top-right and dismissible on scroll */
     .menu-toggle.is-hidden { opacity: 0; pointer-events: none; }
 
+    .ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
     #venueCtaBtn {
       position: relative; overflow: hidden;
       color: #fff; font-family: var(--font-body); font-size: 12px;
@@ -75,13 +77,14 @@
         display: flex; align-items: center; justify-content: center;
       }
       #story .ph > img, #story .ph img { width: 100%; height: 100%; object-fit: contain; }
+      /* extra photos skipped on mobile so the feed doesn't get too long */
+      #story .ph.desktop-only { display: none !important; }
       #story .cap { padding: 10vh 9vw !important; justify-content: center; }
       #story .cap p { font-size: 21px !important; }
       #finale { height: 100dvh !important; }
       #finale > div { position: static !important; height: 100dvh !important; }
       #venue { width: 100vw !important; height: 100dvh !important; }
       #venueText { opacity: 1 !important; transform: none !important; pointer-events: auto; overflow-y: auto; padding: 12vh 8vw !important; justify-content: flex-start; }
-      #venueHint { opacity: 1 !important; }
       #mhud { display: flex !important; }
       #venueCta { display: none !important; }
     }
@@ -147,20 +150,18 @@
     <!-- STORY — photo stacks alternating with text blocks. Photos are absolutely
          positioned inside their stack (percentages of a 72vh box); edit the four
          numbers in each comment to move/resize. Keep the .ph wrapper — it becomes
-         a full-screen panel in the mobile feed. Drop each real image INSIDE it:
-         <img src="/photos/03.jpg" style="width:100%;height:100%;object-fit:cover" alt=""> -->
+         a full-screen panel in the mobile feed. .ph.desktop-only photos are
+         hidden from the mobile feed to keep it short. -->
     <div id="story">
 
       <div class="cap" style="padding:9vh 5vw 9vh 250px;display:flex;flex-direction:column;align-items:center;text-align:center">
         <p style="margin:0;max-width:560px;font-size:20px;line-height:1.7;text-wrap:pretty">{{welcome_intro}}</p>
       </div><section data-screen-label="2018" style="padding:6vh 5vw 0 250px">
         <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- Photo 1 — left:2% top:8% w:26% h:46% -->
-          <div class="ph" style="position:absolute;left:2%;top:8%;width:26%;height:46%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 1</span></div>
-          <!-- Photo 2 — left:26% top:34% w:28% h:52% -->
-          <div class="ph" style="position:absolute;left:26%;top:34%;width:28%;height:52%;z-index:2;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 2</span></div>
-          <!-- Photo 3 — left:58% top:6% w:32% h:56% -->
-          <div class="ph" style="position:absolute;left:58%;top:6%;width:32%;height:56%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 3</span></div>
+          <!-- 2018-1 — left:8% top:6% w:30% h:64% -->
+          <div class="ph" style="position:absolute;left:8%;top:6%;width:30%;height:64%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2018-1.jpg" alt="" loading="lazy"></div>
+          <!-- 2018-2 — left:42% top:30% w:44% h:54% -->
+          <div class="ph" style="position:absolute;left:42%;top:30%;width:44%;height:54%;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2018-2.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -172,10 +173,12 @@
 
       <section data-screen-label="2019" style="padding:0 5vw 0 250px">
         <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- Photo 4 — left:8% top:8% w:38% h:64% -->
-          <div class="ph" style="position:absolute;left:8%;top:8%;width:38%;height:64%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 4</span></div>
-          <!-- Photo 5 — left:44% top:26% w:38% h:58% -->
-          <div class="ph" style="position:absolute;left:44%;top:26%;width:38%;height:58%;z-index:2;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 5</span></div>
+          <!-- 2019-1 (desktop only) — left:2% top:10% w:24% h:54% -->
+          <div class="ph desktop-only" style="position:absolute;left:2%;top:10%;width:24%;height:54%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2019-1-desktop.jpg" alt="" loading="lazy"></div>
+          <!-- 2019-7 — left:30% top:34% w:38% h:48% -->
+          <div class="ph" style="position:absolute;left:30%;top:34%;width:38%;height:48%;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2019-7.jpg" alt="" loading="lazy"></div>
+          <!-- 2019-8 — left:64% top:6% w:26% h:58% -->
+          <div class="ph" style="position:absolute;left:64%;top:6%;width:26%;height:58%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2019-8.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -187,14 +190,14 @@
 
       <section data-screen-label="2020" style="padding:0 5vw 0 250px">
         <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- Photo 6 — left:0% top:10% w:24% h:38% -->
-          <div class="ph" style="position:absolute;left:0%;top:10%;width:24%;height:38%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 6</span></div>
-          <!-- Photo 7 — left:20% top:34% w:26% h:44% -->
-          <div class="ph" style="position:absolute;left:20%;top:34%;width:26%;height:44%;z-index:2;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 7</span></div>
-          <!-- Photo 8 — left:48% top:6% w:26% h:42% -->
-          <div class="ph" style="position:absolute;left:48%;top:6%;width:26%;height:42%;z-index:1;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 8</span></div>
-          <!-- Photo 9 — left:66% top:38% w:28% h:46% -->
-          <div class="ph" style="position:absolute;left:66%;top:38%;width:28%;height:46%;z-index:2;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 9</span></div>
+          <!-- 2020-2 (desktop only) — left:0% top:10% w:22% h:44% -->
+          <div class="ph desktop-only" style="position:absolute;left:0%;top:10%;width:22%;height:44%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2020-2-desktop.jpg" alt="" loading="lazy"></div>
+          <!-- 2020-5 (desktop only) — left:20% top:38% w:24% h:46% -->
+          <div class="ph desktop-only" style="position:absolute;left:20%;top:38%;width:24%;height:46%;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2020-5-desktop.jpg" alt="" loading="lazy"></div>
+          <!-- 2020-6 — left:48% top:6% w:30% h:40% -->
+          <div class="ph" style="position:absolute;left:48%;top:6%;width:30%;height:40%;z-index:1;background:var(--color-neutral-300)"><img src="/photos/2020-6.jpg" alt="" loading="lazy"></div>
+          <!-- 2020-10 — left:68% top:34% w:24% h:50% -->
+          <div class="ph" style="position:absolute;left:68%;top:34%;width:24%;height:50%;z-index:2;background:var(--color-neutral-200)"><img src="/photos/2020-10.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -206,12 +209,12 @@
 
       <section data-screen-label="2021" style="padding:0 5vw 0 250px">
         <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- Photo 10 — left:4% top:6% w:28% h:44% -->
-          <div class="ph" style="position:absolute;left:4%;top:6%;width:28%;height:44%;z-index:1;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 10</span></div>
-          <!-- Photo 11 — left:26% top:32% w:26% h:50% -->
-          <div class="ph" style="position:absolute;left:26%;top:32%;width:26%;height:50%;z-index:2;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 11</span></div>
-          <!-- Photo 12 — left:56% top:12% w:34% h:56% -->
-          <div class="ph" style="position:absolute;left:56%;top:12%;width:34%;height:56%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 12</span></div>
+          <!-- 2021-1 — left:2% top:8% w:32% h:42% -->
+          <div class="ph" style="position:absolute;left:2%;top:8%;width:32%;height:42%;z-index:1;background:var(--color-neutral-300)"><img src="/photos/2021-1.jpg" alt="" loading="lazy"></div>
+          <!-- 2021-2 (desktop only) — left:28% top:36% w:24% h:48% -->
+          <div class="ph desktop-only" style="position:absolute;left:28%;top:36%;width:24%;height:48%;z-index:2;background:var(--color-neutral-200)"><img src="/photos/2021-2-desktop.jpg" alt="" loading="lazy"></div>
+          <!-- 2021-3 — left:56% top:12% w:34% h:44% -->
+          <div class="ph" style="position:absolute;left:56%;top:12%;width:34%;height:44%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2021-3.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -221,12 +224,27 @@
         <p style="margin:0;max-width:560px;font-size:20px;line-height:1.7;text-wrap:pretty">{{caption_2021}}</p>
       </div>
 
+      <section data-screen-label="2022" style="padding:0 5vw 8vh 250px">
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
+          <!-- 2022-2 — left:12% top:6% w:22% h:66% -->
+          <div class="ph" style="position:absolute;left:12%;top:6%;width:22%;height:66%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2022-2.jpg" alt="" loading="lazy"></div>
+          <!-- 2022-3 — left:42% top:26% w:32% h:58% -->
+          <div class="ph" style="position:absolute;left:42%;top:26%;width:32%;height:58%;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2022-3.jpg" alt="" loading="lazy"></div>
+        </div>
+      </section>
+
+      <div class="cap" style="padding:9vh 5vw 9vh 250px;display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div style="font-family:'Courier Prime',monospace;font-variant-numeric:tabular-nums;font-size:12px;letter-spacing:.24em;color:var(--color-accent-700)">2022</div>
+        <div style="width:40px;height:1px;background:var(--color-accent);margin:var(--space-4) 0"></div>
+        <p style="margin:0;max-width:560px;font-size:20px;line-height:1.7;text-wrap:pretty">{{caption_2022}}</p>
+      </div>
+
       <section data-screen-label="2023" style="padding:0 5vw 0 250px">
         <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- Photo 13 — left:6% top:8% w:36% h:60% -->
-          <div class="ph" style="position:absolute;left:6%;top:8%;width:36%;height:60%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 13</span></div>
-          <!-- Photo 14 — left:40% top:24% w:38% h:58% -->
-          <div class="ph" style="position:absolute;left:40%;top:24%;width:38%;height:58%;z-index:2;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 14</span></div>
+          <!-- 2023-1 — left:10% top:8% w:30% h:60% -->
+          <div class="ph" style="position:absolute;left:10%;top:8%;width:30%;height:60%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2023-1.jpg" alt="" loading="lazy"></div>
+          <!-- 2023-2 — left:44% top:26% w:28% h:60% -->
+          <div class="ph" style="position:absolute;left:44%;top:26%;width:28%;height:60%;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2023-2.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -238,14 +256,10 @@
 
       <section data-screen-label="2024" style="padding:0 5vw 0 250px">
         <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- Photo 15 — left:0% top:8% w:24% h:40% -->
-          <div class="ph" style="position:absolute;left:0%;top:8%;width:24%;height:40%;z-index:1;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 15</span></div>
-          <!-- Photo 16 — left:20% top:36% w:26% h:46% -->
-          <div class="ph" style="position:absolute;left:20%;top:36%;width:26%;height:46%;z-index:2;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 16</span></div>
-          <!-- Photo 17 — left:50% top:6% w:24% h:40% -->
-          <div class="ph" style="position:absolute;left:50%;top:6%;width:24%;height:40%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 17</span></div>
-          <!-- Photo 18 — left:68% top:34% w:28% h:48% -->
-          <div class="ph" style="position:absolute;left:68%;top:34%;width:28%;height:48%;z-index:2;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 18</span></div>
+          <!-- 2024-2 — left:8% top:6% w:30% h:62% -->
+          <div class="ph" style="position:absolute;left:8%;top:6%;width:30%;height:62%;z-index:1;background:var(--color-neutral-300)"><img src="/photos/2024-2.jpg" alt="" loading="lazy"></div>
+          <!-- 2024-4 — left:42% top:32% w:46% h:50% -->
+          <div class="ph" style="position:absolute;left:42%;top:32%;width:46%;height:50%;z-index:2;background:var(--color-neutral-200)"><img src="/photos/2024-4.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -257,16 +271,12 @@
 
       <section data-screen-label="2025" style="padding:0 5vw 0 250px">
         <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- Photo 19 — left:0% top:6% w:20% h:32% -->
-          <div class="ph" style="position:absolute;left:0%;top:6%;width:20%;height:32%;z-index:1;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 19</span></div>
-          <!-- Photo 20 — left:16% top:26% w:22% h:36% -->
-          <div class="ph" style="position:absolute;left:16%;top:26%;width:22%;height:36%;z-index:2;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 20</span></div>
-          <!-- Photo 21 — left:2% top:56% w:24% h:34% -->
-          <div class="ph" style="position:absolute;left:2%;top:56%;width:24%;height:34%;z-index:3;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 21</span></div>
-          <!-- Photo 22 — left:42% top:10% w:26% h:44% -->
-          <div class="ph" style="position:absolute;left:42%;top:10%;width:26%;height:44%;z-index:1;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 22</span></div>
-          <!-- Photo 23 — left:62% top:40% w:28% h:44% -->
-          <div class="ph" style="position:absolute;left:62%;top:40%;width:28%;height:44%;z-index:2;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 23</span></div>
+          <!-- 2025-1 — left:2% top:8% w:26% h:54% -->
+          <div class="ph" style="position:absolute;left:2%;top:8%;width:26%;height:54%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2025-1.jpg" alt="" loading="lazy"></div>
+          <!-- 2025-3 — left:32% top:34% w:26% h:56% -->
+          <div class="ph" style="position:absolute;left:32%;top:34%;width:26%;height:56%;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2025-3.jpg" alt="" loading="lazy"></div>
+          <!-- 2025-4 — left:62% top:6% w:26% h:54% -->
+          <div class="ph" style="position:absolute;left:62%;top:6%;width:26%;height:54%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2025-4.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -278,10 +288,12 @@
 
       <section data-screen-label="2026" style="padding:0 5vw 0 250px">
         <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- Photo 24 — left:6% top:10% w:36% h:58% -->
-          <div class="ph" style="position:absolute;left:6%;top:10%;width:36%;height:58%;z-index:1;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 24</span></div>
-          <!-- Photo 25 — left:42% top:28% w:38% h:56% -->
-          <div class="ph" style="position:absolute;left:42%;top:28%;width:38%;height:56%;z-index:2;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center"><span style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-600)">Photo 25</span></div>
+          <!-- 2026-1 — left:2% top:10% w:26% h:54% -->
+          <div class="ph" style="position:absolute;left:2%;top:10%;width:26%;height:54%;z-index:1;background:var(--color-neutral-300)"><img src="/photos/2026-1.jpg" alt="" loading="lazy"></div>
+          <!-- 2026-2 — left:26% top:38% w:26% h:52% -->
+          <div class="ph" style="position:absolute;left:26%;top:38%;width:26%;height:52%;z-index:2;background:var(--color-neutral-200)"><img src="/photos/2026-2.jpg" alt="" loading="lazy"></div>
+          <!-- 2026-3 — left:58% top:10% w:34% h:46% -->
+          <div class="ph" style="position:absolute;left:58%;top:10%;width:34%;height:46%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2026-3.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -293,9 +305,9 @@
 
     </div><section id="finale" data-screen-label="Venue and details" style="height:300vh;position:relative">
       <div style="position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden">
-        <!-- Photo 26 — the venue; grows from 38vw x 56vh to full screen on scroll -->
-        <div id="venue" style="position:relative;width:38vw;height:56vh;background:var(--color-neutral-300);display:flex;align-items:center;justify-content:center">
-          <span id="venueHint" style="font-family:'Courier Prime',monospace;font-size:12px;color:var(--color-neutral-700)">Photo 26</span>
+        <!-- The venue; grows from 38vw x 56vh to full screen on scroll -->
+        <div id="venue" style="position:relative;width:38vw;height:56vh;background:var(--color-neutral-300)">
+          <img src="/castle.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
           <div id="venueCta" style="position:absolute;left:50%;bottom:-72px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:auto">
             <button id="venueCtaBtn" type="button">{{open_invitation}}</button>
           </div>
@@ -328,7 +340,6 @@
       var story = document.getElementById('story');
       var finale = document.getElementById('finale');
       var venue = document.getElementById('venue');
-      var venueHint = document.getElementById('venueHint');
       var venueText = document.getElementById('venueText');
       var venueCta = document.getElementById('venueCta');
       var hud = document.getElementById('mhud');
@@ -412,9 +423,9 @@
       }
 
       function measureFeed() {
-        var panels = Array.prototype.slice.call(document.querySelectorAll('#hero, #story .ph, #story .cap, #finale'));
+        var panels = Array.prototype.slice.call(document.querySelectorAll('#hero, #story .ph:not(.desktop-only), #story .cap, #finale'));
         groups = yearSections.map(function (sec) {
-          var phs = Array.prototype.slice.call(sec.querySelectorAll('.ph'));
+          var phs = Array.prototype.slice.call(sec.querySelectorAll('.ph:not(.desktop-only)'));
           var cap = sec.nextElementSibling && sec.nextElementSibling.classList.contains('cap') ? sec.nextElementSibling : null;
           var start = panels.indexOf(phs[0]);
           var end = (cap ? panels.indexOf(cap) : panels.indexOf(phs[phs.length - 1])) + 1;
@@ -446,7 +457,6 @@
         if (mq.matches) {
           venue.style.width = ''; venue.style.height = '';
           venueText.style.opacity = ''; venueText.style.transform = '';
-          venueHint.style.opacity = '';
           rail.style.opacity = '0';
           mobileHud();
           return;
@@ -497,7 +507,6 @@
         var t = smooth(0, 0.55, local);
         venue.style.width = (0.38 * vw + (vw - 0.38 * vw) * t) + 'px';
         venue.style.height = (0.56 * vh + (vh - 0.56 * vh) * t) + 'px';
-        venueHint.style.opacity = (1 - smooth(0.28, 0.58, local)).toFixed(3);
         var co = inFinale ? 1 - smooth(0.06, 0.22, local) : 1;
         venueCta.style.opacity = co.toFixed(3);
         venueCta.style.pointerEvents = co > 0.4 ? 'auto' : 'none';
