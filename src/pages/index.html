@@ -46,7 +46,7 @@
     @media (prefers-reduced-motion: reduce) {
       #venueCtaBtn::after { animation: none; display: none; }
     }
-    .vbtn { position: relative; display: inline-block; padding: 14px 34px; border: none; border-radius: 4px; text-decoration: none; font-family: var(--font-heading); font-weight: 500; letter-spacing: .2em; text-transform: uppercase; font-size: 12px; transition: background .25s ease; }
+    .vbtn { position: relative; display: inline-block; text-align: center; padding: 14px 34px; border: none; border-radius: 4px; text-decoration: none; font-family: var(--font-heading); font-weight: 500; letter-spacing: .2em; text-transform: uppercase; font-size: 12px; transition: background .25s ease; }
     .vbtn-rsvp { color: var(--color-accent-900); background: var(--color-accent-300); }
     .vbtn-rsvp:hover { background: var(--color-accent-200); }
     .vbtn-travel { color: var(--color-text); background: #fff; }
@@ -309,15 +309,15 @@
             <button id="venueCtaBtn" type="button">{{open_invitation}}</button>
           </div>
         </div>
-        <div id="venueText" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:var(--space-6);text-align:center;padding:0 8vw 9vh;opacity:0;color:#fff;background:linear-gradient(rgba(20,16,12,.18), rgba(20,16,12,.6) 55%, rgba(20,16,12,.92))">
-          <h2 style="margin:0;font-family:var(--font-heading);font-weight:500;font-size:clamp(36px,6.2vw,92px);line-height:1.02;letter-spacing:-0.01em;text-shadow:0 4px 24px rgba(0,0,0,.45)">{{invited_heading_plain}} <span style="font-style:italic;color:var(--color-accent-300)">{{invited_heading_accent}}</span></h2>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-3)">
-            <div style="font-family:'Courier Prime',monospace;font-variant-numeric:tabular-nums;font-weight:700;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.5)">{{invited_meta}}</div>
-          </div>
+        <div id="venueText" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:var(--space-6);text-align:center;padding:7vh 8vw 9vh;opacity:0;color:#fff;background:linear-gradient(rgba(20,16,12,.18), rgba(20,16,12,.6) 55%, rgba(20,16,12,.92))">
+          <h2 style="margin:0;font-family:var(--font-heading);font-weight:500;font-size:clamp(54px,11vw,120px);line-height:.94;letter-spacing:-0.01em;text-shadow:0 4px 24px rgba(0,0,0,.45)">{{invited_heading_plain}}<br>{{invited_heading_accent}}</h2>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-6)">
+          <div style="font-family:'Courier Prime',monospace;font-variant-numeric:tabular-nums;font-size:13px;line-height:1.7;letter-spacing:.24em;text-transform:uppercase;color:var(--color-bg);background:#201f1db8;padding:18px 20px;border-radius:20px;corner-shape:scoop">{{invited_meta_venue}}<br>{{invited_meta_town}}<br>{{invited_meta_date}}</div>
           <p style="margin:0;max-width:800px;font-size:19px;line-height:1.75;text-wrap:pretty;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.4)">{{invited_body}}</p>
-          <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);justify-content:center;margin-top:var(--space-2)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);margin-top:var(--space-2)">
             <a class="vbtn vbtn-rsvp" href="/{{lang}}/rsvp.html">{{nav_rsvp}}</a>
             <a class="vbtn vbtn-travel" href="/{{lang}}/travel.html">{{nav_travel}}</a>
+          </div>
           </div>
         </div>
       </div>

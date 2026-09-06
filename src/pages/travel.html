@@ -22,6 +22,14 @@
     <section class="card">
       <h2>{{getting_there_heading}}</h2>
       <p class="address">{{travel_address}}</p>
+      <div class="map">
+        <iframe
+          src="https://maps.google.com/maps?q=Ch%C3%A2teau+de+Meouilles&ll=43.952828,6.5207878&z=14&output=embed"
+          title="Château de Meouilles"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
       <ul class="info-list">
         {{#each travel_modes}}
         <li>
@@ -31,9 +39,10 @@
         {{/each}}
       </ul>
     </section>
-    <!--
     <section class="card">
       <h2>{{stay_heading}}</h2>
+      <p class="address">Coming Soon</p>
+    <!--
       <p class="note">{{stay_note}}</p>
       <ul class="info-list">
         {{#each stay_options}}
@@ -44,8 +53,8 @@
         </li>
         {{/each}}
       </ul>
-    </section>
     -->
+    </section>
     <p class="back-link"><a class="button" href="/{{lang}}/rsvp.html">{{rsvp_link}}</a></p>
   </main>
 </body>
