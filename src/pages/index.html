@@ -6,7 +6,7 @@
   <title>{{site_title}}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <style>
     /* Welcome page owns its layout — undo the shared body chrome */
@@ -45,11 +45,11 @@
     @media (prefers-reduced-motion: reduce) {
       #venueCtaBtn::after { animation: none; display: none; }
     }
-    .vbtn { position: relative; display: inline-block; padding: 14px 34px; border: 1px solid; border-radius: 4px; background: transparent; text-decoration: none; font-family: var(--font-heading); font-weight: 500; letter-spacing: .2em; text-transform: uppercase; font-size: 12px; transition: background .25s ease; }
-    .vbtn-rsvp { color: var(--color-accent-300); border-color: var(--color-accent-300); }
-    .vbtn-rsvp:hover { background: rgba(230,190,130,.16); }
-    .vbtn-travel { color: var(--color-neutral-100); border-color: rgba(248,244,244,.5); }
-    .vbtn-travel:hover { background: rgba(248,244,244,.14); }
+    .vbtn { position: relative; display: inline-block; padding: 14px 34px; border: none; border-radius: 4px; text-decoration: none; font-family: var(--font-heading); font-weight: 500; letter-spacing: .2em; text-transform: uppercase; font-size: 12px; transition: background .25s ease; }
+    .vbtn-rsvp { color: var(--color-accent-900); background: var(--color-accent-300); }
+    .vbtn-rsvp:hover { background: var(--color-accent-200); }
+    .vbtn-travel { color: var(--color-text); background: #fff; }
+    .vbtn-travel:hover { background: var(--color-neutral-200); }
 
     /* MOBILE — a vertical snap feed: every photo and every text block is its own screen */
     @media (max-width: 760px) {
@@ -312,14 +312,14 @@
             <button id="venueCtaBtn" type="button">{{open_invitation}}</button>
           </div>
         </div>
-        <div id="venueText" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-6);text-align:center;padding:0 8vw;opacity:0;color:var(--color-neutral-100);background:linear-gradient(rgba(24,20,16,.28), rgba(24,20,16,.62))">
+        <div id="venueText" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-6);text-align:center;padding:0 8vw;opacity:0;color:#fff;background:linear-gradient(rgba(24,20,16,.28), rgba(24,20,16,.62))">
           <div style="font-family:var(--font-heading);font-size:13px;letter-spacing:.44em;text-transform:uppercase;color:var(--color-accent-300)">{{invited_kicker}}</div>
-          <h2 style="margin:0;font-family:var(--font-heading);font-weight:500;font-size:clamp(36px,6.2vw,92px);line-height:1.02;letter-spacing:-0.01em">{{invited_heading_plain}} <span style="font-style:italic;color:var(--color-accent-300)">{{invited_heading_accent}}</span></h2>
+          <h2 style="margin:0;font-family:var(--font-heading);font-weight:700;font-size:clamp(36px,6.2vw,92px);line-height:1.02;letter-spacing:-0.01em">{{invited_heading_plain}} <span style="font-style:italic;color:var(--color-accent-300)">{{invited_heading_accent}}</span></h2>
           <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-3)">
             <div style="width:96px;height:1px;background:var(--color-accent-400)"></div>
-            <div style="font-family:'Courier Prime',monospace;font-variant-numeric:tabular-nums;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--color-neutral-200)">{{invited_meta}}</div>
+            <div style="font-family:'Courier Prime',monospace;font-variant-numeric:tabular-nums;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#fff">{{invited_meta}}</div>
           </div>
-          <p style="margin:0;max-width:560px;font-size:19px;line-height:1.75;text-wrap:pretty;color:var(--color-neutral-200)">{{invited_body}}</p>
+          <p style="margin:0;max-width:560px;font-size:19px;line-height:1.75;text-wrap:pretty;color:#fff">{{invited_body}}</p>
           <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);justify-content:center;margin-top:var(--space-2)">
             <a class="vbtn vbtn-rsvp" href="/{{lang}}/rsvp.html">{{nav_rsvp}}</a>
             <a class="vbtn vbtn-travel" href="/{{lang}}/travel.html">{{nav_travel}}</a>
