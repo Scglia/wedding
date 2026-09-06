@@ -5,9 +5,9 @@
   "title": "Naše Svatba",
   "welcome": "Připojte se k nám na víkendovou oslavu pod platany provensálského zámku. Těšíme se, až s vámi tento velký den oslavíme.",
   "date_label": "Datum",
-  "date": "15. června 2026",
+  "date": "31.07.27",
   "location_label": "Místo",
-  "location": "Château de Beaumont, Provence",
+  "location": "Château de Méouilles, Saint-André-les-Alpes",
   "nav_home": "Úvod",
   "nav_program": "Program",
   "nav_travel": "Doprava a ubytování",
@@ -37,15 +37,21 @@
   "open_invitation": "Otevřít pozvánku",
 
   "program_heading": "Program",
-  "program_intro": "Tři dny oslav na zámku",
+  "program_intro": "Pět dní oslav na zámku",
   "program_days": [
     {
-      "name": "Pátek",
-      "tagline": "Příjezd a přivítání",
+      "name": "Čtvrtek",
+      "tagline": "Příjezd",
       "events": [
-        { "time": "16:00", "title": "Příjezd", "desc": "Ubytování a seznámení se zámeckým areálem." },
-        { "time": "19:00", "title": "Uvítací aperitiv", "desc": "Rosé a jednohubky na terase." },
-        { "time": "20:30", "title": "Neformální večeře", "desc": "Provensálský raut na nádvoří." }
+        { "time": "14:00", "title": "Příjezd", "desc": "Ubytování a seznámení se zámeckým areálem." }
+      ]
+    },
+    {
+      "name": "Pátek",
+      "tagline": "Bazén a koktejly",
+      "events": [
+        { "time": "14:00", "title": "Bazénová párty", "desc": "Odpoledne u bazénu." },
+        { "time": "19:00", "title": "Koktejlový večer", "desc": "Koktejly a večerní zábava." }
       ]
     },
     {
@@ -60,20 +66,26 @@
     },
     {
       "name": "Neděle",
-      "tagline": "Rozloučení",
+      "tagline": "Brunch a loučení",
       "events": [
-        { "time": "11:00", "title": "Brunch", "desc": "Poklidný brunch na rozloučenou u bazénu." },
-        { "time": "15:00", "title": "Loučení", "desc": "Šťastnou cestu domů — děkujeme, že jste přijeli." }
+        { "time": "11:00", "title": "Brunch", "desc": "Neformální konec oslav." },
+        { "time": "15:00", "title": "Úklid", "desc": "Odpoledne budeme uklízet areál." }
+      ]
+    },
+    {
+      "name": "Pondělí",
+      "tagline": "Odjezd",
+      "events": [
+        { "time": "10:00", "title": "Předání klíčů", "desc": "Šťastnou cestu domů — děkujeme, že jste přijeli." }
       ]
     }
   ],
   "travel_heading": "Doprava a Ubytování",
   "getting_there_heading": "Jak se Dostat na Zámek",
-  "travel_address": "Château de Beaumont, 13210 Saint-Rémy-de-Provence, Francie",
+  "travel_address": "1290 Hameau de Méouilles, 04170 Saint-André-les-Alpes, Francie",
   "travel_modes": [
-    { "title": "Letadlem", "desc": "Letiště Marseille Provence (MRS) je autem asi hodinu cesty. Menší alternativou jsou letiště Avignon (AVN) a Nîmes (FNI) se sezónními lety." },
-    { "title": "Vlakem", "desc": "Nádraží Avignon TGV je 25 minut od zámku, s přímými rychlovlaky z Paříže (2 h 40 min). Na nádraží jsou k dispozici taxíky i půjčovny aut." },
-    { "title": "Autem", "desc": "Zámek leží hned u silnice D99 mezi Saint-Rémy-de-Provence a Cavaillonem. V areálu je dostatek parkovacích míst zdarma." }
+    { "title": "Letadlem", "desc": "Letiště Nice Côte d'Azur i letiště Marseille Provence jsou od zámku vzdálená asi 2 hodiny jízdy autem." },
+    { "title": "Vlakem", "desc": "Nádraží Aix-en-Provence TGV je od zámku vzdálené asi 2 hodiny jízdy autem." }
   ],
   "stay_heading": "Kde se Ubytovat",
   "stay_note": "Na samotném zámku může bydlet pouze nejbližší rodina, v okolí je ale řada půvabných míst. Rezervujte včas — červen je v Provence hlavní sezóna.",
@@ -83,7 +95,7 @@
     { "name": "Auberge de la Fontaine", "distance": "15 min autem", "desc": "Jednoduché pokoje za dobrou cenu nad vesnickou restaurací." }
   ],
   "rsvp_heading": "Prosíme o Odpověď",
-  "rsvp_intro": "Těšíme se, až s vámi tento den oslavíme. Dejte nám prosím vědět do 15. dubna 2026, zda dorazíte.",
+  "rsvp_intro": "Těšíme se, až s vámi tento den oslavíme. Dejte nám prosím vědět do 30.10.2026, zda dorazíte.",
   "name_label": "Vaše Jméno",
   "email_label": "E-mailová adresa",
   "attending_label": "Zúčastníte se?",

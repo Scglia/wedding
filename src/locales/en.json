@@ -5,9 +5,9 @@
   "title": "Our Wedding",
   "welcome": "Join us for a weekend of celebration beneath the plane trees of a Provençal château. We can't wait to share our big day with you.",
   "date_label": "Date",
-  "date": "June 15, 2026",
+  "date": "31.07.27",
   "location_label": "Location",
-  "location": "Château de Beaumont, Provence",
+  "location": "Château de Méouilles, Saint-André-les-Alpes",
   "nav_home": "Welcome",
   "nav_program": "Programme",
   "nav_travel": "Travel & Stay",
@@ -37,15 +37,21 @@
   "open_invitation": "Open the invitation",
 
   "program_heading": "The Programme",
-  "program_intro": "Three days of celebration at the château",
+  "program_intro": "Five days of celebration at the château",
   "program_days": [
     {
-      "name": "Friday",
-      "tagline": "Arrival & Welcome",
+      "name": "Thursday",
+      "tagline": "Arrival",
       "events": [
-        { "time": "16:00", "title": "Arrival", "desc": "Check in and settle into the grounds." },
-        { "time": "19:00", "title": "Welcome apéritif", "desc": "Rosé and petits fours on the terrace." },
-        { "time": "20:30", "title": "Casual dinner", "desc": "A relaxed Provençal buffet in the courtyard." }
+        { "time": "14:00", "title": "Arrival", "desc": "Check in and settle into the grounds." }
+      ]
+    },
+    {
+      "name": "Friday",
+      "tagline": "Pool Party & Cocktails",
+      "events": [
+        { "time": "14:00", "title": "Pool party", "desc": "An afternoon by the pool." },
+        { "time": "19:00", "title": "Cocktail night", "desc": "Drinks and dancing into the evening." }
       ]
     },
     {
@@ -60,20 +66,26 @@
     },
     {
       "name": "Sunday",
-      "tagline": "Farewell",
+      "tagline": "Brunch & Farewell",
       "events": [
-        { "time": "11:00", "title": "Brunch", "desc": "A lazy farewell brunch by the pool." },
-        { "time": "15:00", "title": "Goodbyes", "desc": "Safe travels home — thank you for coming." }
+        { "time": "11:00", "title": "Brunch", "desc": "The unofficial end of the celebrations." },
+        { "time": "15:00", "title": "Clean-up", "desc": "We'll be tidying up the grounds in the afternoon." }
+      ]
+    },
+    {
+      "name": "Monday",
+      "tagline": "Departure",
+      "events": [
+        { "time": "10:00", "title": "Handing back the keys", "desc": "Safe travels home — thank you for coming." }
       ]
     }
   ],
   "travel_heading": "Travel & Stay",
   "getting_there_heading": "Getting to the Château",
-  "travel_address": "Château de Beaumont, 13210 Saint-Rémy-de-Provence, France",
+  "travel_address": "1290 Hameau de Méouilles, 04170 Saint-André-les-Alpes, France",
   "travel_modes": [
-    { "title": "By plane", "desc": "Marseille Provence Airport (MRS) is about an hour away by car. Avignon (AVN) and Nîmes (FNI) are smaller alternatives with seasonal flights." },
-    { "title": "By train", "desc": "Avignon TGV station is 25 minutes from the château, with direct high-speed trains from Paris (2h40). Taxis and rental cars are available at the station." },
-    { "title": "By car", "desc": "The château sits just off the D99 between Saint-Rémy-de-Provence and Cavaillon. There is plenty of free parking on the grounds." }
+    { "title": "By plane", "desc": "Nice Côte d'Azur Airport and Marseille Provence Airport are both about a 2-hour drive from the château." },
+    { "title": "By train", "desc": "Aix-en-Provence TGV station is about a 2-hour drive from the château." }
   ],
   "stay_heading": "Where to Stay",
   "stay_note": "The château itself can only accommodate close family, but there are lovely places nearby. Book early — June is high season in Provence.",
@@ -83,7 +95,7 @@
     { "name": "Auberge de la Fontaine", "distance": "15 min by car", "desc": "Simple, good-value rooms above a village restaurant." }
   ],
   "rsvp_heading": "Kindly Reply",
-  "rsvp_intro": "We can't wait to celebrate with you. Please let us know if you can make it by April 15, 2026.",
+  "rsvp_intro": "We can't wait to celebrate with you. Please let us know if you can make it by 30.10.2026.",
   "name_label": "Your Name",
   "email_label": "Email Address",
   "attending_label": "Will you be attending?",

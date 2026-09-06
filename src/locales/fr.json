@@ -5,9 +5,9 @@
   "title": "Notre Mariage",
   "welcome": "Rejoignez-nous pour un week-end de fête sous les platanes d'un château provençal. Nous avons hâte de partager ce grand jour avec vous.",
   "date_label": "Date",
-  "date": "15 Juin 2026",
+  "date": "31/07/27",
   "location_label": "Lieu",
-  "location": "Château de Beaumont, Provence",
+  "location": "Château de Méouilles, Saint-André-les-Alpes",
   "nav_home": "Accueil",
   "nav_program": "Programme",
   "nav_travel": "Accès & Hébergement",
@@ -37,15 +37,21 @@
   "open_invitation": "Ouvrir l'invitation",
 
   "program_heading": "Le Programme",
-  "program_intro": "Trois jours de fête au château",
+  "program_intro": "Cinq jours de fête au château",
   "program_days": [
     {
-      "name": "Vendredi",
-      "tagline": "Arrivée & Bienvenue",
+      "name": "Jeudi",
+      "tagline": "Arrivée",
       "events": [
-        { "time": "16h00", "title": "Arrivée", "desc": "Installation et découverte du domaine." },
-        { "time": "19h00", "title": "Apéritif de bienvenue", "desc": "Rosé et petits fours sur la terrasse." },
-        { "time": "20h30", "title": "Dîner décontracté", "desc": "Buffet provençal dans la cour." }
+        { "time": "14h00", "title": "Arrivée", "desc": "Installation et découverte du domaine." }
+      ]
+    },
+    {
+      "name": "Vendredi",
+      "tagline": "Piscine & Cocktails",
+      "events": [
+        { "time": "14h00", "title": "Fête à la piscine", "desc": "Un après-midi au bord de la piscine." },
+        { "time": "19h00", "title": "Soirée cocktail", "desc": "Cocktails et ambiance festive en soirée." }
       ]
     },
     {
@@ -60,20 +66,26 @@
     },
     {
       "name": "Dimanche",
-      "tagline": "Au Revoir",
+      "tagline": "Brunch & Adieux",
       "events": [
-        { "time": "11h00", "title": "Brunch", "desc": "Brunch d'adieu au bord de la piscine." },
-        { "time": "15h00", "title": "Départs", "desc": "Bon retour — merci d'être venus." }
+        { "time": "11h00", "title": "Brunch", "desc": "La fin non-officielle des festivités." },
+        { "time": "15h00", "title": "Rangement", "desc": "Nous rangerons le domaine dans l'après-midi." }
+      ]
+    },
+    {
+      "name": "Lundi",
+      "tagline": "Départ",
+      "events": [
+        { "time": "10h00", "title": "Restitution des clés", "desc": "Bon retour — merci d'être venus." }
       ]
     }
   ],
   "travel_heading": "Accès & Hébergement",
   "getting_there_heading": "Se Rendre au Château",
-  "travel_address": "Château de Beaumont, 13210 Saint-Rémy-de-Provence, France",
+  "travel_address": "1290 Hameau de Méouilles, 04170 Saint-André-les-Alpes, France",
   "travel_modes": [
-    { "title": "En avion", "desc": "L'aéroport Marseille Provence (MRS) est à environ une heure de route. Les aéroports d'Avignon (AVN) et de Nîmes (FNI) sont de plus petites alternatives avec des vols saisonniers." },
-    { "title": "En train", "desc": "La gare d'Avignon TGV est à 25 minutes du château, avec des TGV directs depuis Paris (2h40). Taxis et voitures de location disponibles à la gare." },
-    { "title": "En voiture", "desc": "Le château se trouve juste au bord de la D99, entre Saint-Rémy-de-Provence et Cavaillon. Un grand parking gratuit est à disposition sur le domaine." }
+    { "title": "En avion", "desc": "Les aéroports de Nice Côte d'Azur et de Marseille Provence sont tous deux à environ 2h de route du château." },
+    { "title": "En train", "desc": "La gare d'Aix-en-Provence TGV est à environ 2h de route du château." }
   ],
   "stay_heading": "Où Loger",
   "stay_note": "Le château lui-même ne peut accueillir que la famille proche, mais il y a de charmantes adresses à proximité. Réservez tôt — juin est la haute saison en Provence.",
@@ -83,7 +95,7 @@
     { "name": "Auberge de la Fontaine", "distance": "15 min en voiture", "desc": "Des chambres simples et abordables au-dessus d'un restaurant de village." }
   ],
   "rsvp_heading": "Merci de Répondre",
-  "rsvp_intro": "Nous avons hâte de célébrer avec vous. Merci de nous confirmer votre présence avant le 15 avril 2026.",
+  "rsvp_intro": "Nous avons hâte de célébrer avec vous. Merci de nous confirmer votre présence avant le 30/10/2026.",
   "name_label": "Votre Nom",
   "email_label": "Adresse e-mail",
   "attending_label": "Serez-vous présent(e) ?",
