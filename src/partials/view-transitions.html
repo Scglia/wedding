@@ -1,0 +1,8 @@
+<script>
+  // Cross-document view transitions were skipped ~50% of the time in Chrome
+  // until a pagereveal listener touched the transition. Keeping this minimal
+  // handler in place makes them reliable.
+  addEventListener("pagereveal", function (e) {
+    if (e.viewTransition) e.viewTransition.ready.catch(function () {});
+  });
+</script>
