@@ -90,7 +90,7 @@ if (fs.existsSync(redirectsFile)) {
 const defaultLocale = locales[0].code;
 fs.writeFileSync(
   path.join(distDir, "index.html"),
-  `<!DOCTYPE html>\n<html>\n<head><meta http-equiv="refresh" content="0; url=/${defaultLocale}/"></head>\n<body><a href="/${defaultLocale}/">Continue</a></body>\n</html>\n`,
+  `<!DOCTYPE html>\n<html>\n<head><meta http-equiv="refresh" content="0; url=/${defaultLocale}/"><style>a,a:hover,a:active,a:visited{color:#f3f2f2}</style></head>\n<body style="margin:0;background:#f3f2f2"><a href="/${defaultLocale}/">Continue</a></body>\n</html>\n`,
 );
 
 console.log("✅ Static site generated successfully in /dist!");
