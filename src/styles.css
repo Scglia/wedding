@@ -302,6 +302,12 @@ textarea:focus-visible {
    width can still be measured to decide when it fits again. */
 .site-header .menu-toggle { display: none; }
 
+.site-header.is-compact {
+  /* the hidden inline menu keeps its natural width for measuring; clip it
+     so it can't widen the page and cause a horizontal scrollbar */
+  overflow: clip;
+}
+
 .site-header.is-compact .site-header-menu {
   position: absolute;
   visibility: hidden;
