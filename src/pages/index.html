@@ -25,6 +25,7 @@
        clip so the shifted content never causes horizontal scrolling */
     #page { overflow-x: clip; }
     #story { will-change: transform; }
+    #venueText { scrollbar-width: thin; }
 
     #venueCtaBtn {
       position: relative; overflow: hidden;
@@ -464,7 +465,7 @@
         queued = false;
         if (mq.matches) {
           venue.style.width = ''; venue.style.height = '';
-          venueText.style.opacity = ''; venueText.style.transform = '';
+          venueText.style.opacity = ''; venueText.style.transform = ''; venueText.style.overflowY = '';
           rail.style.opacity = '0';
           story.style.transform = '';
           mobileHud();
@@ -525,6 +526,9 @@
         venueText.style.opacity = to.toFixed(3);
         venueText.style.pointerEvents = to > 0.6 ? 'auto' : 'none';
         venueText.style.transform = 'translateY(' + (18 * (1 - to)) + 'px)';
+        // text taller than the viewport: let it scroll inside the sticky box, but only once
+        // the venue has fully grown so the wheel is not captured mid-transition
+        venueText.style.overflowY = local >= 0.99 ? 'auto' : 'hidden';
       }
 
       function onScroll() { if (!queued) { queued = true; requestAnimationFrame(tick); } }
