@@ -418,7 +418,6 @@ main h2 {
 
 .lead {
   margin: 0 auto;
-  max-width: 30rem;
   color: var(--ink-soft);
 }
 
@@ -593,7 +592,6 @@ main h2 {
 }
 
 .note {
-  max-width: 30rem;
   margin: 1.25rem auto 0;
   font-family: var(--font-display);
   font-style: italic;
