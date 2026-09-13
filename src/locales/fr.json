@@ -41,6 +41,7 @@
 
   "program_heading": "Le Programme",
   "program_intro": "Cinq jours de fête au château",
+  "program_note": "Nous prévoyons une belle randonnée en groupe l’un des jours et partagerons une liste de nos activités locales préférées à l’approche du week-end. Restez à l’affût des nouveautés !",
   "program_days": [
     {
       "name": "Jeudi",
@@ -53,26 +54,26 @@
       "name": "Vendredi",
       "tagline": "Piscine & Cocktails",
       "events": [
-        { "time": "14h00", "title": "Fête à la piscine", "desc": "Un après-midi au bord de la piscine." },
-        { "time": "19h00", "title": "Soirée cocktail", "desc": "Cocktails et ambiance festive en soirée." }
+        { "time": "journée", "title": "Fête à la piscine", "desc": "Un après-midi au bord de la piscine." },
+        { "time": "soirée", "title": "Soirée cocktail", "desc": "Cocktails et ambiance festive en soirée." }
       ]
     },
     {
       "name": "Samedi",
       "tagline": "Le Jour du Mariage",
       "events": [
-        { "time": "15h30", "title": "Cérémonie", "desc": "Dans les jardins, sous les platanes." },
-        { "time": "17h00", "title": "Cocktail", "desc": "Champagne et canapés sur la pelouse." },
-        { "time": "19h30", "title": "Dîner", "desc": "Dîner assis dans l'orangerie." },
-        { "time": "22h30", "title": "Soirée dansante", "desc": "Jusqu'au bout de la nuit." }
+        { "time": "", "title": "Cérémonie", "desc": "Dans les jardins, sous les platanes." },
+        { "time": "", "title": "Cocktail", "desc": "Champagne et canapés sur la pelouse." },
+        { "time": "", "title": "Dîner", "desc": "Dîner assis dans l'orangerie." },
+        { "time": "", "title": "Soirée dansante", "desc": "Jusqu'au bout de la nuit." }
       ]
     },
     {
       "name": "Dimanche",
       "tagline": "Brunch & Adieux",
       "events": [
-        { "time": "11h00", "title": "Brunch", "desc": "La fin non-officielle des festivités." },
-        { "time": "15h00", "title": "Rangement", "desc": "Nous rangerons le domaine dans l'après-midi." }
+        { "time": "fin de matinée", "title": "Brunch", "desc": "La fin non-officielle des festivités." },
+        { "time": "après-midi", "title": "Rangement", "desc": "Nous rangerons le domaine dans l'après-midi." }
       ]
     },
     {

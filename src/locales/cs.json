@@ -41,6 +41,7 @@
 
   "program_heading": "Program",
   "program_intro": "Pět dní oslav na zámku",
+  "program_note": "Na jeden z dní plánujeme společnou túru s krásnými výhledy a s blížícím se víkendem se s vámi podělíme o seznam našich oblíbených místních aktivit. Sledujte novinky!",
   "program_days": [
     {
       "name": "Čtvrtek",
@@ -53,26 +54,26 @@
       "name": "Pátek",
       "tagline": "Bazén a koktejly",
       "events": [
-        { "time": "14:00", "title": "Bazénová párty", "desc": "Odpoledne u bazénu." },
-        { "time": "19:00", "title": "Koktejlový večer", "desc": "Koktejly a večerní zábava." }
+        { "time": "přes den", "title": "Bazénová párty", "desc": "Odpoledne u bazénu." },
+        { "time": "večer", "title": "Koktejlový večer", "desc": "Koktejly a večerní zábava." }
       ]
     },
     {
       "name": "Sobota",
       "tagline": "Svatební den",
       "events": [
-        { "time": "15:30", "title": "Obřad", "desc": "V zahradách, pod platany." },
-        { "time": "17:00", "title": "Koktejl", "desc": "Šampaňské a kanapky na trávníku." },
-        { "time": "19:30", "title": "Večeře", "desc": "Slavnostní večeře v oranžerii." },
-        { "time": "22:30", "title": "Tanec", "desc": "Až do časných ranních hodin." }
+        { "time": "", "title": "Obřad", "desc": "V zahradách, pod platany." },
+        { "time": "", "title": "Koktejl", "desc": "Šampaňské a kanapky na trávníku." },
+        { "time": "", "title": "Večeře", "desc": "Slavnostní večeře v oranžerii." },
+        { "time": "", "title": "Tanec", "desc": "Až do časných ranních hodin." }
       ]
     },
     {
       "name": "Neděle",
       "tagline": "Brunch a loučení",
       "events": [
-        { "time": "11:00", "title": "Brunch", "desc": "Neformální konec oslav." },
-        { "time": "15:00", "title": "Úklid", "desc": "Odpoledne budeme uklízet areál." }
+        { "time": "pozdní dopoledne", "title": "Brunch", "desc": "Neformální konec oslav." },
+        { "time": "odpoledne", "title": "Úklid", "desc": "Odpoledne budeme uklízet areál." }
       ]
     },
     {

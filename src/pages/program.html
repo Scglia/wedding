@@ -19,6 +19,7 @@
     <p class="hero-meta">{{program_intro}}</p>
   </section>
   <main>
+    <p class="lead program-note">{{program_note}}</p>
     {{#each program_days}}
     <section class="card">
       <h2>{{name}}</h2>
@@ -26,7 +27,7 @@
       <ul class="schedule">
         {{#each events}}
         <li>
-          <span class="time">{{time}}</span>
+          {{#if time}}<span class="time">{{time}}</span>{{/if}}
           <span class="event"><strong>{{title}}</strong> <span>{{desc}}</span></span>
         </li>
         {{/each}}

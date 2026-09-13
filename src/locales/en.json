@@ -41,6 +41,7 @@
 
   "program_heading": "The Programme",
   "program_intro": "Five days of celebration at the château",
+  "program_note": "We’re planning a scenic group hike for one of the days and will be sharing a list of our favorite local activities as the weekend gets closer. Keep an eye out for updates!",
   "program_days": [
     {
       "name": "Thursday",
@@ -53,26 +54,26 @@
       "name": "Friday",
       "tagline": "Pool Party & Cocktails",
       "events": [
-        { "time": "14:00", "title": "Pool party", "desc": "An afternoon by the pool." },
-        { "time": "19:00", "title": "Cocktail night", "desc": "Drinks and dancing into the evening." }
+        { "time": "daytime", "title": "Pool party", "desc": "An afternoon by the pool." },
+        { "time": "evening", "title": "Cocktail night", "desc": "Drinks and dancing into the evening." }
       ]
     },
     {
       "name": "Saturday",
       "tagline": "The Wedding Day",
       "events": [
-        { "time": "15:30", "title": "Ceremony", "desc": "In the gardens, beneath the plane trees." },
-        { "time": "17:00", "title": "Cocktail hour", "desc": "Champagne and canapés on the lawn." },
-        { "time": "19:30", "title": "Dinner", "desc": "A seated dinner in the orangery." },
-        { "time": "22:30", "title": "Dancing", "desc": "Until the small hours." }
+        { "time": "", "title": "Ceremony", "desc": "In the gardens, beneath the plane trees." },
+        { "time": "", "title": "Cocktail hour", "desc": "Champagne and canapés on the lawn." },
+        { "time": "", "title": "Dinner", "desc": "A seated dinner in the orangery." },
+        { "time": "", "title": "Dancing", "desc": "Until the small hours." }
       ]
     },
     {
       "name": "Sunday",
       "tagline": "Brunch & Farewell",
       "events": [
-        { "time": "11:00", "title": "Brunch", "desc": "The unofficial end of the celebrations." },
-        { "time": "15:00", "title": "Clean-up", "desc": "We'll be tidying up the grounds in the afternoon." }
+        { "time": "late morning", "title": "Brunch", "desc": "The unofficial end of the celebrations." },
+        { "time": "afternoon", "title": "Clean-up", "desc": "We'll be tidying up the grounds in the afternoon." }
       ]
     },
     {
