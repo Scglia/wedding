@@ -530,14 +530,14 @@ main h2 {
 /* ----- Travel & accommodation ----------------------------------------- */
 
 .address {
-  margin: 1.5rem 0 0;
+  margin: 4rem 0 0;
   font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 500;
 }
 
 .map {
-  margin: 1.75rem 0 0;
+  margin: 1rem 0 0;
   aspect-ratio: 16 / 10;
   border: 1px solid var(--line);
   border-radius: 4px;
@@ -559,7 +559,7 @@ main h2 {
 
 .info-list {
   list-style: none;
-  margin: 1.75rem 0 0;
+  margin: 4rem 0 0;
   padding: 0;
   text-align: left;
 }
@@ -599,10 +599,10 @@ main h2 {
 
 .note {
   margin: 1.25rem auto 0;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.15rem;
   color: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: .6rem .6rem;
 }
 
 /* ----- Buttons & links ------------------------------------------------ */
