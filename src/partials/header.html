@@ -40,3 +40,30 @@
     </div>
   </dialog>
 </header>
+<script>
+  // Swap the inline nav for the burger as soon as it stops fitting on one
+  // line, whatever the locale's label lengths. Runs before first paint and
+  // again on resize / font swap.
+  (function () {
+    var header = document.querySelector('.site-header');
+    var brand = header.querySelector('.brand');
+    var menu = header.querySelector('.site-header-menu');
+    if (!header || !brand || !menu) return;
+    header.classList.add('has-fit-check');
+    function check() {
+      var cs = getComputedStyle(header);
+      var inner = header.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      var gap = parseFloat(cs.columnGap) || 0;
+      var needed = brand.offsetWidth + gap + menu.offsetWidth;
+      header.classList.toggle('is-compact', needed > inner);
+    }
+    check();
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(check);
+      ro.observe(header); ro.observe(menu);
+    } else {
+      window.addEventListener('resize', check);
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(check);
+  })();
+</script>

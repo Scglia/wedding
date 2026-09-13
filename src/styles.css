@@ -133,7 +133,7 @@ textarea:focus-visible {
 
 .site-nav {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: baseline;
   justify-content: center;
   gap: 0.5rem 1.75rem;
@@ -149,6 +149,7 @@ textarea:focus-visible {
   color: var(--ink);
   text-decoration: none;
   padding-bottom: 0.35rem;
+  white-space: nowrap;
   transition: color 0.2s ease;
 }
 
@@ -294,12 +295,25 @@ textarea:focus-visible {
 .menu-panel .menu-langs a.active { color: var(--color-accent-700); }
 
 /* .site-header pages: nav + lang picker fit inline until the header runs
-   out of room, then swap to the same burger the welcome page always shows */
+   out of room, then swap to the same burger the welcome page always shows.
+   The header partial's script measures the inline menu and toggles
+   .is-compact — the inline menu never wraps, whatever the locale. While
+   compact, the menu stays laid out (absolute + invisible) so its natural
+   width can still be measured to decide when it fits again. */
 .site-header .menu-toggle { display: none; }
 
+.site-header.is-compact .site-header-menu {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.site-header.is-compact .menu-toggle { display: flex; }
+
+/* no-JS fallback */
 @media (max-width: 760px) {
-  .site-header .site-header-menu { display: none; }
-  .site-header .menu-toggle { display: flex; }
+  .site-header:not(.has-fit-check) .site-header-menu { display: none; }
+  .site-header:not(.has-fit-check) .menu-toggle { display: flex; }
 }
 
 /* ----- Hero (unboxed — the rules carry it) -------------------------- */
