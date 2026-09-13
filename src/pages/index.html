@@ -155,8 +155,10 @@
     </section>
 
     <!-- STORY — photo stacks alternating with text blocks. Photos are absolutely
-         positioned inside their stack (percentages of a 72vh box); edit the four
-         numbers in each comment to move/resize. Keep the .ph wrapper — it becomes
+         positioned inside their stack (a 1180:720 box, percentages of it); each
+         photo has only a width — its height follows the image's own aspect ratio,
+         so nothing is cropped. Edit the three numbers in each comment to
+         move/resize. Keep the .ph wrapper — it becomes
          a full-screen panel in the mobile feed. .ph.desktop-only photos are
          hidden from the mobile feed to keep it short. -->
     <div id="story">
@@ -166,11 +168,11 @@
         <div style="width:40px;height:1px;background:var(--color-accent);margin:var(--space-4) 0"></div>
         <p style="margin:0;max-width:560px;font-size:20px;line-height:1.7;text-wrap:pretty">{{caption_2018}}</p>
       </div><section data-screen-label="2018" style="padding:6vh 5vw 0">
-        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- 2018-1 — left:8% top:6% w:30% h:64% -->
-          <div class="ph" style="position:absolute;left:11%;top:6%;width:30%;height:64%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2018-1.jpg" alt="" loading="lazy"></div>
-          <!-- 2018-2 — left:42% top:30% w:44% h:54% -->
-          <div class="ph" style="position:absolute;left:39%;top:30%;width:44%;height:54%;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2018-2.jpg" alt="" loading="lazy"></div>
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;aspect-ratio:1180/720;margin:0 auto">
+          <!-- 2018-1 — left:11% top:6% w:30% -->
+          <div class="ph" style="position:absolute;left:11%;top:6%;width:30%;aspect-ratio:995/1327;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2018-1.jpg" alt="" loading="lazy"></div>
+          <!-- 2018-2 — left:39% top:30% w:44% -->
+          <div class="ph" style="position:absolute;left:39%;top:30%;width:44%;aspect-ratio:1493/1120;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2018-2.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -181,13 +183,13 @@
       </div>
 
       <section data-screen-label="2019" style="padding:0 5vw">
-        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- 2019-1 (desktop only) — left:2% top:10% w:24% h:54% -->
-          <div class="ph desktop-only" style="position:absolute;left:2%;top:10%;width:24%;height:54%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2019-1-desktop.jpg" alt="" loading="lazy"></div>
-          <!-- 2019-7 — left:30% top:34% w:38% h:48% -->
-          <div class="ph" style="position:absolute;left:30%;top:34%;width:38%;height:48%;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2019-7.jpg" alt="" loading="lazy"></div>
-          <!-- 2019-8 — left:64% top:6% w:26% h:58% -->
-          <div class="ph" style="position:absolute;left:64%;top:6%;width:26%;height:58%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2019-8.jpg" alt="" loading="lazy"></div>
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;aspect-ratio:1180/720;margin:0 auto">
+          <!-- 2019-1 (desktop only) — left:2% top:10% w:24% -->
+          <div class="ph desktop-only" style="position:absolute;left:2%;top:10%;width:24%;aspect-ratio:843/1120;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2019-1-desktop.jpg" alt="" loading="lazy"></div>
+          <!-- 2019-7 — left:30% top:34% w:38% -->
+          <div class="ph" style="position:absolute;left:30%;top:34%;width:38%;aspect-ratio:1328/995;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2019-7.jpg" alt="" loading="lazy"></div>
+          <!-- 2019-8 — left:64% top:6% w:26% -->
+          <div class="ph" style="position:absolute;left:64%;top:6%;width:26%;aspect-ratio:902/1203;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2019-8.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -198,15 +200,15 @@
       </div>
 
       <section data-screen-label="2020" style="padding:0 5vw">
-        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- 2020-2 (desktop only) — left:0% top:10% w:22% h:44% -->
-          <div class="ph desktop-only" style="position:absolute;left:0%;top:10%;width:22%;height:44%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2020-2-desktop.jpg" alt="" loading="lazy"></div>
-          <!-- 2020-5 (desktop only) — left:20% top:38% w:24% h:46% -->
-          <div class="ph desktop-only" style="position:absolute;left:20%;top:38%;width:24%;height:46%;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2020-5-desktop.jpg" alt="" loading="lazy"></div>
-          <!-- 2020-6 — left:48% top:6% w:30% h:40% -->
-          <div class="ph" style="position:absolute;left:48%;top:6%;width:30%;height:40%;z-index:1;background:var(--color-neutral-300)"><img src="/photos/2020-6.jpg" alt="" loading="lazy"></div>
-          <!-- 2020-10 — left:68% top:34% w:24% h:50% -->
-          <div class="ph" style="position:absolute;left:68%;top:34%;width:24%;height:50%;z-index:2;background:var(--color-neutral-200)"><img src="/photos/2020-10.jpg" alt="" loading="lazy"></div>
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;aspect-ratio:1180/720;margin:0 auto">
+          <!-- 2020-2 (desktop only) — left:0% top:10% w:22% -->
+          <div class="ph desktop-only" style="position:absolute;left:0%;top:10%;width:22%;aspect-ratio:684/912;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2020-2-desktop.jpg" alt="" loading="lazy"></div>
+          <!-- 2020-5 (desktop only) — left:20% top:38% w:24% -->
+          <div class="ph desktop-only" style="position:absolute;left:20%;top:38%;width:24%;aspect-ratio:715/953;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2020-5-desktop.jpg" alt="" loading="lazy"></div>
+          <!-- 2020-6 — left:48% top:6% w:30% -->
+          <div class="ph" style="position:absolute;left: 37%;top:6%;width:39%;aspect-ratio:1105/829;z-index:1;background:var(--color-neutral-300)"><img src="/photos/2020-6.jpg" alt="" loading="lazy"></div>
+          <!-- 2020-10 — left:68% top:34% w:24% -->
+          <div class="ph" style="position:absolute;left:68%;top:34%;width:24%;aspect-ratio:791/1055;z-index:2;background:var(--color-neutral-200)"><img src="/photos/2020-10.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -217,13 +219,13 @@
       </div>
 
       <section data-screen-label="2021" style="padding:0 5vw">
-        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- 2021-1 — left:2% top:8% w:32% h:42% -->
-          <div class="ph" style="position:absolute;left:2%;top:8%;width:35%;height:65%;z-index:1;background:var(--color-neutral-300)"><img src="/photos/2021-1.jpg" alt="" loading="lazy"></div>
-          <!-- 2021-2 (desktop only) — left:28% top:36% w:24% h:48% -->
-          <div class="ph desktop-only" style="position:absolute;left:28%;top:36%;width:24%;height:48%;z-index:2;background:var(--color-neutral-200)"><img src="/photos/2021-2-desktop.jpg" alt="" loading="lazy" style="object-position:50% 30%"></div>
-          <!-- 2021-3 — left:56% top:12% w:34% h:44% -->
-          <div class="ph" style="position:absolute;left:56%;top:12%;width:34%;height:44%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2021-3.jpg" alt="" loading="lazy"></div>
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;aspect-ratio:1180/720;margin:0 auto">
+          <!-- 2021-1 — left:2% top:8% w:35% -->
+          <div class="ph" style="position:absolute;left:2%;top:8%;width:35%;aspect-ratio:1161/871;z-index:1;background:var(--color-neutral-300)"><img src="/photos/2021-1.jpg" alt="" loading="lazy"></div>
+          <!-- 2021-2 (desktop only) — left:28% top:36% w:24% -->
+          <div class="ph desktop-only" style="position:absolute;left:28%;top:36%;width:24%;aspect-ratio:746/995;z-index:2;background:var(--color-neutral-200)"><img src="/photos/2021-2-desktop.jpg" alt="" loading="lazy"></div>
+          <!-- 2021-3 — left:56% top:12% w:28% -->
+          <div class="ph" style="position:absolute;left:56%;top:12%;width:28%;aspect-ratio:802/1069;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2021-3.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -234,11 +236,11 @@
       </div>
 
       <section data-screen-label="2022" style="padding:0 5vw 8vh">
-        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- 2022-2 — left:12% top:6% w:22% h:66% -->
-          <div class="ph" style="position:absolute;left:12%;top:6%;width:22%;height:66%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2022-2.jpg" alt="" loading="lazy"></div>
-          <!-- 2022-3 — left:40% top:12% w:26% h:80% -->
-          <div class="ph" style="position:absolute;left:40%;top:12%;width:26%;height:80%;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2022-3.jpg" alt="" loading="lazy" style="object-position:50% 20%"></div>
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;aspect-ratio:1180/720;margin:0 auto">
+          <!-- 2022-2 — left:12% top:6% w:22% -->
+          <div class="ph" style="position:absolute;left:12%;top:6%;width:22%;aspect-ratio:791/1406;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2022-2.jpg" alt="" loading="lazy"></div>
+          <!-- 2022-3 — left:38% top:12% w:30% -->
+          <div class="ph" style="position:absolute;left:38%;top:12%;width:30%;aspect-ratio:1244/1659;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2022-3.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -249,11 +251,11 @@
       </div>
 
       <section data-screen-label="2023" style="padding:0 5vw">
-        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- 2023-1 — left:10% top:8% w:30% h:60% -->
-          <div class="ph" style="position:absolute;left:10%;top:8%;width:30%;height:60%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2023-1.jpg" alt="" loading="lazy"></div>
-          <!-- 2023-2 — left:44% top:26% w:28% h:60% -->
-          <div class="ph" style="position:absolute;left:44%;top:26%;width:28%;height:60%;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2023-2.jpg" alt="" loading="lazy"></div>
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;aspect-ratio:1180/720;margin:0 auto">
+          <!-- 2023-1 — left:10% top:8% w:30% -->
+          <div class="ph" style="position:absolute;left:10%;top:8%;width:30%;aspect-ratio:933/1244;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2023-1.jpg" alt="" loading="lazy"></div>
+          <!-- 2023-2 — left:44% top:26% w:28% -->
+          <div class="ph" style="position:absolute;left:44%;top:26%;width:28%;aspect-ratio:829/1244;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2023-2.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -264,11 +266,11 @@
       </div>
 
       <section data-screen-label="2024" style="padding:0 5vw">
-        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- 2024-2 — left:8% top:6% w:30% h:62% -->
-          <div class="ph" style="position:absolute;left:8%;top:6%;width:30%;height:62%;z-index:1;background:var(--color-neutral-300)"><img src="/photos/2024-2.jpg" alt="" loading="lazy"></div>
-          <!-- 2024-4 — left:42% top:32% w:46% h:50% -->
-          <div class="ph" style="position:absolute;left:42%;top:32%;width:46%;height:50%;z-index:2;background:var(--color-neutral-200)"><img src="/photos/2024-4.jpg" alt="" loading="lazy"></div>
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;aspect-ratio:1180/720;margin:0 auto">
+          <!-- 2024-2 — left:8% top:6% w:30% -->
+          <div class="ph" style="position:absolute;left:8%;top:6%;width:30%;aspect-ratio:964/1285;z-index:1;background:var(--color-neutral-300)"><img src="/photos/2024-2.jpg" alt="" loading="lazy"></div>
+          <!-- 2024-4 — left:42% top:32% w:46% -->
+          <div class="ph" style="position:absolute;left:42%;top:32%;width:46%;aspect-ratio:1556/1037;z-index:2;background:var(--color-neutral-200)"><img src="/photos/2024-4.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -279,13 +281,13 @@
       </div>
 
       <section data-screen-label="2025" style="padding:0 5vw">
-        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- 2025-1 — left:2% top:8% w:26% h:54% -->
-          <div class="ph" style="position:absolute;left:2%;top:8%;width:26%;height:54%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2025-1.jpg" alt="" loading="lazy"></div>
-          <!-- 2025-3 — left:34% top:24% w:22% h:70% -->
-          <div class="ph" style="position:absolute;left:34%;top:24%;width:22%;height:70%;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2025-3.jpg" alt="" loading="lazy" style="object-position:50% 30%"></div>
-          <!-- 2025-4 — left:62% top:6% w:26% h:54% -->
-          <div class="ph" style="position:absolute;left:62%;top:6%;width:26%;height:54%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2025-4.jpg" alt="" loading="lazy"></div>
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;aspect-ratio:1180/720;margin:0 auto">
+          <!-- 2025-1 — left:2% top:8% w:26% -->
+          <div class="ph" style="position:absolute;left:2%;top:8%;width:26%;aspect-ratio:840/1120;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2025-1.jpg" alt="" loading="lazy"></div>
+          <!-- 2025-3 — left:32% top:24% w:26% -->
+          <div class="ph" style="position:absolute;left:32%;top:24%;width:26%;aspect-ratio:1089/1452;z-index:2;background:var(--color-neutral-300)"><img src="/photos/2025-3.jpg" alt="" loading="lazy"></div>
+          <!-- 2025-4 — left:62% top:6% w:26% -->
+          <div class="ph" style="position:absolute;left:62%;top:6%;width:26%;aspect-ratio:840/1120;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2025-4.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
@@ -296,13 +298,13 @@
       </div>
 
       <section data-screen-label="2026" style="padding:0 5vw 12vh">
-        <div class="stack" style="position:relative;width:100%;max-width:1180px;height:72vh;margin:0 auto">
-          <!-- 2026-1 — left:2% top:10% w:26% h:54% -->
-          <div class="ph" style="position:absolute;left:2%;top:10%;width:26%;height:54%;z-index:1;background:var(--color-neutral-300)"><img src="/photos/2026-1.jpg" alt="" loading="lazy"></div>
-          <!-- 2026-2 — left:28% top:30% w:22% h:66% -->
-          <div class="ph" style="position:absolute;left:28%;top:30%;width:22%;height:66%;z-index:2;background:var(--color-neutral-200)"><img src="/photos/2026-2.jpg" alt="" loading="lazy" style="object-position:50% 30%"></div>
-          <!-- 2026-3 — left:58% top:10% w:34% h:46% -->
-          <div class="ph" style="position:absolute;left:58%;top:10%;width:34%;height:46%;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2026-3.jpg" alt="" loading="lazy"></div>
+        <div class="stack" style="position:relative;width:100%;max-width:1180px;aspect-ratio:1180/720;margin:0 auto">
+          <!-- 2026-1 — left:2% top:10% w:26% -->
+          <div class="ph" style="position:absolute;left:2%;top:10%;width:26%;aspect-ratio:840/1120;z-index:1;background:var(--color-neutral-300)"><img src="/photos/2026-1.jpg" alt="" loading="lazy"></div>
+          <!-- 2026-2 — left:28% top:30% w:26% -->
+          <div class="ph" style="position:absolute;left:62%;top:19%;width:26%;aspect-ratio:1026/1368;z-index:2;background:var(--color-neutral-200)"><img src="/photos/2026-2.jpg" alt="" loading="lazy"></div>
+          <!-- 2026-3 — left:58% top:10% w:34% -->
+          <div class="ph" style="position:absolute;left:30%;top:41%;width:34%;aspect-ratio:1272/954;z-index:1;background:var(--color-neutral-200)"><img src="/photos/2026-3.jpg" alt="" loading="lazy"></div>
         </div>
       </section>
 
