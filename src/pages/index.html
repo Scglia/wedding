@@ -408,10 +408,13 @@
       }
 
       function measure() {
+        // #story is transformed (will-change), so it is the offsetParent of
+        // its sections: add its own page offset to get document positions
+        var base = story.offsetTop;
         anchors = yearSections.map(function (sec) {
           var cap = sec.previousElementSibling;
-          var start = cap && cap.classList.contains('cap') ? cap.offsetTop : sec.offsetTop;
-          var end = sec.offsetTop + sec.offsetHeight;
+          var start = base + (cap && cap.classList.contains('cap') ? cap.offsetTop : sec.offsetTop);
+          var end = base + sec.offsetTop + sec.offsetHeight;
           return { year: Number(sec.dataset.screenLabel), start: start, end: end, center: (start + end) / 2 };
         });
         anchors.push({ year: 2027, start: finale.offsetTop, end: finale.offsetTop + finale.offsetHeight, center: finale.offsetTop + window.innerHeight / 2 });
