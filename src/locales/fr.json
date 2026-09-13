@@ -84,11 +84,13 @@
   ],
   "travel_heading": "Accès & Hébergement",
   "getting_there_heading": "Se Rendre au Château",
+  "travel_intro": "Le domaine est niché dans la magnifique région des Préalpes françaises, entouré de lacs et de montagnes, idéale pour l’exploration. Au-delà du domaine, il y a beaucoup à découvrir : passez une journée au bord du lac, partez en randonnée ou visitez de charmants villages historiques.",
   "travel_address": "1290 Hameau de Méouilles, 04170 Saint-André-les-Alpes, France",
   "travel_modes": [
     { "title": "En avion", "desc": "Les aéroports de Nice Côte d'Azur et de Marseille Provence sont tous deux à environ 2h de route du château." },
     { "title": "En train", "desc": "La gare d'Aix-en-Provence TGV est à environ 2h de route du château." }
   ],
+  "travel_car_note": "Nous vous recommandons vivement d’avoir une voiture. Pour les invités qui arrivent en avion ou en train, nous pouvons organiser une navette ou un covoiturage : merci de nous indiquer vos plans de voyage dans votre RSVP.",
   "stay_heading": "Où Loger",
   "stay_note": "Le château lui-même ne peut accueillir que la famille proche, mais il y a de charmantes adresses à proximité. Réservez tôt — juin est la haute saison en Provence.",
   "stay_options": [

@@ -84,11 +84,13 @@
   ],
   "travel_heading": "Doprava a Ubytování",
   "getting_there_heading": "Jak se Dostat na Zámek",
+  "travel_intro": "Zámek se nachází v krásné oblasti francouzských Předalp, obklopený jezery a horami, které přímo lákají k objevování. I mimo zámek je toho spousta k vidění: můžete strávit den u jezera, vyrazit na túru nebo navštívit půvabné historické vesničky.",
   "travel_address": "1290 Hameau de Méouilles, 04170 Saint-André-les-Alpes, Francie",
   "travel_modes": [
     { "title": "Letadlem", "desc": "Letiště Nice Côte d'Azur i letiště Marseille Provence jsou od zámku vzdálená asi 2 hodiny jízdy autem." },
     { "title": "Vlakem", "desc": "Nádraží Aix-en-Provence TGV je od zámku vzdálené asi 2 hodiny jízdy autem." }
   ],
+  "travel_car_note": "Vřele doporučujeme mít k dispozici auto. Hostům, kteří přiletí letadlem nebo přijedou vlakem, můžeme zařídit vyzvednutí nebo spolujízdu, proto nám prosím v potvrzení účasti sdělte své cestovní plány.",
   "stay_heading": "Kde se Ubytovat",
   "stay_note": "Na samotném zámku může bydlet pouze nejbližší rodina, v okolí je ale řada půvabných míst. Rezervujte včas — červen je v Provence hlavní sezóna.",
   "stay_options": [

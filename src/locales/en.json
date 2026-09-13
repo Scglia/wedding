@@ -84,11 +84,13 @@
   ],
   "travel_heading": "Travel & Stay",
   "getting_there_heading": "Getting to the Château",
+  "travel_intro": "The venue is nestled in the beautiful French Prealps region, surrounded by lakes and mountains, perfect for exploration. Beyond the venue, there’s plenty to discover: you can spend a day by the lake, go for a hike, or visit charming historic villages.",
   "travel_address": "1290 Hameau de Méouilles, 04170 Saint-André-les-Alpes, France",
   "travel_modes": [
     { "title": "By plane", "desc": "Nice Côte d'Azur Airport and Marseille Provence Airport are both about a 2-hour drive from the château." },
     { "title": "By train", "desc": "Aix-en-Provence TGV station is about a 2-hour drive from the château." }
   ],
+  "travel_car_note": "We highly recommend having a car. For guests arriving by plane or train, we can arrange a pick-up or ride-sharing, so please share your travel plans in your RSVP.",
   "stay_heading": "Where to Stay",
   "stay_note": "The château itself can only accommodate close family, but there are lovely places nearby. Book early — June is high season in Provence.",
   "stay_options": [
