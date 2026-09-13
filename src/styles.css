@@ -310,6 +310,16 @@ textarea:focus-visible {
 
 .site-header.is-compact .menu-toggle { display: flex; }
 
+/* inside the sticky header the burger sits in the bar itself, vertically
+   centred on the brand (the welcome page keeps it fixed top-right) */
+.site-header .menu-toggle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 1.5rem;
+  margin: auto 0;
+}
+
 /* no-JS fallback */
 @media (max-width: 760px) {
   .site-header:not(.has-fit-check) .site-header-menu { display: none; }
