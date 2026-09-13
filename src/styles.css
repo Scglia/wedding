@@ -508,10 +508,7 @@ main h2 {
 }
 
 .program-note {
-  padding-top: 0.5rem;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.15rem;
+  margin-top: 3.25rem !important;
 }
 
 .schedule .event strong {
