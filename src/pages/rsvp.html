@@ -22,10 +22,27 @@
   <main>
     <section class="card">
       <p class="lead">{{rsvp_intro}}</p>
-      <form data-netlify="true" name="rsvp" method="POST" netlify-honeypot="bot-field">
+      <!-- Netlify Forms reads its schema (field names and labels) from this
+           static form at build time. It is English-only so labels in the
+           dashboard don't depend on which locale page was parsed last. The
+           visible form below posts to it via fetch with form-name="rsvp". -->
+      <form name="rsvp" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true">
+        <label>Name <input type="text" name="name"></label>
+        <label>Email <input type="email" name="email"></label>
+        <label>Attending <input type="text" name="attending"></label>
+        <label>Adults <input type="text" name="adults"></label>
+        <label>Children <input type="text" name="children"></label>
+        <label>Child ages <input type="text" name="child_ages"></label>
+        <label>Transportation <input type="text" name="transportation"></label>
+        <label>Dietary restrictions <textarea name="dietary"></textarea></label>
+        <label>Song request <input type="text" name="song"></label>
+        <label>Message <textarea name="message"></textarea></label>
+        <label>Don't fill this out <input type="text" name="bot-field"></label>
+      </form>
+
+      <form id="rsvp-form" method="POST">
         <input type="hidden" name="form-name" value="rsvp">
         <input type="hidden" name="child_ages" id="child-ages-value">
-        <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
         <div class="field">
           <label for="name">{{name_label}}</label>
           <input type="text" id="name" name="name" autocomplete="name" required>
@@ -105,6 +122,8 @@
           <label for="message">{{message_label}} <span class="hint">{{optional_hint}}</span></label>
           <textarea id="message" name="message"></textarea>
         </div>
+
+        <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
 
         <p class="form-error" id="rsvp-error" hidden>{{submit_error}}</p>
 
@@ -255,7 +274,7 @@
 
       /* ----- Post-submit confirmation ----- */
 
-      var form = document.querySelector("form");
+      var form = document.getElementById("rsvp-form");
       var confirmation = document.getElementById("rsvp-confirmation");
       var confirmationMessage = document.getElementById("confirmation-message");
       var intro = document.querySelector(".card > .lead");
