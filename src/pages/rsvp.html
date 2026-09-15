@@ -22,7 +22,10 @@
   <main>
     <section class="card">
       <p class="lead">{{rsvp_intro}}</p>
-      <form data-netlify="true" name="rsvp">
+      <form data-netlify="true" name="rsvp" method="POST" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="rsvp">
+        <input type="hidden" name="child_ages" id="child-ages-value">
+        <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
         <div class="field">
           <label for="name">{{name_label}}</label>
           <input type="text" id="name" name="name" autocomplete="name" required>
@@ -103,6 +106,8 @@
           <textarea id="message" name="message"></textarea>
         </div>
 
+        <p class="form-error" id="rsvp-error" hidden>{{submit_error}}</p>
+
         <button type="submit" id="submit-button">{{submit_button}}</button>
       </form>
 
@@ -156,7 +161,6 @@
           var select = document.createElement("select");
           select.className = "blank";
           select.id = "child-age-" + i;
-          select.name = "child_age_" + i;
           select.setAttribute("aria-label", CHILD_AGE_LABEL + " " + i);
 
           for (var j = 0; j < CHILD_AGE_OPTIONS.length; j++) {
@@ -255,12 +259,11 @@
       var confirmation = document.getElementById("rsvp-confirmation");
       var confirmationMessage = document.getElementById("confirmation-message");
       var intro = document.querySelector(".card > .lead");
+      var errorNote = document.getElementById("rsvp-error");
+      var childAgesValue = document.getElementById("child-ages-value");
+      var GUEST_FIELDS = ["adults", "children", "child_ages", "transportation", "dietary", "song"];
 
-      form.addEventListener("submit", function (event) {
-        /* No backend yet — replace with a real POST when one exists. */
-        event.preventDefault();
-
-        var accepted = form.elements.attending.value === "yes";
+      function showConfirmation(accepted) {
         confirmationMessage.textContent = accepted ? CONFIRM_TEXT.yes : CONFIRM_TEXT.no;
 
         form.hidden = true;
@@ -277,6 +280,38 @@
             confettiBurst(confirmation.querySelector(".ornament"));
           }, 450);
         }
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var accepted = form.elements.attending.value === "yes";
+
+        /* Netlify only stores fields declared in the static HTML, so the
+           dynamic child-age selects are folded into one hidden field. */
+        childAgesValue.value = [].map.call(childAges.querySelectorAll("select"), function (s) {
+          return CHILD_AGE_OPTIONS[parseInt(s.value, 10)] || "";
+        }).join(", ");
+
+        var data = new FormData(form);
+        if (!accepted) {
+          GUEST_FIELDS.forEach(function (name) { data.delete(name); });
+        }
+
+        errorNote.hidden = true;
+        submitButton.disabled = true;
+
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(data).toString()
+        }).then(function (response) {
+          if (!response.ok) throw new Error("Netlify responded with " + response.status);
+          showConfirmation(accepted);
+        }).catch(function () {
+          submitButton.disabled = false;
+          errorNote.hidden = false;
+        });
       });
     })();
   </script>

@@ -133,6 +133,7 @@
   "submit_button": "Odeslat",
   "submit_button_yes": "Odeslat s radostí!",
   "submit_button_no": "Odeslat",
+  "submit_error": "Při odesílání odpovědi se něco pokazilo. Zkuste to prosím znovu, nebo nám napište přímo.",
   "confirm_heading": "Děkujeme!",
   "confirm_body_yes": "Vaše odpověď je na cestě — těšíme se, až to spolu oslavíme pod platany.",
   "confirm_body_no": "Vaše odpověď je na cestě. Budete nám chybět — děkujeme, že jste dali vědět.",

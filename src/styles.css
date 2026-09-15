@@ -803,6 +803,15 @@ fieldset {
   color: var(--gold-deep);
 }
 
+.form-error {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  text-align: center;
+  color: #a63d2a;
+}
+
 /* ----- Fill-in-the-blanks sentences ----------------------------------- */
 
 .sentence {

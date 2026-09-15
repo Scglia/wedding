@@ -133,6 +133,7 @@
   "submit_button": "Envoyer",
   "submit_button_yes": "Envoyer notre joie !",
   "submit_button_no": "Envoyer",
+  "submit_error": "Une erreur s'est produite lors de l'envoi de votre réponse. Veuillez réessayer, ou écrivez-nous directement.",
   "confirm_heading": "Merci !",
   "confirm_body_yes": "Votre réponse est en route — nous avons hâte de célébrer avec vous sous les platanes.",
   "confirm_body_no": "Votre réponse est en route. Vous nous manquerez — merci de nous avoir prévenus.",
