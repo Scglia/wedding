@@ -40,7 +40,7 @@
   "open_invitation": "Ouvrir l'invitation",
 
   "program_heading": "Le Programme",
-  "program_intro": "Cinq jours de fête au château",
+  "program_intro": "Quatre jours de fête au château",
   "program_note": "Nous prévoyons une belle randonnée en groupe l’un des jours et partagerons une liste de nos activités locales préférées à l’approche du week-end. Restez à l’affût des nouveautés !",
   "program_days": [
     {
@@ -63,8 +63,8 @@
       "tagline": "Le Jour du Mariage",
       "events": [
         { "time": "", "title": "Cérémonie", "desc": "Dans les jardins, sous les platanes." },
-        { "time": "", "title": "Cocktail", "desc": "Champagne et canapés sur la pelouse." },
-        { "time": "", "title": "Dîner", "desc": "Dîner assis dans l'orangerie." },
+        { "time": "", "title": "Cocktail", "desc": "Champagne sur la pelouse." },
+        { "time": "", "title": "Dîner", "desc": "Rejoignez-nous pour un buffet en soirée." },
         { "time": "", "title": "Soirée dansante", "desc": "Jusqu'au bout de la nuit." }
       ]
     },
@@ -80,7 +80,7 @@
       "name": "Lundi",
       "tagline": "Départ",
       "events": [
-        { "time": "10h00", "title": "Restitution des clés", "desc": "Bon retour — merci d'être venus." }
+        { "time": "10h00", "title": "Restitution des clés", "desc": "Bon retour. Merci d'être venus." }
       ]
     }
   ],

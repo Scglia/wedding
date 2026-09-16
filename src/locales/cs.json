@@ -40,7 +40,7 @@
   "open_invitation": "Otevřít pozvánku",
 
   "program_heading": "Program",
-  "program_intro": "Pět dní oslav na zámku",
+  "program_intro": "Čtyři dny oslav na zámku",
   "program_note": "Na jeden z dní plánujeme společnou túru s krásnými výhledy a s blížícím se víkendem se s vámi podělíme o seznam našich oblíbených místních aktivit. Sledujte novinky!",
   "program_days": [
     {
@@ -63,8 +63,8 @@
       "tagline": "Svatební den",
       "events": [
         { "time": "", "title": "Obřad", "desc": "V zahradách, pod platany." },
-        { "time": "", "title": "Koktejl", "desc": "Šampaňské a kanapky na trávníku." },
-        { "time": "", "title": "Večeře", "desc": "Slavnostní večeře v oranžerii." },
+        { "time": "", "title": "Koktejl", "desc": "Šampaňské na trávníku." },
+        { "time": "", "title": "Večeře", "desc": "Přidejte se k nám na večerní raut." },
         { "time": "", "title": "Tanec", "desc": "Až do časných ranních hodin." }
       ]
     },
@@ -80,7 +80,7 @@
       "name": "Pondělí",
       "tagline": "Odjezd",
       "events": [
-        { "time": "10:00", "title": "Předání klíčů", "desc": "Šťastnou cestu domů — děkujeme, že jste přijeli." }
+        { "time": "10:00", "title": "Předání klíčů", "desc": "Šťastnou cestu domů. Děkujeme, že jste přijeli." }
       ]
     }
   ],

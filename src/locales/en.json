@@ -40,7 +40,7 @@
   "open_invitation": "Open the invitation",
 
   "program_heading": "The Programme",
-  "program_intro": "Five days of celebration at the château",
+  "program_intro": "Four days of celebration at the château",
   "program_note": "We’re planning a scenic group hike for one of the days and will be sharing a list of our favorite local activities as the weekend gets closer. Keep an eye out for updates!",
   "program_days": [
     {
@@ -63,8 +63,8 @@
       "tagline": "The Wedding Day",
       "events": [
         { "time": "", "title": "Ceremony", "desc": "In the gardens, beneath the plane trees." },
-        { "time": "", "title": "Cocktail hour", "desc": "Champagne and canapés on the lawn." },
-        { "time": "", "title": "Dinner", "desc": "A seated dinner in the orangery." },
+        { "time": "", "title": "Cocktail hour", "desc": "Champagne on the lawn." },
+        { "time": "", "title": "Dinner", "desc": "Join us for an evening buffet." },
         { "time": "", "title": "Dancing", "desc": "Until the small hours." }
       ]
     },
@@ -80,7 +80,7 @@
       "name": "Monday",
       "tagline": "Departure",
       "events": [
-        { "time": "10:00", "title": "Handing back the keys", "desc": "Safe travels home — thank you for coming." }
+        { "time": "10:00", "title": "Handing back the keys", "desc": "Safe travels home. Thank you for coming." }
       ]
     }
   ],
