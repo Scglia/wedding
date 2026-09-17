@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import Handlebars from "handlebars";
+import { execFileSync } from "child_process";
 
 // 1. Configuration
 const srcDir = "./src";
@@ -77,6 +78,55 @@ if (fs.existsSync(stylesPath)) {
 const publicDir = `${srcDir}/public`;
 if (fs.existsSync(publicDir)) {
   fs.cpSync(publicDir, distDir, { recursive: true });
+}
+
+// 4b. Modern image formats
+// Every JPEG under src/public gets an AVIF and a WebP sibling in dist, so pages
+// can offer them through <picture> and fall back to the original JPEG.
+// Conversion uses ImageMagick (`brew install imagemagick`); if it isn't
+// installed the build still succeeds and browsers just use the JPEG.
+// Outputs are skipped when they are newer than their source, so the watcher
+// rebuild stays fast.
+const imageFormats = [
+  { ext: "avif", args: ["-quality", "60"] },
+  { ext: "webp", args: ["-quality", "80"] },
+];
+
+function walk(dir) {
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const full = path.join(dir, entry.name);
+    return entry.isDirectory() ? walk(full) : [full];
+  });
+}
+
+function hasMagick() {
+  try {
+    execFileSync("magick", ["-version"], { stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+if (fs.existsSync(publicDir)) {
+  if (hasMagick()) {
+    let converted = 0;
+    walk(publicDir)
+      .filter((file) => /\.jpe?g$/i.test(file))
+      .forEach((source) => {
+        const rel = path.relative(publicDir, source);
+        const sourceTime = fs.statSync(source).mtimeMs;
+        imageFormats.forEach(({ ext, args }) => {
+          const target = path.join(distDir, rel.replace(/\.jpe?g$/i, `.${ext}`));
+          if (fs.existsSync(target) && fs.statSync(target).mtimeMs > sourceTime) return;
+          execFileSync("magick", [source, "-strip", ...args, target], { stdio: "inherit" });
+          converted++;
+        });
+      });
+    if (converted) console.log(`🖼  Converted ${converted} image(s) to AVIF/WebP`);
+  } else {
+    console.warn("⚠️  ImageMagick (magick) not found — skipping AVIF/WebP conversion");
+  }
 }
 
 // 5. Root redirect
