@@ -81,12 +81,14 @@ if (fs.existsSync(publicDir)) {
 }
 
 // 4b. Modern image formats
-// Every JPEG under src/public gets an AVIF and a WebP sibling in dist, so pages
-// can offer them through <picture> and fall back to the original JPEG.
-// Conversion uses ImageMagick (`brew install imagemagick`); if it isn't
-// installed the build still succeeds and browsers just use the JPEG.
-// Outputs are skipped when they are newer than their source, so the watcher
-// rebuild stays fast.
+// Every JPEG under src/public gets an AVIF and a WebP sibling written next to
+// it, so pages can offer them through <picture> and fall back to the JPEG.
+// The generated files are committed: Netlify's build image has no ImageMagick,
+// so it only copies what's already there. Run the build locally after adding
+// or replacing a photo and commit the new .avif/.webp alongside it.
+// Conversion needs ImageMagick (`brew install imagemagick`); without it the
+// build still succeeds. Outputs newer than their source are skipped, so the
+// watcher rebuild stays fast.
 const imageFormats = [
   { ext: "avif", args: ["-quality", "60"] },
   { ext: "webp", args: ["-quality", "80"] },
@@ -114,12 +116,12 @@ if (fs.existsSync(publicDir)) {
     walk(publicDir)
       .filter((file) => /\.jpe?g$/i.test(file))
       .forEach((source) => {
-        const rel = path.relative(publicDir, source);
         const sourceTime = fs.statSync(source).mtimeMs;
         imageFormats.forEach(({ ext, args }) => {
-          const target = path.join(distDir, rel.replace(/\.jpe?g$/i, `.${ext}`));
+          const target = source.replace(/\.jpe?g$/i, `.${ext}`);
           if (fs.existsSync(target) && fs.statSync(target).mtimeMs > sourceTime) return;
           execFileSync("magick", [source, "-strip", ...args, target], { stdio: "inherit" });
+          fs.copyFileSync(target, path.join(distDir, path.relative(publicDir, target)));
           converted++;
         });
       });
