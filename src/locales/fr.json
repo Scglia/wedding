@@ -72,8 +72,7 @@
       "name": "Dimanche",
       "tagline": "Brunch & Au revoir",
       "events": [
-        { "time": "fin de matinée", "title": "Brunch", "desc": "La fin officieuse des festivités." },
-        { "time": "après-midi", "title": "Rangement", "desc": "Nous remettrons le domaine en ordre dans l'après-midi." }
+        { "time": "fin de matinée", "title": "Brunch", "desc": "La fin officieuse des festivités." }
       ]
     },
     {
@@ -101,7 +100,7 @@
     { "name": "Auberge de la Fontaine", "distance": "15 min en voiture", "desc": "Des chambres simples et abordables au-dessus d'un restaurant de village." }
   ],
   "rsvp_heading": "Merci de Répondre",
-  "rsvp_intro": "Nous avons hâte de faire la fête avec vous. Merci de nous dire si vous pourrez être des nôtres avant le 30-10-2026.",
+  "rsvp_intro": "Nous avons hâte de partager ce moment avec vous. Merci de nous dire si vous pourrez être des nôtres avant le 30-10-2026.",
   "name_label": "Votre Nom",
   "email_label": "Adresse E-mail",
   "attending_label": "Serez-vous présent(e) ?",
@@ -135,8 +134,8 @@
   "submit_button_no": "Envoyer",
   "submit_error": "Une erreur est survenue lors de l'envoi de votre réponse. Merci de réessayer, ou écrivez-nous directement.",
   "confirm_heading": "Merci !",
-  "confirm_body_yes": "Votre réponse est en route. Nous avons hâte de faire la fête avec vous.",
-  "confirm_body_no": "Votre réponse est en route. Vous nous manquerez. Merci de nous avoir prévenus.",
+  "confirm_body_yes": "Votre réponse est en route. Nous avons hâte de partager ce moment avec vous.",
+  "confirm_body_no": "Votre réponse est en route. Vous nous manquerez beaucoup. Si vos plans changent, cette page vous attendra.",
   "rsvp_link": "Répondre",
   "home_link": "Retour à l'invitation"
 }

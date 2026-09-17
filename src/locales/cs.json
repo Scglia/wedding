@@ -21,12 +21,12 @@
   "welcome_place_venue": "Château de Meouilles",
   "welcome_scroll": "Posouvejte",
   "caption_2018": "Novoroční polibek, který neplánovaně přerostl v lásku na celý život. Rok vztahu na dálku a zbytek už je historie.",
-  "caption_2019": "Cesty blízko i daleko, objevování toho, kým vlastně jsme a krásné poznání, že svého člověka pro život už dávno máme.",
+  "caption_2019": "Toulali jsme se světem i za humny, abychom v každém kilometru kousek po kousku poznávali sami sebe. A nakonec tiše pochopili, že ten nejkrásnější domov už dávno máme jeden v druhém.",
   "caption_2020": "Karanténa nás zkoušela, my jsme vydrželi a byli taky dostateční blázni na to, abychom si do toho všeho ještě pořídili dům.",
   "caption_2021": "Navzdory všem lockdownům jsme si uživali život. Cestovali za oblíbenou hudbou, poznávali nová zákoutí a tvořili si zázemí, do kterého byla radost se vracet.",
   "caption_2022": "Nejdříve přišel dům, potom kočka a nakonec Oli. Kousek našeho srdce, který teď kráčí světem. Náš poklidný život se od základu proměnil a my zjistili, jak nekonečně moc dokáže láska ještě vyrůst.",
-  "caption_2023": "DMíň spánku, o to víc lásky a učení za pochodu. Rok plný velkých milníků a zjištění, že ten nejlepší tým, jaký jsme kdy vytvořili, je právě tahle naše malá tříčlenná rodina.",
-  "caption_2024": "Svatební hosté na plný úvazek. Rok na cestách, slavení velkých dnů všech kolem a vědomí, že ten náš už čeká hned za rohem.",
+  "caption_2023": "Méně spánku, o to plnější srdce a učení za pochodu. Tento rok byl rokem velkých milníků i hřejivého zjištění, že ten nejlepší tým na světě tvoříme právě my tři.",
+  "caption_2024": "Svatební hosté na plný úvazek. Rok na cestách slavení velkých dnů našich blízkých, protkaný radostí, že ten náš vlastní už netrpělivě přešlapuje za rohem.",
   "caption_2025": "Malá změna plánu! Krásná odbočka před oltářem: rok 2025 nám nadělil rostoucí bříško a zjištění, že naše štěstí může růst ještě dál.",
   "caption_2026": "Konečně se vyslovil, po téměř deseti letech ve zkušební lhůtě. A s příchodem Kimiho zapadl na své místo i poslední dílek skládačky. Naše rodina je teď celá a nesmírně se těšíme, až společně s vámi oslavíme nejen tuhle naši cestu, ale i všechno to nekonečné štěstí, které nás ještě čeká.",
   "invited_kicker": "Jste srdečně zváni",
@@ -41,7 +41,7 @@
 
   "program_heading": "Program",
   "program_intro": "Čtyři dny oslav na zámku",
-  "program_note": "Na jeden z dní plánujeme společnou túru s krásnými výhledy a s blížícím se víkendem se s vámi podělíme o seznam našich oblíbených místních aktivit. Sledujte novinky!",
+  "program_note": "Na jeden ze dnů plánujeme společný výšlap s parádními výhledy. S blížícím se termínem se s vámi podělíme o naše oblíbené tipy, co v okolí podniknout, brzy se ozveme s podrobnostmi.",
   "program_days": [
     {
       "name": "Čtvrtek",
@@ -72,8 +72,7 @@
       "name": "Neděle",
       "tagline": "Brunch a loučení",
       "events": [
-        { "time": "pozdní dopoledne", "title": "Brunch", "desc": "Neformální konec oslav." },
-        { "time": "odpoledne", "title": "Úklid", "desc": "Odpoledne budeme uklízet areál." }
+        { "time": "pozdní dopoledne", "title": "Brunch", "desc": "Neformální konec oslav." }
       ]
     },
     {

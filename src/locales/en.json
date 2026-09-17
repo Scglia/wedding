@@ -3,7 +3,7 @@
   "site_title": "Our Wedding",
   "hero": "We're Getting Married!",
   "title": "Our Wedding",
-  "welcome": "Join us for a weekend of celebration beneath the plane trees of a Provençal château. We can't wait to share our big day with you.",
+  "welcome": "Join us for a weekend of celebration in a Provençal château. We can't wait to share our big day with you.",
   "date_label": "Date",
   "date": "31-07-27",
   "location_label": "Location",
@@ -62,7 +62,7 @@
       "name": "Saturday",
       "tagline": "The Wedding Day",
       "events": [
-        { "time": "", "title": "Ceremony", "desc": "In the gardens, beneath the plane trees." },
+        { "time": "", "title": "Ceremony", "desc": "In the castle's gardens." },
         { "time": "", "title": "Cocktail hour", "desc": "Champagne on the lawn." },
         { "time": "", "title": "Dinner", "desc": "Join us for an evening buffet." },
         { "time": "", "title": "Dancing", "desc": "Until the small hours." }
@@ -72,8 +72,7 @@
       "name": "Sunday",
       "tagline": "Brunch & Farewell",
       "events": [
-        { "time": "late morning", "title": "Brunch", "desc": "The unofficial end of the celebrations." },
-        { "time": "afternoon", "title": "Clean-up", "desc": "We'll be tidying up the grounds in the afternoon." }
+        { "time": "late morning", "title": "Brunch", "desc": "The unofficial end of the celebrations." }
       ]
     },
     {
@@ -135,8 +134,8 @@
   "submit_button_no": "Send",
   "submit_error": "Something went wrong while sending your reply. Please try again, or write to us directly.",
   "confirm_heading": "Thank You!",
-  "confirm_body_yes": "Your reply is on its way — we can't wait to celebrate with you under the plane trees.",
-  "confirm_body_no": "Your reply is on its way. You'll be missed — thank you for letting us know.",
+  "confirm_body_yes": "Your reply is on its way. we can't wait to celebrate this day with you.",
+  "confirm_body_no": "Your reply is on its way. You'll be missed. thank you for letting us know.",
   "rsvp_link": "RSVP",
   "home_link": "Back to the invitation"
 }
